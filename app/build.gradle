@@ -3,7 +3,17 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "../base.gradle"
 
+android{
+    defaultConfig {
+        applicationId "com.example.prioridades"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
 
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
