@@ -3,7 +3,7 @@
     package="com.example.feature_login">
 
     <application>
-        <activity android:name=".Login">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
