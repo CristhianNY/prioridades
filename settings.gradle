@@ -1,6 +1,6 @@
+rootProject.name = "Prioridades"
 include ':feature-login'
 include ':resources'
 include ':domain'
 include ':data'
 include ':app'
-rootProject.name = "Prioridades"

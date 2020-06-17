@@ -19,6 +19,11 @@ allprojects {
         google()
         jcenter()
     }
+    ext {
+        prioridades_features = [
+                login    : project(':feature-login')
+        ]
+    }
 }
 
 task clean(type: Delete) {
