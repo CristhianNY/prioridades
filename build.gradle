@@ -19,11 +19,23 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven {
+            url 'https://dl.bintray.com/pokt-network/pocket-android'
+        }
     }
     ext {
         prioridades_features = [
                 login    : project(':feature-login')
         ]
+
+        app_features = [
+                landing                     : project(':feature-login')
+        ]
+
+        feature = [
+                domain    : project(':domain')
+        ]
+
     }
 }
 

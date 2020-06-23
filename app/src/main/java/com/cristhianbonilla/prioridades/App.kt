@@ -9,6 +9,7 @@ class App : Application() {
     }
 
     companion object {
-        val contractAddress: String = ""
+        val CONTRACT_ADDRESS: String = ""
+        val CONTRAC_ABI: String = ""
     }
 }
