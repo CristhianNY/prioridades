@@ -24,6 +24,7 @@ allprojects {
         }
     }
     ext {
+        koin_version = '2.1.5'
         prioridades_features = [
                 login    : project(':feature-login')
         ]
@@ -36,6 +37,9 @@ allprojects {
                 domain    : project(':domain')
         ]
 
+        my_libs = [
+                koinViewModel: "org.koin:koin-androidx-viewmodel:$koin_version"
+        ]
     }
 }
 
