@@ -30,7 +30,8 @@ allprojects {
         ]
 
         app_features = [
-                landing                     : project(':feature-login')
+                landing                     : project(':feature-login'),
+                home                        : project(':feature-home')
         ]
 
         feature = [
