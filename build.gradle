@@ -29,6 +29,7 @@ allprojects {
         retrofit_version = '2.6.4'
         moshi_version = '1.9.2'
         okhttp3Idling_version = '1.0.0'
+        kotlinCoroutines_version = '1.3.5'
         prioridades_features = [
                 login    : project(':feature-login')
         ]
@@ -46,6 +47,11 @@ allprojects {
                 koinViewModel: "org.koin:koin-androidx-viewmodel:$koin_version",
                 moshi        : "com.squareup.moshi:moshi-kotlin:$moshi_version",
                 moshiCodegen : "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+        ]
+
+        kotlin_libs = [
+                stdlib    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+                coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutines_version"
         ]
 
         libs_network = [

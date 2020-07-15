@@ -29,6 +29,7 @@ dependencies {
     implementation libs_network.retrofit
     implementation libs_network.retrofitConverter
     implementation libs_network.okhttpInterceptor
+    implementation kotlin_libs.values()
     kapt my_libs.moshiCodegen
     implementation my_libs.moshi
 }
