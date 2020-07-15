@@ -25,6 +25,10 @@ allprojects {
     }
     ext {
         koin_version = '2.1.5'
+        okhttp_version = '4.2.1'
+        retrofit_version = '2.6.4'
+        moshi_version = '1.9.2'
+        okhttp3Idling_version = '1.0.0'
         prioridades_features = [
                 login    : project(':feature-login')
         ]
@@ -39,7 +43,16 @@ allprojects {
         ]
 
         my_libs = [
-                koinViewModel: "org.koin:koin-androidx-viewmodel:$koin_version"
+                koinViewModel: "org.koin:koin-androidx-viewmodel:$koin_version",
+                moshi        : "com.squareup.moshi:moshi-kotlin:$moshi_version",
+                moshiCodegen : "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+        ]
+
+        libs_network = [
+                okhttp           : "com.squareup.okhttp3:okhttp:$okhttp_version",
+                okhttpInterceptor: "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
+                retrofit         : "com.squareup.retrofit2:retrofit:$retrofit_version",
+                retrofitConverter: "com.squareup.retrofit2:converter-moshi:$retrofit_version"
         ]
     }
 }
