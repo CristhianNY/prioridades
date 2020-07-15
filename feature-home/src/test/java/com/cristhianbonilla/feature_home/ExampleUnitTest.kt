@@ -1,4 +1,4 @@
-package com.example.feature_home
+package com.cristhianbonilla.feature_home
 
 import org.junit.Test
 
