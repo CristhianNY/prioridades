@@ -36,12 +36,12 @@ allprojects {
 
         app_features = [
                 landing  : project(':feature-login'),
-                home     : project(':feature-home'),
-                resources: project(':resources')
+                home     : project(':feature-home')
         ]
 
         feature = [
-                domain: project(':domain')
+                domain: project(':domain'),
+                resources: project(':resources')
         ]
 
         my_libs = [
