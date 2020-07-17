@@ -1,1 +1,2 @@
 apply from: "../feature.gradle"
+apply plugin: 'kotlin-android'
