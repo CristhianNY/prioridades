@@ -31,16 +31,17 @@ allprojects {
         okhttp3Idling_version = '1.0.0'
         kotlinCoroutines_version = '1.3.5'
         prioridades_features = [
-                login    : project(':feature-login')
+                login: project(':feature-login')
         ]
 
         app_features = [
-                landing                     : project(':feature-login'),
-                home                        : project(':feature-home')
+                landing  : project(':feature-login'),
+                home     : project(':feature-home'),
+                resources: project(':resources')
         ]
 
         feature = [
-                domain    : project(':domain')
+                domain: project(':domain')
         ]
 
         my_libs = [
