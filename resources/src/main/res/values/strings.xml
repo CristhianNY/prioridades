@@ -14,4 +14,10 @@
     <string name="write_here_yout_email">Escribe aquí tu correo electronico</string>
     <string name="login_btb_title">Iniciar Sesión</string>
     <string name="forgot_password_title"><u>¿Olvidaste la contraseña?</u></string>
+    <string name="last_name_title">Apellidos</string>
+    <string name="write_here_lastname">Escribe aquí tus apellidos</string>
+    <string name="write_here_your_password">Escribe aquí tu contraseña</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar Contraseña</string>
+    <string name="btn_next_register">Siguiente</string>
 </resources>
