@@ -6,4 +6,5 @@
     <dimen name="height_5dp">5dp</dimen>
     <dimen name="margin_top_32">32dp</dimen>
     <dimen name="margin_end_20">20dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
 </resources>

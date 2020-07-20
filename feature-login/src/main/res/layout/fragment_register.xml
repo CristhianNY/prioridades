@@ -206,7 +206,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvConfirmPassword" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btnNextRegister"
             style="@style/newbuttonstyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

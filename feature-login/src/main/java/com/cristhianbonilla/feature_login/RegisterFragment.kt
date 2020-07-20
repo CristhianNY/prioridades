@@ -20,6 +20,10 @@ class RegisterFragment : Fragment() {
         binding.tvLoginTitle.setOnClickListener{
             Navigation.findNavController(it).navigate(R.id.go_to_login_fragment)
         }
+
+        binding.btnNextRegister.setOnClickListener{
+            Navigation.findNavController(it).navigate(R.id.go_to_finish_register_fragment)
+        }
         return view
     }
 }

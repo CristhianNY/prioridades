@@ -26,5 +26,17 @@
             app:destination="@id/loginFragment"
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/go_to_finish_register_fragment"
+            app:destination="@id/finishRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/finishRegisterFragment"
+        android:name="com.cristhianbonilla.feature_login.FinishRegisterFragment"
+        android:label="fragment_finish_register"
+        tools:layout="@layout/fragment_finish_register" >
+        <action
+            android:id="@+id/action_finishRegisterFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
     </fragment>
 </navigation>

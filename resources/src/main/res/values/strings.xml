@@ -20,4 +20,9 @@
     <string name="password">Contraseña</string>
     <string name="confirm_password">Confirmar Contraseña</string>
     <string name="btn_next_register">Siguiente</string>
+    <string name="write_here_your_phone_number">Escribe Aquí tu número de celuldar</string>
+    <string name="phone_number">Número de celular</string>
+    <string name="country">País</string>
+    <string name="city">Ciudad</string>
+    <string name="btn_finish">Finalizar</string>
 </resources>
