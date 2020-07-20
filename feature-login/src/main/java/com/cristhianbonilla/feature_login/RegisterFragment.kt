@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import com.cristhianbonilla.feature_login.databinding.FragmentLoginBinding
 import com.cristhianbonilla.feature_login.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {
