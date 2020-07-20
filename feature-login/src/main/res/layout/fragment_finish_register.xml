@@ -20,12 +20,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    
-    <Spinner
+
+    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
         android:id="@+id/spineerPhoneIndicator"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="11dp"
+        app:ccp_defaultNameCode="CO"
         app:layout_constraintStart_toStartOf="@+id/tvPhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
 
@@ -35,6 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
         android:layout_marginEnd="8dp"
+        android:maxLength="10"
+        android:inputType="phone"
         android:hint="@string/write_here_your_phone_number"
         app:layout_constraintBottom_toBottomOf="@+id/spineerPhoneIndicator"
         app:layout_constraintEnd_toEndOf="parent"

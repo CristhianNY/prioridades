@@ -22,6 +22,7 @@ allprojects {
         maven {
             url 'https://dl.bintray.com/pokt-network/pocket-android'
         }
+        maven { url "https://jitpack.io" }
     }
     ext {
         koin_version = '2.1.5'
