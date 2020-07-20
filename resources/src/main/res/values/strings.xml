@@ -9,4 +9,9 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="cristhian">Cristhian</string>
+    <string name="register_title">Registrarme</string>
+    <string name="email">Correo electrónico</string>
+    <string name="write_here_yout_email">Escribe aquí tu correo electronico</string>
+    <string name="login_btb_title">Iniciar Sesión</string>
+    <string name="forgot_password_title"><u>¿Olvidaste la contraseña?</u></string>
 </resources>

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black_color_title">#2E2B2B</color>
+    <color name="black_title">#2E2B2B</color>
+    <color name="color_divider">#707070</color>
+    <color name="color_red_divider">#E30613</color>
 </resources>

@@ -1,3 +1,9 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="divider_line_size">1dp</dimen>
+    <dimen name="title_size">16sp</dimen>
+    <dimen name="size_line_red_indicator">130dp</dimen>
+    <dimen name="height_5dp">5dp</dimen>
+    <dimen name="margin_top_32">32dp</dimen>
+    <dimen name="margin_end_20">20dp</dimen>
 </resources>
