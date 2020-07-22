@@ -55,7 +55,7 @@ allprojects {
         feature = [
                 domain: project(':domain'),
                 resources: project(':resources'),
-                resources: project(':foundations')
+                foundations: project(':foundations')
         ]
 
         my_libs = [
