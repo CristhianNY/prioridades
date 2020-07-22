@@ -1,4 +1,4 @@
-package com.cristhianbonilla.feature_login
+package com.cristhianbonilla.feature_login.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.cristhianbonilla.feature_login.R
 import com.cristhianbonilla.feature_login.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment() {

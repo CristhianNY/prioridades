@@ -1,4 +1,4 @@
-package com.cristhianbonilla.feature_login
+package com.cristhianbonilla.feature_login.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

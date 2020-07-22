@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.cristhianbonilla.feature_login.RegisterFragment"
+        android:name="com.cristhianbonilla.feature_login.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/finishRegisterFragment"
-        android:name="com.cristhianbonilla.feature_login.FinishRegisterFragment"
+        android:name="com.cristhianbonilla.feature_login.register.FinishRegisterFragment"
         android:label="fragment_finish_register"
         tools:layout="@layout/fragment_finish_register" >
         <action
