@@ -5,8 +5,8 @@ import com.cristhianbonilla.prioridades.di.domain.countries.countriesDomainModul
 import org.koin.core.module.Module
 
 internal fun getModules() = mutableListOf<Module>().apply {
-
-
+    addAll(getDomainModules())
+    addAll(getDataModules())
 }
 
 private fun getPresentationModules() =
