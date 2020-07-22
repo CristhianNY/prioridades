@@ -10,7 +10,7 @@ android{
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        buildConfigField("String", rootProject.ext.server_url, ' "https://mb-api-dev-%1$s.cloud.openbank.es"')
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
