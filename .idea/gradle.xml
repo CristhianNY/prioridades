@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature-home" />
             <option value="$PROJECT_DIR$/feature-login" />
+            <option value="$PROJECT_DIR$/foundations" />
             <option value="$PROJECT_DIR$/resources" />
           </set>
         </option>

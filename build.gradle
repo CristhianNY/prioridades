@@ -31,6 +31,18 @@ allprojects {
         moshi_version = '1.9.2'
         okhttp3Idling_version = '1.0.0'
         kotlinCoroutines_version = '1.3.5'
+        androidLifecycle_version = '2.2.0'
+        androidXCore_version = '1.1.0'
+        androidXCore_version = '1.1.0'
+        appcompat_version = '1.1.0'
+        constraintLayout_version = '1.1.3'
+        recyclerView_version = '1.1.0'
+        androidx_swiperefreshlayout_version = '1.0.0'
+        navigation_version = '2.2.1'
+        annotation_version = '1.1.0'
+        material_version = '1.0.0'
+        androidLifecycle_version = '2.2.0'
+
         prioridades_features = [
                 login: project(':feature-login')
         ]
@@ -42,7 +54,8 @@ allprojects {
 
         feature = [
                 domain: project(':domain'),
-                resources: project(':resources')
+                resources: project(':resources'),
+                resources: project(':foundations')
         ]
 
         my_libs = [
@@ -54,6 +67,22 @@ allprojects {
         kotlin_libs = [
                 stdlib    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
                 coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCoroutines_version"
+        ]
+
+        app_androidArch = [
+                lifecycle: "android.arch.lifecycle:extensions:$androidLifecycle_version"
+        ]
+
+        app_android = [
+                androidxCore      : "androidx.core:core-ktx:$androidXCore_version",
+                appcompat         : "androidx.appcompat:appcompat:$appcompat_version",
+                constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintLayout_version",
+                navigationUi      : "androidx.navigation:navigation-ui-ktx:$navigation_version",
+                navigationFragment: "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+                annotation        : "androidx.annotation:annotation:$annotation_version",
+                recyclerView      : "androidx.recyclerview:recyclerview:$recyclerView_version",
+                swipe             : "androidx.swiperefreshlayout:swiperefreshlayout:$androidx_swiperefreshlayout_version",
+                material          : "com.google.android.material:material:$material_version"
         ]
 
         libs_network = [

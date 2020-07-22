@@ -1,3 +1,4 @@
+include ':foundations'
 include ':feature-home'
 rootProject.name = "Prioridades"
 include ':feature-login'
