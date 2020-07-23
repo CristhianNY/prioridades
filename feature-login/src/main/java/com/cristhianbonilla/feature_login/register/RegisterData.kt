@@ -9,7 +9,8 @@ import com.cristhianbonilla.feature_login.register.RegisterUserState.Error
 import com.cristhianbonilla.feature_login.register.RegisterUserState.Success
 
 class RegisterData(
-    var countryList: MyLiveData<List<CountryItemModel>> = MyLiveData(mutableListOf())
+    var countryList: MyLiveData<List<CountryItemModel>> = MyLiveData(mutableListOf()),
+    var toolBarTitle: MyLiveData<String> = MyLiveData("Registrar Usuario")
 ) : BaseData<RegisterUserState>(){
 
     override fun loading() {
@@ -31,6 +32,7 @@ class RegisterData(
 
     fun submitCountries(countries:CountryModel){
         countryList update countries.countryList
+        toolBarTitle update "RegistraUSuario"
     }
 
 }

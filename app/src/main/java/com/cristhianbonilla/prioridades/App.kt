@@ -1,12 +1,13 @@
 package com.cristhianbonilla.prioridades
 
 import android.app.Application
+import androidx.lifecycle.LifecycleObserver
 import com.cristhianbonilla.domain.config.ModeTypeModel
 import com.cristhianbonilla.prioridades.BuildConfig.*
 import com.cristhianbonilla.prioridades.config.AppConfigurationModel
 import com.cristhianbonilla.prioridades.di.getModules
 
-class App : Application() {
+class App : Application() , LifecycleObserver {
 
     override fun onCreate() {
         super.onCreate()

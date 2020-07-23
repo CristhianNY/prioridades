@@ -15,7 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.cristhianbonilla.foundations.extensions.injectViewModel
 
-class BaseFragment<S : BaseState,
+abstract class BaseFragment<S : BaseState,
         D : BaseData<S>,
         T : BaseTracker,
         out VM : BaseViewModel<S, D, T>,

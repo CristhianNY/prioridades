@@ -1,6 +1,5 @@
 package com.cristhianbonilla.foundations.tracker
 
-internal lateinit var uiTracker: UITracker
 
 interface UITracker {
 

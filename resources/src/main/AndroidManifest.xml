@@ -3,10 +3,6 @@
     package="com.cristhianbonilla.resources">
 
     <application>
-        <activity
-            android:name=".ResourceActivity"
-            android:label="@string/title_activity_resource"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

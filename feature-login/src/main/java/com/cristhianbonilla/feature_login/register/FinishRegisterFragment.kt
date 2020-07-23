@@ -1,29 +1,21 @@
 package com.cristhianbonilla.feature_login.register
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.Navigation
+import com.cristhianbonilla.feature_login.BR
+import com.cristhianbonilla.feature_login.R
 import com.cristhianbonilla.feature_login.databinding.FragmentFinishRegisterBinding
-import com.cristhianbonilla.feature_login.databinding.FragmentRegisterBinding
-import kotlinx.android.synthetic.main.toolbar.view.*
+import com.cristhianbonilla.foundations.base.BaseFragment
 
-class FinishRegisterFragment : Fragment() {
-    lateinit var binding:FragmentFinishRegisterBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentFinishRegisterBinding.inflate(inflater,container,false)
-        val view = binding.root
+class FinishRegisterFragment : BaseFragment<
+        RegisterUserState,
+        RegisterData,
+        RegisterTracker,
+        RegisterViewModel,
+        FragmentFinishRegisterBinding>(R.layout.fragment_finish_register, BR.viewModel, BR.data) {
 
-        val toolbar = view.my_toolbar
-        view.ivGoBack.setOnClickListener {
-            Navigation.findNavController(it).popBackStack()
-        }
-        return view
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
+
 }

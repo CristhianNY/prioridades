@@ -1,0 +1,12 @@
+apply plugin: 'com.android.library'
+apply from: "../base.gradle"
+
+dependencies {
+    implementation project(path: ':domain')
+    implementation kotlin_libs.stdlib
+    implementation kotlin_libs.coroutines
+    implementation app_android.values()
+    implementation app_androidArch.values()
+    implementation my_libs.koinViewModel
+    implementation feature.resources
+}
