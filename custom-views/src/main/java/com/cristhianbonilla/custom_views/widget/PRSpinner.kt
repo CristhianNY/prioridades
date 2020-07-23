@@ -23,13 +23,12 @@ class PRSpinner( context: Context, attrs: AttributeSet?) : androidx.appcompat.wi
     }
 
     companion object {
-        @BindingAdapter("list_of_items")
+        @BindingAdapter("item_list")
         @JvmStatic
-        fun getElements(view: PRSpinner, listOfElements: List<Any>) {
+        fun getElements(view: PRSpinner, listOfElements: List<String>) {
             val adapter = ArrayAdapter(view.context, android.R.layout.simple_list_item_1, listOfElements)
             view.adapter = adapter
         }
     }
-
 
 }

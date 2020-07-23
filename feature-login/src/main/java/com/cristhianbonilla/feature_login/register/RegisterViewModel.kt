@@ -24,8 +24,11 @@ class RegisterViewModel(
     }
 
     private fun handleGetCountries(countries: CountryModel){
-
-        data.submitCountries(countries)
+        val countriesString = ArrayList<String>()
+        countries.countryList.forEach {
+            countriesString.add(it.name)
+        }
+        data.submitCountries(countriesString)
     }
 
 }

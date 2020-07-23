@@ -14,6 +14,11 @@ class FinishRegisterFragment : BaseFragment<
         RegisterViewModel,
         FragmentFinishRegisterBinding>(R.layout.fragment_finish_register, BR.viewModel, BR.data) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+        viewModel.getCountries()
+        super.onCreate(savedInstanceState)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }

@@ -11,7 +11,7 @@ import java.net.HttpURLConnection
 import java.security.InvalidParameterException
 
 internal fun Exception.toRemoteError(handleError: (Int) -> Failure): Result.Error<Failure> {
-    reporter.exception(this)
+   // reporter.exception(this)
     return Result.Error(
         when (this) {
             is NetworkException -> Failure.NetworkConnection

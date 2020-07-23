@@ -12,7 +12,7 @@ class CountriesRemoteSourceImpl(private val assetJsonReader: AssetJsonReader) :
     CountriesRemoteSource {
     override suspend fun getCountries(): Result<Failure, CountryModel> {
         return request({
-            val jsonfile: String = "countries.json"
+            val jsonfile: String = "paises.json"
 
             Response.success(assetJsonReader.readJsonObject(jsonfile, CountryEntity::class.java))
         }, { entity, _ -> entity.toModel() })

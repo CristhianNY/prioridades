@@ -78,13 +78,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
-        <Spinner
+        <com.cristhianbonilla.custom_views.widget.PRSpinner
             android:id="@+id/spineerCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:spinnerMode="dialog"
             android:layout_marginEnd="16dp"
+            app:item_list="@{data.countryList}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCountry" />
@@ -102,7 +104,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spineerCountry" />
 
-        <Spinner
+        <EditText
             android:id="@+id/spinnerCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
