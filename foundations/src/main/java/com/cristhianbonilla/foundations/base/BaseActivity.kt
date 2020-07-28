@@ -55,6 +55,7 @@ abstract class BaseActivity<S : BaseState>(
         }
 
 
+
     override fun onStateChanged(state: S) {
         /** to override **/
     }
