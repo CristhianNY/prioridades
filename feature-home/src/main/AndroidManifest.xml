@@ -6,6 +6,7 @@
         <activity
             android:name="com.cristhianbonilla.features_home.HomeActivity"
             android:label="@string/title_activity_home">
+
         </activity>
     </application>
 
