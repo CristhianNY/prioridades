@@ -9,7 +9,7 @@ import com.cristhianbonilla.foundations.base.BaseState
 class   AuthenticationActivity : BaseActivity<RegisterState>(R.layout.activity_login, R.navigation.login_navigation, R.id.fragment_container) {
 
 
-    
+
 }
 
 open class RegisterState : BaseState

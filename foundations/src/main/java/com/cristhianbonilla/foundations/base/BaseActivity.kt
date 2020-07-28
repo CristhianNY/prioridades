@@ -1,9 +1,16 @@
 package com.cristhianbonilla.foundations.base
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.AttributeSet
+import android.view.View
 import android.view.WindowManager
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.cristhianbonilla.domain.config.ModeTypeModel
 import com.cristhianbonilla.foundations.extensions.injectInteraction
@@ -36,8 +43,44 @@ abstract class BaseActivity<S : BaseState>(
         }
     }
 
+    @CallSuper
+    override fun onCreateView(
+        parent: View?,
+        name: String,
+        context: Context,
+        attrs: AttributeSet
+    ): View? =
+        super.onCreateView(parent, name, context, attrs)?.apply {
+            innerNavigator = Navigation.findNavController(this)
+        }
+
 
     override fun onStateChanged(state: S) {
-        TODO("Not yet implemented")
+        /** to override **/
+    }
+
+    final override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val resultMap = mutableMapOf<String, Any?>()
+        data?.extras?.keySet()?.forEach{ resultMap[it] = data.extras?.get(it) }
+        onNavigationResult(requestCode, resultCode, resultMap)
+    }
+
+    protected open fun onNavigationResult(requestCode: Int, resultCode: Int, result: Map<String, Any?>){
+        /** to override **/
+    }
+
+    protected fun finishWithResult(resultCode: Int, bundle: Bundle){
+        val resultIntent = Intent().apply { putExtras(bundle) }
+        setResult(resultCode, resultIntent)
+        finish()
+    }
+
+    protected fun innerNavigate(directions: NavDirections) {
+        innerNavigator?.navigate(directions)
+    }
+
+    protected fun innerNavigate(resId: Int) {
+        innerNavigator?.navigate(resId)
     }
 }
