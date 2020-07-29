@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -22,7 +23,7 @@
             android:layout_gravity="left"
             android:contentDescription="TODO"
             android:visibility="visible"
-            app:srcCompat="@android:drawable/ic_popup_sync" />
+            tools:src="@drawable/ic_icon_back" />
 
         <TextView
             android:id="@+id/toolbarTitle"
@@ -30,9 +31,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="List Entry"
             android:textColor="@color/black_title"
             android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/logo_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logo_inicio"
+            android:layout_gravity="center"
+            />
     </androidx.appcompat.widget.Toolbar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

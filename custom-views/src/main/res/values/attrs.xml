@@ -6,5 +6,10 @@
 
     <declare-styleable name="PRToolbar">
         <attr name="toolbar_title" format="string" />
+        <attr name="toolbar_type" format="enum">
+            <enum name="LOGO" value="0" />
+            <enum name="TITLE" value="1" />
+            <enum name="TITLE_BACK" value="2" />
+        </attr>
     </declare-styleable>
 </resources>

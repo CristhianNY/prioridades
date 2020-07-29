@@ -1,19 +1,19 @@
 package com.cristhianbonilla.features_home
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.cristhianbonilla.feature_home.R
+import com.cristhianbonilla.foundations.base.BaseActivity
+import com.cristhianbonilla.foundations.base.BaseState
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigation.mobile_navigation, R.id.nav_host_fragment) {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
@@ -27,3 +27,5 @@ class HomeActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 }
+
+open class HomeState : BaseState
