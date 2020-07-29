@@ -1,10 +1,10 @@
-package com.cristhianbonilla.features_home.ui.notifications
+package com.cristhianbonilla.features_home.ui.aboutUs
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class AboutUsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
