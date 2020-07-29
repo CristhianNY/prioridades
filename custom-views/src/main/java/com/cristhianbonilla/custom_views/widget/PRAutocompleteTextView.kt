@@ -12,7 +12,9 @@ class PRAutocompleteTextView(context: Context, attrs: AttributeSet?) : androidx.
         @JvmStatic
         fun setKeyWords(view: PRAutocompleteTextView, listOfElements: List<String>) {
             val adapter = ArrayAdapter(view.context, android.R.layout.simple_list_item_1, listOfElements)
+            view.threshold = 0
             view.setAdapter(adapter)
+
         }
     }
 }

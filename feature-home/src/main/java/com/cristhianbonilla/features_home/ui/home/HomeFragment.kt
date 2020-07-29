@@ -16,7 +16,7 @@ class HomeFragment : BaseFragment<
         FragmentHomeBinding>(R.layout.fragment_home, BR.viewModel, BR.data) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
+        viewModel.getKeyWord()
         super.onCreate(savedInstanceState)
 
     }

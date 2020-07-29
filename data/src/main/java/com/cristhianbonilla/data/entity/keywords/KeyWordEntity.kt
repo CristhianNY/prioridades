@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class KeyWordEntity(
-    @Json(name = "KeyWord")
+    @Json(name = "KeyWords")
     val keyWordList: List<KeyWordItemEntity>?
 )
 
