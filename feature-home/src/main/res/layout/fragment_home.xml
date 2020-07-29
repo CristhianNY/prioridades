@@ -14,6 +14,9 @@
             type="com.cristhianbonilla.features_home.ui.home.HomeData" />
 
     </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height=""
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,6 +25,14 @@
         android:id="@+id/myCustomToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        android:contentInsetRight="0dp"
+        android:contentInsetEnd="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetEnd="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,14 +40,18 @@
 
     <com.cristhianbonilla.custom_views.widget.PRAutocompleteTextView
         android:id="@+id/text_home"
-        android:layout_width="match_parent"
         key_words="@{data.keyWordList}"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_size_search"
+        android:layout_margin="@dimen/margin_16"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/autocomplete_input"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:fontFamily="@font/slabo27pxregular"
+        android:gravity="center|left"
+        android:hint="Buscar por temas"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myCustomToolbar" />

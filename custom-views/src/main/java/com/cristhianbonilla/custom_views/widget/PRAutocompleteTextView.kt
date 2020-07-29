@@ -7,6 +7,9 @@ import androidx.databinding.BindingAdapter
 
 class PRAutocompleteTextView(context: Context, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatAutoCompleteTextView(context, attrs) {
 
+    init {
+        this.setPadding(0,0,0,0)
+    }
     companion object {
         @BindingAdapter("key_words")
         @JvmStatic
