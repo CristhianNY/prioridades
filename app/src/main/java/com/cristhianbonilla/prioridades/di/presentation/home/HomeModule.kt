@@ -23,7 +23,7 @@ internal val homeModule = module {
                 scope = get(),
                 data = HomeData(),
                 tracker = get(),
-                getCountriesUseCase = get()
+                getKeyWordsUseCase = get()
             )
         }
         scoped { HomeTracker() }
