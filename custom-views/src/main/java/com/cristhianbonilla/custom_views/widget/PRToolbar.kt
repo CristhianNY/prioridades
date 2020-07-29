@@ -10,12 +10,11 @@ import kotlinx.android.synthetic.main.view_toolbar.view.*
 class PRToolbar(context: Context, attrs: AttributeSet?) : androidx.appcompat.widget.Toolbar(context, attrs) {
     private var toolbarTitle: String? = null
     private var toolbarType: Int? = null
+
     init {
         loadAttrs(attrs)
         initView()
         setStyle()
-
-
     }
 
     private fun setStyle() {

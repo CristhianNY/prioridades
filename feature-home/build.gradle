@@ -10,3 +10,7 @@ android {
         jvmTarget = '1.8'
     }
 }
+
+dependencies{
+    implementation("com.otaliastudios:autocomplete:1.1.0")
+}

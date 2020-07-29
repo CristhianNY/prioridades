@@ -8,7 +8,8 @@ import com.cristhianbonilla.features_home.ui.home.HomeMagazineState.Error
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState.Success
 
 class HomeData(
-var magazineList: MyLiveData<List<String>> = MyLiveData(mutableListOf())
+var magazineList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
+var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf())
 ) : BaseData<HomeMagazineState>(){
 
     override fun loading() {
@@ -30,6 +31,10 @@ var magazineList: MyLiveData<List<String>> = MyLiveData(mutableListOf())
 
     fun submitMagazineList(magazine:List<String>){
         magazineList update magazine
+    }
+
+    fun submitKeyWords(keyWords:List<String>){
+        keyWordList update keyWords
     }
 
 }
