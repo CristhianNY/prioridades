@@ -25,4 +25,9 @@
     <string name="country">País</string>
     <string name="city">Ciudad</string>
     <string name="btn_finish">Finalizar</string>
+    <!-- menu-->
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_about_us">Nosotros</string>
 </resources>

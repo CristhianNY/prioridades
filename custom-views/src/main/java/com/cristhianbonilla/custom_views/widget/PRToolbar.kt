@@ -15,6 +15,7 @@ class PRToolbar(context: Context, attrs: AttributeSet?) : androidx.appcompat.wid
         initView()
         setStyle()
 
+
     }
 
     private fun setStyle() {
