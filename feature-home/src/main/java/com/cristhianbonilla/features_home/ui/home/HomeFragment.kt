@@ -2,11 +2,10 @@ package com.cristhianbonilla.features_home.ui.home
 
 import android.os.Bundle
 import android.view.View
-import com.cristhianbonilla.feature_home.R
 import com.cristhianbonilla.feature_home.BR
+import com.cristhianbonilla.feature_home.R
 import com.cristhianbonilla.feature_home.databinding.FragmentHomeBinding
 import com.cristhianbonilla.foundations.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : BaseFragment<
         HomeMagazineState,
@@ -17,6 +16,7 @@ class HomeFragment : BaseFragment<
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel.getKeyWord()
+
         super.onCreate(savedInstanceState)
 
     }

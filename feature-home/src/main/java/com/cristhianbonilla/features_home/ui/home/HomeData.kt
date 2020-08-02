@@ -1,16 +1,17 @@
 package com.cristhianbonilla.features_home.ui.home
 
+import com.cristhianbonilla.features_home.ui.home.HomeMagazineState.*
 import com.cristhianbonilla.foundations.base.BaseData
-
 import com.cristhianbonilla.foundations.livedata.MyLiveData
-import com.cristhianbonilla.features_home.ui.home.HomeMagazineState.Loading
-import com.cristhianbonilla.features_home.ui.home.HomeMagazineState.Error
-import com.cristhianbonilla.features_home.ui.home.HomeMagazineState.Success
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeData(
-var magazineList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
-var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf())
-) : BaseData<HomeMagazineState>(){
+    var magazineList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
+    var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
+    var lastYears: MyLiveData<List<String>> = MyLiveData(mutableListOf())
+
+    ) : BaseData<HomeMagazineState>() {
 
     override fun loading() {
         super.loading()
@@ -29,12 +30,22 @@ var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf())
     }
 
 
-    fun submitMagazineList(magazine:List<String>){
+    fun submitMagazineList(magazine: List<String>) {
         magazineList update magazine
     }
 
-    fun submitKeyWords(keyWords:List<String>){
+    fun submitKeyWords(keyWords: List<String>) {
         keyWordList update keyWords
+    }
+
+    fun submitLastFourYear() {
+        val currentYear = Calendar.getInstance().get(Calendar.YEAR)
+        val years: ArrayList<String> = ArrayList()
+        years.add(currentYear.toString())
+        years.add((currentYear - 1).toString())
+        years.add((currentYear - 2).toString())
+        years.add((currentYear - 3).toString())
+        lastYears update years
     }
 
 }
