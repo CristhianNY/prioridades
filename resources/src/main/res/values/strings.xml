@@ -30,4 +30,22 @@
     <string name="title_home">Inicio</string>
     <string name="title_profile">Perfil</string>
     <string name="title_about_us">Nosotros</string>
+
+    <string name="text_with_paragraphs">
+           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
+           Adding a 2nd line like this should work.
+           It should not cause parsing errors.
+           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
+           Adding a 2nd line like this should work.
+           It should not cause parsing errors.
+           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
+           Adding a 2nd line like this should work.
+           It should not cause parsing errors.
+           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
+           Adding a 2nd line like this should work.
+           It should not cause parsing errors.
+           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
+           Adding a 2nd line like this should work.
+           It should not cause parsing errors.
+       </string>
 </resources>
