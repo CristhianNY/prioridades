@@ -48,4 +48,9 @@
            Adding a 2nd line like this should work.
            It should not cause parsing errors.
        </string>
+    <string name="title_user_email">Correo electrónico</string>
+    <string name="title_user_phone">Número de celular</string>
+    <string name="title_user_country">País</string>
+    <string name="title_user_city">Ciudad</string>
+    <string name="title_user_last_subscription">La subscripción vence</string>
 </resources>

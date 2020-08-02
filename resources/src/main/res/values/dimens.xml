@@ -9,5 +9,6 @@
     <dimen name="margin_16">16dp</dimen>
     <dimen name="text_size_autocomplete">10sp</dimen>
     <dimen name="height_size_search">44dp</dimen>
+    <dimen name="title_profile">14sp</dimen>
 
 </resources>

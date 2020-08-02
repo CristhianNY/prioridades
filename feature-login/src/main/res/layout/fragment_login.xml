@@ -145,7 +145,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="30dp"
-            android:fontFamily="@font/librarygothicbold"
+
+
             android:text="@string/forgot_password_title"
             android:textColor="@color/black_color_title"
             app:layout_constraintBottom_toBottomOf="parent"
