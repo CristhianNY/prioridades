@@ -53,4 +53,6 @@
     <string name="title_user_country">País</string>
     <string name="title_user_city">Ciudad</string>
     <string name="title_user_last_subscription">La subscripción vence</string>
+    <string name="title_bout_us">Sobre nosotros</string>
+    <string name="title_contact_us">Contáctanos</string>
 </resources>
