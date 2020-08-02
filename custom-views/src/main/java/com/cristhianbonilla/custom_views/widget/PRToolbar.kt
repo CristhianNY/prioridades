@@ -8,7 +8,7 @@ import com.cristhianbonilla.custom_views.R
 import kotlinx.android.synthetic.main.view_toolbar.view.*
 
 class PRToolbar(context: Context, attrs: AttributeSet?) : androidx.appcompat.widget.Toolbar(context, attrs) {
-    private var toolbarTitle: String? = null
+    private var mytoolbarTitle: String? = null
     private var toolbarType: Int? = null
 
     init {
@@ -25,9 +25,12 @@ class PRToolbar(context: Context, attrs: AttributeSet?) : androidx.appcompat.wid
           1->{
               this.logo_toolbar.visibility = View.GONE
               this.ivGoBack.visibility = View.GONE
+              this.toolbarTitle.text = mytoolbarTitle
+
           }
           2 ->{
               this.logo_toolbar.visibility = View.GONE
+              this.toolbarTitle.text = mytoolbarTitle
           }
       }
     }
@@ -43,8 +46,8 @@ class PRToolbar(context: Context, attrs: AttributeSet?) : androidx.appcompat.wid
             R.styleable.PRToolbar,
             0, 0
         ).apply {
-            toolbarTitle = getString(R.styleable.PRToolbar_toolbar_title)
-            toolbarType = getResourceId(R.styleable.PRToolbar_toolbar_type, 0)
+            mytoolbarTitle = getString(R.styleable.PRToolbar_toolbar_title)
+            toolbarType = getInt(R.styleable.PRToolbar_toolbar_type,0)
             recycle()
         }
     }

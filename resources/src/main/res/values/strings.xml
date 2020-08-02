@@ -55,4 +55,5 @@
     <string name="title_user_last_subscription">La subscripción vence</string>
     <string name="title_bout_us">Sobre nosotros</string>
     <string name="title_contact_us">Contáctanos</string>
+    <string name="title_toolbar_about_us">Nosotros</string>
 </resources>
