@@ -21,5 +21,5 @@
         android:id="@+id/navigation_notifications"
         android:name="com.cristhianbonilla.features_home.ui.aboutUs.AboutUsFragment"
         android:label="@string/title_about_us"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_about_us" />
 </navigation>
