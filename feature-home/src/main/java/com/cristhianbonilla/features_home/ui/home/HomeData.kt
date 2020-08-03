@@ -1,5 +1,9 @@
 package com.cristhianbonilla.features_home.ui.home
 
+import android.widget.Toast
+import androidx.annotation.StringRes
+import com.cristhianbonilla.domain.model.home.MagazineModel
+import com.cristhianbonilla.domain.model.home.MagazineModelItem
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState.*
 import com.cristhianbonilla.foundations.base.BaseData
 import com.cristhianbonilla.foundations.livedata.MyLiveData
@@ -7,7 +11,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeData(
-    var magazineList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
+    var magazineList: MyLiveData<List<MagazineModelItem>> = MyLiveData(mutableListOf()),
     var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
     var lastYears: MyLiveData<List<String>> = MyLiveData(mutableListOf())
 
@@ -30,7 +34,7 @@ class HomeData(
     }
 
 
-    fun submitMagazineList(magazine: List<String>) {
+    fun submitMagazineList(magazine: List<MagazineModelItem>) {
         magazineList update magazine
     }
 
@@ -47,5 +51,6 @@ class HomeData(
         years.add((currentYear - 3).toString())
         lastYears update years
     }
+
 
 }

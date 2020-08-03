@@ -19,6 +19,7 @@ interface SecureLocalSource {
 }
 
 enum class SecureKeyPreferences(val value: String) {
+    USER_DOCUMENT_TYPE("userDocumentType"),
     USER_DOCUMENT("userDocument"),
     USER_REFRESH("userRefresh"),
     USER_APP("userApp"),

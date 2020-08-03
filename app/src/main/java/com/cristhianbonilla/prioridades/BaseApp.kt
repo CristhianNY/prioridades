@@ -3,7 +3,6 @@ package com.cristhianbonilla.prioridades
 import android.app.Application
 import com.cristhianbonilla.foundations.extensions.initDI
 import com.cristhianbonilla.prioridades.config.AppConfigurationModel
-import com.cristhianbonilla.prioridades.di.configModule
 import com.cristhianbonilla.prioridades.di.getModules
 import org.koin.core.module.Module
 

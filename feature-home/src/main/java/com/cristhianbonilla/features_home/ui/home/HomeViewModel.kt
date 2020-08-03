@@ -1,11 +1,14 @@
 package com.cristhianbonilla.features_home.ui.home
 
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.cristhianbonilla.custom_views.widget.prradio.PRRadioGroupListener
+import com.cristhianbonilla.domain.model.home.MagazineModel
 import com.cristhianbonilla.domain.model.keywords.KeyWordModel
 import com.cristhianbonilla.domain.usecase.Scope
 import com.cristhianbonilla.domain.usecase.UseCase
+import com.cristhianbonilla.domain.usecase.home.GetMagazineListUseCase
 import com.cristhianbonilla.domain.usecase.keywords.GetKeyWordsUseCase
 import com.cristhianbonilla.foundations.base.BaseViewModel
 import com.cristhianbonilla.foundations.extensions.context
@@ -15,7 +18,8 @@ class HomeViewModel(
     scope: Scope,
     data: HomeData,
     tracker: HomeTracker,
-    private val getKeyWordsUseCase: GetKeyWordsUseCase
+    private val getKeyWordsUseCase: GetKeyWordsUseCase,
+    private val getMagazineListUseCase: GetMagazineListUseCase
 ) : BaseViewModel<HomeMagazineState, HomeData, HomeTracker>(scope, data, tracker){
 
     val impl = object : PRRadioGroupListener {
@@ -40,6 +44,26 @@ class HomeViewModel(
                 }, ::handleKeyWords
             )
         }
+    }
+
+    fun getMagazineList(){
+        data.loading()
+
+        execute {
+            getMagazineListUseCase(GetMagazineListUseCase.Params("2020","finanzas")).fold(
+                { handleGetMagazineFailure() },
+                ::handleMagazineListSuccess
+            )
+        }
+    }
+
+    private fun handleGetMagazineFailure() {
+        data.error()
+        Log.d("Error al traer revisas", "Error Al traer magazines")
+    }
+
+    private fun handleMagazineListSuccess(magazineList:MagazineModel){
+        data.submitMagazineList(magazineList.magazineList)
     }
 
     private fun handleKeyWords(keywords: KeyWordModel) {

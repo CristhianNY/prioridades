@@ -1,6 +1,7 @@
 package com.cristhianbonilla.prioridades.di
 
 import android.util.Log
+import com.cristhianbonilla.data.source.local.LocalHandler
 import com.cristhianbonilla.domain.reporter.*
 import org.koin.dsl.module
 
@@ -28,6 +29,12 @@ internal val appModule = module {
             override fun recordBreadcrumb(breadCrumb: ReporterBreadCrumb) {}
 
             override fun setUserData(userData: ReporterUserData) {}
+        }
+    }
+
+    single<LocalHandler> {
+        object : LocalHandler {
+            override fun invalidateCaches() {}
         }
     }
 }
