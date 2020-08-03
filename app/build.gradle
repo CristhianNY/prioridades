@@ -10,7 +10,7 @@ android{
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", rootProject.ext.server_url, ' "https://mb-api-dev-%1$s.cloud.openbank.es"')
+        buildConfigField("String", rootProject.ext.server_url, ' "https://revistaprioridades.com/"')
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
@@ -38,9 +38,10 @@ dependencies {
     implementation prioridades_features.values()
     implementation app_features.values()
     implementation libs_network.values()
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation my_libs.koinViewModel
+    implementation my_libs.values()
 
 }

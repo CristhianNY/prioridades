@@ -1,9 +1,12 @@
 package com.cristhianbonilla.prioridades.di
 
 import com.cristhianbonilla.prioridades.di.data.countries.countryDataModule
+import com.cristhianbonilla.prioridades.di.data.home.MagazineListDataModule
 import com.cristhianbonilla.prioridades.di.data.keywords.keywordsDataModule
 import com.cristhianbonilla.prioridades.di.data.local.localDataModule
+import com.cristhianbonilla.prioridades.di.data.networkModule
 import com.cristhianbonilla.prioridades.di.domain.countries.countriesDomainModule
+import com.cristhianbonilla.prioridades.di.domain.home.magazineListDomainModule
 import com.cristhianbonilla.prioridades.di.domain.keywords.keywordsDomainModule
 import com.cristhianbonilla.prioridades.di.presentation.home.homeModule
 import com.cristhianbonilla.prioridades.di.presentation.register.registerUserModule
@@ -13,6 +16,7 @@ internal fun getModules() = mutableListOf<Module>().apply {
     addAll(getDomainModules())
     addAll(getDataModules())
     addAll(getPresentationModules())
+    addAll(getCoreModule())
 }
 
 private fun getPresentationModules() =
@@ -25,12 +29,19 @@ private fun getPresentationModules() =
 private fun getDomainModules() =
     listOf(
         countriesDomainModule,
-        keywordsDomainModule
+        keywordsDomainModule,
+        magazineListDomainModule
     )
 
 private fun getDataModules() =
     listOf(
         localDataModule,
         countryDataModule,
-        keywordsDataModule
+        keywordsDataModule,
+        MagazineListDataModule
+    )
+
+private fun getCoreModule()=
+    listOf(
+        networkModule
     )
