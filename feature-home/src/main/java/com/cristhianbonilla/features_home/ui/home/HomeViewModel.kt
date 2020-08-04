@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.cristhianbonilla.custom_views.widget.prradio.PRRadioGroupListener
 import com.cristhianbonilla.domain.model.home.MagazineModel
+import com.cristhianbonilla.domain.model.home.MagazineModelItem
 import com.cristhianbonilla.domain.model.keywords.KeyWordModel
 import com.cristhianbonilla.domain.usecase.Scope
 import com.cristhianbonilla.domain.usecase.UseCase
@@ -21,6 +22,8 @@ class HomeViewModel(
     private val getKeyWordsUseCase: GetKeyWordsUseCase,
     private val getMagazineListUseCase: GetMagazineListUseCase
 ) : BaseViewModel<HomeMagazineState, HomeData, HomeTracker>(scope, data, tracker){
+
+    private var magazineArrayList:ArrayList<MagazineModelItem> = ArrayList()
 
     val impl = object : PRRadioGroupListener {
         override fun clickItem(stringValue: String) {
@@ -50,7 +53,7 @@ class HomeViewModel(
         data.loading()
 
         execute {
-            getMagazineListUseCase(GetMagazineListUseCase.Params("2020","finanzas")).fold(
+            getMagazineListUseCase(GetMagazineListUseCase.Params("","")).fold(
                 { handleGetMagazineFailure() },
                 ::handleMagazineListSuccess
             )
@@ -63,7 +66,11 @@ class HomeViewModel(
     }
 
     private fun handleMagazineListSuccess(magazineList:MagazineModel){
-        data.submitMagazineList(magazineList.magazineList)
+        for (magazine in magazineList.magazineList) {
+            magazineArrayList.add(magazine)
+        }
+
+        data.submitMagazineList(magazineArrayList)
     }
 
     private fun handleKeyWords(keywords: KeyWordModel) {

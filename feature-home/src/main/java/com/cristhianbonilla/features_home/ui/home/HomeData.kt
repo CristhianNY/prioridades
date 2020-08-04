@@ -11,7 +11,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeData(
-    var magazineList: MyLiveData<List<MagazineModelItem>> = MyLiveData(mutableListOf()),
+    var magazineList: MyLiveData<ArrayList<MagazineModelItem>> = MyLiveData(ArrayList()),
     var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
     var lastYears: MyLiveData<List<String>> = MyLiveData(mutableListOf())
 
@@ -34,7 +34,7 @@ class HomeData(
     }
 
 
-    fun submitMagazineList(magazine: List<MagazineModelItem>) {
+    fun submitMagazineList(magazine: ArrayList<MagazineModelItem>) {
         magazineList update magazine
     }
 

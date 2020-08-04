@@ -42,19 +42,20 @@ allprojects {
         annotation_version = '1.1.0'
         material_version = '1.0.0'
         androidLifecycle_version = '2.2.0'
+        picasso = '2.71828'
 
         prioridades_features = [
                 login: project(':feature-login')
         ]
 
         app_features = [
-                landing  : project(':feature-login'),
-                home     : project(':feature-home')
+                landing: project(':feature-login'),
+                home   : project(':feature-home')
         ]
 
         feature = [
-                domain: project(':domain'),
-                resources: project(':resources'),
+                domain     : project(':domain'),
+                resources  : project(':resources'),
                 foundations: project(':foundations'),
                 customviews: project(':custom-views')
         ]
@@ -83,7 +84,8 @@ allprojects {
                 annotation        : "androidx.annotation:annotation:$annotation_version",
                 recyclerView      : "androidx.recyclerview:recyclerview:$recyclerView_version",
                 swipe             : "androidx.swiperefreshlayout:swiperefreshlayout:$androidx_swiperefreshlayout_version",
-                material          : "com.google.android.material:material:$material_version"
+                material          : "com.google.android.material:material:$material_version",
+                picasso      : "com.squareup.picasso:picasso:$picasso"
         ]
 
         libs_network = [
