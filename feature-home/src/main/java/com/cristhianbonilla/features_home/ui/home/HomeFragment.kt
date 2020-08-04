@@ -16,6 +16,7 @@ class HomeFragment : BaseFragment<
 
     override fun onCreate(savedInstanceState: Bundle?) {
         viewModel.getKeyWord()
+        viewModel.getMagazineList()
 
         super.onCreate(savedInstanceState)
 

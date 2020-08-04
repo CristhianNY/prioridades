@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.net.HttpURLConnection.*
-import java.util.concurrent.CountDownLatch
 
 class PrivateInterceptor(
     private val session: Session,
