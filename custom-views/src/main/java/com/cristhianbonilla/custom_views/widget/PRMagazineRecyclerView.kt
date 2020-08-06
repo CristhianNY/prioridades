@@ -19,16 +19,15 @@ class PRMagazineRecyclerView(
     private var magazineListener: MagazineListener? = null
     private var magazineAdapter: MagazineAdapter? = null
     private var magazineList: ArrayList<MagazineModelItem>? = null
+    private lateinit var magazineItemListener: (MagazineModelItem) -> Unit
 
     init {
         magazineList = ArrayList()
         initView()
-        initAdapter()
-        setUpRecyclerView()
     }
 
     fun initAdapter() {
-        magazineAdapter = MagazineAdapter(this)
+        magazineAdapter = MagazineAdapter(this, magazineItemListener)
 
     }
 
@@ -54,6 +53,7 @@ class PRMagazineRecyclerView(
 
     companion object {
         const val NUM_GRIDS = 2
+
         @BindingAdapter("magazine_list")
         @JvmStatic
         fun setMagazineList(view: PRMagazineRecyclerView, list: ArrayList<MagazineModelItem>) {
@@ -68,6 +68,20 @@ class PRMagazineRecyclerView(
             listener: MagazineListener
         ) {
             view.magazineListener = listener
+        }
+
+        @BindingAdapter("item_clicked")
+        @JvmStatic
+        fun setItemCLicked(
+            view: PRMagazineRecyclerView,
+            listener: ((MagazineModelItem) -> Unit)?
+        ) {
+
+            if (listener != null) {
+                view.magazineItemListener = listener
+                view.initAdapter()
+                view.setUpRecyclerView()
+            }
         }
     }
 }

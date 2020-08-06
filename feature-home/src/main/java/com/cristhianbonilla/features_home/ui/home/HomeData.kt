@@ -33,6 +33,9 @@ class HomeData(
         updateState(Success)
     }
 
+    fun onMagazineItemClicked(magazineModelItem: MagazineModelItem){
+        updateState(NavigateToMagazineDetails(magazineModelItem))
+    }
 
     fun submitMagazineList(magazine: ArrayList<MagazineModelItem>) {
         magazineList update magazine

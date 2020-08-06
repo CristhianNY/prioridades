@@ -5,6 +5,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.cristhianbonilla.feature_home.R
+import com.cristhianbonilla.features_home.ui.home.HomeFragmentDirections
+import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
 import com.cristhianbonilla.foundations.base.BaseActivity
 import com.cristhianbonilla.foundations.base.BaseState
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,6 +28,17 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
         //setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
+    override fun onStateChanged(state: HomeState) {
+        super.onStateChanged(state)
+
+        when(state){
+           is HomeMagazineState.NavigateToMagazineDetails ->{
+               innerNavigate(HomeFragmentDirections.actionNavigationHomeToPreviewMagazineFragment(state.item))
+            }
+        }
+    }
 }
 
 open class HomeState : BaseState
+open class PreMagazineState : BaseState

@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.cristhianbonilla.features_home.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_previewMagazineFragment"
+            app:destination="@id/previewMagazineFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,12 @@
         android:name="com.cristhianbonilla.features_home.ui.aboutUs.AboutUsFragment"
         android:label="@string/title_about_us"
         tools:layout="@layout/fragment_about_us" />
+    <fragment
+        android:id="@+id/previewMagazineFragment"
+        android:name="com.cristhianbonilla.features_home.ui.details.MagazineDetailsFragment"
+        android:label="PreviewMagazineFragment" >
+        <argument
+            android:name="magazineModel"
+            app:argType="com.cristhianbonilla.domain.model.home.MagazineModelItem" />
+    </fragment>
 </navigation>

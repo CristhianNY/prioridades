@@ -7,7 +7,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class MagazineAdapter(private var mbMenuListener: MagazineListener) :
+class MagazineAdapter(
+    private var mbMenuListener: MagazineListener,
+    private var magazineItemListener: (MagazineModelItem) -> Unit
+) :
 RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var menuItemList: ArrayList<MagazineModelItem> = ArrayList()
@@ -54,7 +57,7 @@ RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         when (holder) {
             is PRMagazineViewHolder -> {
-                holder.bind(menuItemList[position], mbMenuListener, position)
+                holder.bind(menuItemList[position], mbMenuListener, position, magazineItemListener)
             }
         }
     }

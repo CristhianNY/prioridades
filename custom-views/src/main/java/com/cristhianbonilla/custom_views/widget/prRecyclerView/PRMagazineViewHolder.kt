@@ -12,8 +12,17 @@ class PRMagazineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private const val MAGAZINE_TYPE = 2
     }
 
-    fun bind(item: MagazineModelItem, listener: MagazineListener, position: Int) {
+    fun bind(
+        item: MagazineModelItem,
+        listener: MagazineListener,
+        position: Int,
+        magazineItemListener: (MagazineModelItem) -> Unit
+    ) {
         itemView.monthOfMagazine.text = item.month.trim()
-       Picasso.get().load(item.image).into(itemView.ivMagazine)
+        Picasso.get().load(item.image).into(itemView.ivMagazine)
+
+        itemView.ivMagazine.setOnClickListener {
+            magazineItemListener.invoke(item)
+        }
     }
 }

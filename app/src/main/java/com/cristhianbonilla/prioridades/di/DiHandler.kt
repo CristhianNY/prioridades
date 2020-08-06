@@ -10,6 +10,7 @@ import com.cristhianbonilla.prioridades.di.data.securityModule
 import com.cristhianbonilla.prioridades.di.domain.countries.countriesDomainModule
 import com.cristhianbonilla.prioridades.di.domain.home.magazineListDomainModule
 import com.cristhianbonilla.prioridades.di.domain.keywords.keywordsDomainModule
+import com.cristhianbonilla.prioridades.di.presentation.details.magazineDetailsModule
 import com.cristhianbonilla.prioridades.di.presentation.home.homeModule
 import com.cristhianbonilla.prioridades.di.presentation.register.registerUserModule
 import org.koin.core.module.Module
@@ -25,7 +26,8 @@ private fun getPresentationModules() =
     listOf(
         appModule,
         registerUserModule,
-        homeModule
+        homeModule,
+        magazineDetailsModule
     )
 
 private fun getDomainModules() =

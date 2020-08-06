@@ -34,7 +34,9 @@ class HomeViewModel(
     val onYearItemClick: (String) -> Unit = { clickType ->
         Toast.makeText(context, clickType, Toast.LENGTH_LONG).show()
     }
-
+    val magazineItemClick: (MagazineModelItem) -> Unit = { itemClicked ->
+       data.onMagazineItemClicked(itemClicked)
+    }
 
     var yearListener: MutableLiveData<PRRadioGroupListener> = MutableLiveData()
 
