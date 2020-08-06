@@ -13,7 +13,7 @@ class PRMagazineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     fun bind(item: MagazineModelItem, listener: MagazineListener, position: Int) {
-        itemView.monthOfMagazine.text = item.month
-        Picasso.get().load(item.image).into(itemView.ivMagazine)
+        itemView.monthOfMagazine.text = item.month.trim()
+       Picasso.get().load(item.image).into(itemView.ivMagazine)
     }
 }

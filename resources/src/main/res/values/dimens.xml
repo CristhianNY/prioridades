@@ -7,6 +7,7 @@
     <dimen name="margin_top_32">32dp</dimen>
     <dimen name="margin_end_20">20dp</dimen>
     <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
     <dimen name="text_size_autocomplete">10sp</dimen>
     <dimen name="height_size_search">44dp</dimen>
     <dimen name="title_profile">14sp</dimen>
