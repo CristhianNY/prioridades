@@ -21,9 +21,9 @@ class HomeViewModel(
     tracker: HomeTracker,
     private val getKeyWordsUseCase: GetKeyWordsUseCase,
     private val getMagazineListUseCase: GetMagazineListUseCase
-) : BaseViewModel<HomeMagazineState, HomeData, HomeTracker>(scope, data, tracker){
+) : BaseViewModel<HomeMagazineState, HomeData, HomeTracker>(scope, data, tracker) {
 
-    private var magazineArrayList:ArrayList<MagazineModelItem> = ArrayList()
+    var magazineArrayList: ArrayList<MagazineModelItem> = ArrayList()
 
     val impl = object : PRRadioGroupListener {
         override fun clickItem(stringValue: String) {
@@ -35,7 +35,7 @@ class HomeViewModel(
         Toast.makeText(context, clickType, Toast.LENGTH_LONG).show()
     }
     val magazineItemClick: (MagazineModelItem) -> Unit = { itemClicked ->
-       data.onMagazineItemClicked(itemClicked)
+        data.onMagazineItemClicked(itemClicked)
     }
 
     var yearListener: MutableLiveData<PRRadioGroupListener> = MutableLiveData()
@@ -51,11 +51,10 @@ class HomeViewModel(
         }
     }
 
-    fun getMagazineList(){
+    fun getMagazineList() {
         data.loading()
-
         execute {
-            getMagazineListUseCase(GetMagazineListUseCase.Params("","")).fold(
+            getMagazineListUseCase(GetMagazineListUseCase.Params("", "")).fold(
                 { handleGetMagazineFailure() },
                 ::handleMagazineListSuccess
             )
@@ -67,12 +66,17 @@ class HomeViewModel(
         Log.d("Error al traer revisas", "Error Al traer magazines")
     }
 
-    private fun handleMagazineListSuccess(magazineList:MagazineModel){
+    private fun handleMagazineListSuccess(magazineList: MagazineModel) {
+        data.success()
         for (magazine in magazineList.magazineList) {
             magazineArrayList.add(magazine)
         }
 
         data.submitMagazineList(magazineArrayList)
+    }
+
+    fun savedMagazineList(magazineList: ArrayList<MagazineModelItem>) {
+        data.submitMagazineList(magazineList)
     }
 
     private fun handleKeyWords(keywords: KeyWordModel) {
