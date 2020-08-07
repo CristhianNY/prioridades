@@ -47,12 +47,15 @@ allprojects {
         picasso = '2.71828'
 
         prioridades_features = [
-                login: project(':feature-login')
+                login: project(':feature-login'),
+                home   : project(':feature-home'),
+                reader   : project(':feature-magazine-reader')
         ]
 
         app_features = [
                 landing: project(':feature-login'),
-                home   : project(':feature-home')
+                home   : project(':feature-home'),
+                reader   : project(':feature-magazine-reader')
         ]
 
         feature = [

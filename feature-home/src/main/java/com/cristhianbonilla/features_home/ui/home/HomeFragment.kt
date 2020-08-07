@@ -18,13 +18,7 @@ class HomeFragment : BaseFragment<
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
-        savedInstanceState?.let { inState ->
-            (inState["magazine_list"] as ArrayList<MagazineModelItem>)?.let { magazineList ->
-                viewModel.savedMagazineList(
-                    magazineList
-                )
-            }
-        }
+
         super.onCreate(savedInstanceState)
     }
 
@@ -37,6 +31,14 @@ class HomeFragment : BaseFragment<
 
         if (savedInstanceState == null) {
             viewModel.getMagazineList()
+        }else{
+            savedInstanceState?.let { inState ->
+                (inState["magazine_list"] as ArrayList<MagazineModelItem>)?.let { magazineList ->
+                    viewModel.savedMagazineList(
+                        magazineList
+                    )
+                }
+            }
         }
 
         super.onViewCreated(view, savedInstanceState)
