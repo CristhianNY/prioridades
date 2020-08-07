@@ -45,6 +45,8 @@ class PreviewMagazineViewModel(
         data.success()
         Toast.makeText(context, magazinePdf.magazine?.pdf, Toast.LENGTH_LONG).show()
         magazinePdf.magazine?.pdf?.let { data.setMagazinePdf(it) }
+        magazinePdf.magazine?.pdf?.let { data.onReadMagazinePdf(it) }
+
     }
 
     private fun handleGetMagazinePdfFailure() {

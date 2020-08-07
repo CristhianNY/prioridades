@@ -4,6 +4,7 @@ import com.cristhianbonilla.domain.model.home.MagazineModelItem
 import com.cristhianbonilla.foundations.base.BaseData
 import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState.Error
 import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState.Success
+import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
 import com.cristhianbonilla.foundations.livedata.MyLiveData
 
 data class PreviewMagazineData(
@@ -39,6 +40,10 @@ data class PreviewMagazineData(
         showLoading.update(false)
         showError.update(false)
         updateState(Success)
+    }
+
+    fun onReadMagazinePdf(magazine:String){
+        updateState(PreviewMagazineState.NavigateToMagazineReader(magazine))
     }
 
 }

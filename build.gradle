@@ -54,15 +54,15 @@ allprojects {
 
         app_features = [
                 landing: project(':feature-login'),
-                home   : project(':feature-home'),
-                reader   : project(':feature-magazine-reader')
+                home   : project(':feature-home')
         ]
 
         feature = [
                 domain     : project(':domain'),
                 resources  : project(':resources'),
                 foundations: project(':foundations'),
-                customviews: project(':custom-views')
+                customviews: project(':custom-views'),
+                reader   : project(':feature-magazine-reader')
         ]
 
         my_libs = [

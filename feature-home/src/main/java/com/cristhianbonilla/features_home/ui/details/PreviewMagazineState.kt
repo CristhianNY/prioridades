@@ -6,4 +6,5 @@ sealed class PreviewMagazineState : HomeState() {
     object Error : PreviewMagazineState()
     object Loading : PreviewMagazineState()
     object Success : PreviewMagazineState()
+    data class NavigateToMagazineReader(var pdfMagazineUrl:String) : PreviewMagazineState()
 }

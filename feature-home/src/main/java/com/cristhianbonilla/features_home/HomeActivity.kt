@@ -1,5 +1,6 @@
 package com.cristhianbonilla.features_home
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.navigation.NavController
@@ -7,12 +8,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.cristhianbonilla.feature_home.R
+import com.cristhianbonilla.feature_magazine_reader.ReaderMagazineActivity
+import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState
 import com.cristhianbonilla.features_home.ui.home.HomeFragmentDirections
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
 import com.cristhianbonilla.foundations.base.BaseActivity
 import com.cristhianbonilla.foundations.base.BaseState
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
+
 
 class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigation.mobile_navigation, R.id.nav_host_fragment) {
 
@@ -39,6 +42,12 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
         when(state){
            is HomeMagazineState.NavigateToMagazineDetails ->{
                innerNavigate(HomeFragmentDirections.actionNavigationHomeToPreviewMagazineFragment(state.item))
+            }
+
+          is   PreviewMagazineState.NavigateToMagazineReader ->{
+            val intent = Intent(baseContext, ReaderMagazineActivity::class.java)
+              intent.putExtra("URL_MAGAZINE", state.pdfMagazineUrl)
+              startActivity(intent)
             }
         }
     }
