@@ -1,8 +1,8 @@
 package com.cristhianbonilla.features_home.ui.details
 
-import com.cristhianbonilla.features_home.PreMagazineState
+import com.cristhianbonilla.features_home.HomeState
 
-sealed class PreviewMagazineState : PreMagazineState() {
+sealed class PreviewMagazineState : HomeState() {
     object Error : PreviewMagazineState()
     object Loading : PreviewMagazineState()
     object Success : PreviewMagazineState()

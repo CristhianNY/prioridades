@@ -9,7 +9,9 @@ import com.cristhianbonilla.foundations.livedata.MyLiveData
 data class PreviewMagazineData(
     val magazineDescription:MyLiveData<String> = MyLiveData(""),
     val magazineImage:MyLiveData<String> = MyLiveData(""),
-    val magazineDate:MyLiveData<String> = MyLiveData("")
+    val magazineDate:MyLiveData<String> = MyLiveData(""),
+    val magazinePdf:MyLiveData<String> = MyLiveData(""),
+    val magazineId:MyLiveData<String> = MyLiveData("")
 ): BaseData<PreviewMagazineState>() {
 
     override fun loading() {
@@ -26,6 +28,11 @@ data class PreviewMagazineData(
         magazineDescription update item.description
         magazineImage update item.image
         magazineDate update item.month
+        magazineId update item.id
+    }
+
+    fun setMagazinePdf(magazinePdfUrl: String){
+        magazinePdf update magazinePdfUrl
     }
 
     fun success() {

@@ -61,6 +61,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:text="@string/read_magazine"
+                android:onClick="@{() -> viewModel.getMagazinePdf()}"
                 android:fontFamily="@font/librarygothicbold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDescription" />

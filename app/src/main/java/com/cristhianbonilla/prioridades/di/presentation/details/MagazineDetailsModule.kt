@@ -23,7 +23,8 @@ internal val magazineDetailsModule = module {
                 data = PreviewMagazineData(),
                 tracker = get(),
                 getKeyWordsUseCase = get(),
-                getMagazineListUseCase = get()
+                getMagazineListUseCase = get(),
+                getMagazinePdfUseCase = get()
             )
         }
         scoped { PreviewMagazineTracker() }

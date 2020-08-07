@@ -10,6 +10,7 @@ import com.cristhianbonilla.prioridades.di.data.securityModule
 import com.cristhianbonilla.prioridades.di.domain.countries.countriesDomainModule
 import com.cristhianbonilla.prioridades.di.domain.home.magazineListDomainModule
 import com.cristhianbonilla.prioridades.di.domain.keywords.keywordsDomainModule
+import com.cristhianbonilla.prioridades.di.domain.magazinepdf.magazinePdfDomainModule
 import com.cristhianbonilla.prioridades.di.presentation.details.magazineDetailsModule
 import com.cristhianbonilla.prioridades.di.presentation.home.homeModule
 import com.cristhianbonilla.prioridades.di.presentation.register.registerUserModule
@@ -34,7 +35,8 @@ private fun getDomainModules() =
     listOf(
         countriesDomainModule,
         keywordsDomainModule,
-        magazineListDomainModule
+        magazineListDomainModule,
+        magazinePdfDomainModule
     )
 
 private fun getDataModules() =

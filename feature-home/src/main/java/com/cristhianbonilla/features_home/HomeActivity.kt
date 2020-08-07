@@ -70,4 +70,3 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
 }
 
 open class HomeState : BaseState
-open class PreMagazineState : BaseState
