@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.cristhianbonilla.feature_home.R
-import com.cristhianbonilla.feature_magazine_reader.ReaderMagazineActivity
+import com.cristhianbonilla.feature_magazine_reader.magazineViewer.ReaderMagazineActivity
 import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState
 import com.cristhianbonilla.features_home.ui.home.HomeFragmentDirections
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState

@@ -69,7 +69,9 @@ class HomeViewModel(
 
     private fun handleMagazineListSuccess(magazineList: MagazineModel) {
         data.success()
+        magazineArrayList.clear()
         for (magazine in magazineList.magazineList) {
+
             magazineArrayList.add(magazine)
         }
 

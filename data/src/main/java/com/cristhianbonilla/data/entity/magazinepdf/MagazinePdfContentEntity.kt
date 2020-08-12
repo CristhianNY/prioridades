@@ -14,6 +14,7 @@ data class MagazinePdfContentEntity(
     val id: String? = null,
     @Json(name = "pdf")
     val pdf: String? = null
+
 )
 
 fun MagazinePdfContentEntity.toModel() =

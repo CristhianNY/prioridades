@@ -38,6 +38,9 @@ class HomeData(
     }
 
     fun submitMagazineList(magazine: ArrayList<MagazineModelItem>) {
+        with(magazineList){
+            clearState()
+        }
         magazineList update magazine
     }
 
