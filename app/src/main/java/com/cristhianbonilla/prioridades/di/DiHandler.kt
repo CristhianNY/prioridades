@@ -7,10 +7,12 @@ import com.cristhianbonilla.prioridades.di.data.keywords.keywordsDataModule
 import com.cristhianbonilla.prioridades.di.data.local.localDataModule
 import com.cristhianbonilla.prioridades.di.data.networkModule
 import com.cristhianbonilla.prioridades.di.data.securityModule
+import com.cristhianbonilla.prioridades.di.domain.authentication.authenticationDomainModule
 import com.cristhianbonilla.prioridades.di.domain.countries.countriesDomainModule
 import com.cristhianbonilla.prioridades.di.domain.home.magazineListDomainModule
 import com.cristhianbonilla.prioridades.di.domain.keywords.keywordsDomainModule
 import com.cristhianbonilla.prioridades.di.domain.magazinepdf.magazinePdfDomainModule
+import com.cristhianbonilla.prioridades.di.presentation.authentication.loginPresentationModule
 import com.cristhianbonilla.prioridades.di.presentation.details.magazineDetailsModule
 import com.cristhianbonilla.prioridades.di.presentation.home.homeModule
 import com.cristhianbonilla.prioridades.di.presentation.register.registerUserModule
@@ -28,7 +30,8 @@ private fun getPresentationModules() =
         appModule,
         registerUserModule,
         homeModule,
-        magazineDetailsModule
+        magazineDetailsModule,
+        loginPresentationModule
     )
 
 private fun getDomainModules() =
@@ -51,5 +54,6 @@ private fun getCoreModule()=
     listOf(
         networkModule,
         authenticationDataModule,
-        securityModule
+        securityModule,
+        authenticationDomainModule
     )

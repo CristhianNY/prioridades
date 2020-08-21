@@ -25,4 +25,7 @@ enum class TrackerSectionName : MyTrackerSectionName {
         override fun type() = "user registratin"
     },
 
+    LOGIN {
+        override fun type() = "user login"
+    },
 }

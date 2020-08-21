@@ -34,6 +34,7 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
         )
         appBarConfiguration = AppBarConfiguration(topLevelDestination, parentDrawer)
         setupBottomNavigation()
+
     }
 
     override fun onStateChanged(state: HomeState) {

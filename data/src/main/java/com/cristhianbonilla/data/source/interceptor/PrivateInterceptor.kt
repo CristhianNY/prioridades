@@ -18,7 +18,7 @@ class PrivateInterceptor(
 ) : Interceptor {
 
     companion object {
-        private const val HEADER_NAME_TOKEN = "accessToken"
+        private const val HEADER_NAME_TOKEN = "Authorization"
         private const val HEADER_NAME_ACCEPT = "Accept"
         private const val HEADER_NAME_CONTENT = "Content-Type"
         private const val HEADER_VALUE_JSON = "application/json; charset=utf-8"
@@ -34,9 +34,7 @@ class PrivateInterceptor(
         val requestBuilder = request.newBuilder()
         if (session.isLogged()) {
             requestBuilder
-                .header(HEADER_NAME_TOKEN, session.getAccessToken())
-                .header(HEADER_NAME_ACCEPT, HEADER_VALUE_JSON)
-                .header(HEADER_NAME_CONTENT, HEADER_VALUE_JSON)
+                .addHeader("Authorization","Bearer "+session.getAccessToken())
         }
 
         var response = chain.proceed(requestBuilder.build())

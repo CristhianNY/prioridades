@@ -10,6 +10,7 @@ interface MagazineListApi {
     @GET("apis/revistas.php")
     suspend fun getMagazineList(@Query("year") year:String?, @Query("search") search:String?): Response<MagazineEntity>
 
-    @GET("apis/revista-ver.php")
-    suspend fun getMagazinePdf( @Query("idRevista") magazineId:String?,@Query("idUsuario" ) idUsuario:String = "1"): Response<MagazinePdfEntity>
+
+    @GET("jwt-api/revistas-leer.php")
+    suspend fun getMagazinePdf( @Query("idRevista") magazineId:String?): Response<MagazinePdfEntity>
 }

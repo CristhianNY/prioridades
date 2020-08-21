@@ -2,7 +2,7 @@ package com.cristhianbonilla.domain.session
 
 interface Session {
 
-    suspend fun login(accessToken: String, refreshToken: String)
+    suspend fun login(accessToken: String)
 
     suspend fun logout(): Boolean
 

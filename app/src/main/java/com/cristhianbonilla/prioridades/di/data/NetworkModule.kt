@@ -8,15 +8,13 @@ import com.cristhianbonilla.domain.session.Session
 import com.cristhianbonilla.prioridades.platform.network.NetworkHandler
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.Authenticator
-import okhttp3.CertificatePinner
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 const val HTTPS_PREFIX = "https://"
@@ -27,7 +25,7 @@ internal const val CERTIFICATE_PINNER = "certificatePinner"
 const val REMOTE_CLIENT_PRIVATE = "privateRetrofit"
 const val CERTIFICATE_FINGERPRINT = "certificateFingerprint"
 
-private const val HTTP_CLIENT_TIME_OUT_SECONDS = 60L
+private const val HTTP_CLIENT_TIME_OUT_SECONDS = 120L
 
 val networkModule = module {
     single<NetworkStatus> { NetworkHandler(context = get()) }
@@ -73,8 +71,10 @@ val networkModule = module {
                 readTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 writeTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 connectTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
+                protocols(listOf(Protocol.HTTP_2,Protocol.HTTP_1_1, Protocol.SPDY_3))
                 interceptors().add(logging)
             }
+
         Retrofit.Builder()
             .baseUrl(get<String>(named(BASE_PATH_URL)))
             .client(httpClient.build())
@@ -94,10 +94,12 @@ val networkModule = module {
                 readTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 writeTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 connectTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
+                protocols(listOf(Protocol.HTTP_2,Protocol.HTTP_1_1, Protocol.SPDY_3))
                 authenticator(authenticator = get())
                 addInterceptor(interceptor = get(named(INTERCEPTOR_PRIVATE)))
                 interceptors().add(logging)
             }
+
         Retrofit.Builder()
             .baseUrl(get<String>(named(BASE_PATH_URL)))
             .client(httpClient.build())

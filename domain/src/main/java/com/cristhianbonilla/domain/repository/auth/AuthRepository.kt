@@ -1,14 +1,14 @@
 package com.cristhianbonilla.domain.repository.auth
 
 import com.cristhianbonilla.domain.exception.Failure
-import com.cristhianbonilla.domain.usecase.UseCase
-import java.security.Signature
 import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.model.authentication.UserAuthModel
+import com.cristhianbonilla.domain.usecase.UseCase
 
-interface AuthRepository{
+interface AuthRepository {
 
     suspend fun doLogin(
-        positions: List<String>,
+        userName: String,
         password: String
     ): Result<Failure, UseCase.None>
 

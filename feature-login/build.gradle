@@ -1,6 +1,19 @@
 apply from: "../feature.gradle"
 apply plugin: 'kotlin-android'
 
-dependencies {
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies{
+    implementation("com.otaliastudios:autocomplete:1.1.0")
+    implementation project(path: ':feature-home')
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.github.joielechong:countrycodepicker:2.4.2'
 }

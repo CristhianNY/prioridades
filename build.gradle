@@ -28,8 +28,8 @@ allprojects {
     }
     ext {
         koin_version = '2.1.5'
-        okhttp_version = '4.2.1'
-        retrofit_version = '2.6.4'
+        okhttp_version = '4.8.1'
+        retrofit_version = '2.9.0'
         moshi_version = '1.9.2'
         okhttp3Idling_version = '1.0.0'
         kotlinCoroutines_version = '1.3.5'

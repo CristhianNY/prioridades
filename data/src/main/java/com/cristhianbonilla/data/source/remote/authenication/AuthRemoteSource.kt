@@ -10,16 +10,7 @@ import com.cristhianbonilla.domain.usecase.UseCase.None
 interface AuthRemoteSource : RemoteSource {
     suspend fun postLogin(
         username: String,
-        password: String
+        password: String,
+        signedRequest: String? = null
     ): Result<Failure, UserAuthModel>
-
-    suspend fun postRefresh(
-        username: String,
-        accessToken: String,
-        refreshToken: String
-    ): Result<Failure, UserAuthModel>
-
-    suspend fun postLogout(
-        accessToken: String
-    ): Result<Failure, None>
 }
