@@ -23,4 +23,8 @@ data class LoginData(
         this updateState LoginState.SuccessLogin
     }
 
+    fun userAlreadyLogged(){
+        this updateState LoginState.UserAlreadyLogged
+    }
+
 }

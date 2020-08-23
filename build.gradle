@@ -49,12 +49,14 @@ allprojects {
         prioridades_features = [
                 login: project(':feature-login'),
                 home   : project(':feature-home'),
+                main   : project(':main'),
                 reader   : project(':feature-magazine-reader')
         ]
 
         app_features = [
                 landing: project(':feature-login'),
-                home   : project(':feature-home')
+                home   : project(':feature-home'),
+                main   : project(':main')
         ]
 
         feature = [

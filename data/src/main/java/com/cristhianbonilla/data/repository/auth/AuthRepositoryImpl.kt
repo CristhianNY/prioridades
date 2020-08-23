@@ -41,4 +41,6 @@ class AuthRepositoryImpl(
     override suspend fun doLogout() =
         if (session.logout()) Success(UseCase.None) else Error(Failure.LocalError)
 
+    override fun isLogged()=session.isTokenSaved()
+
 }

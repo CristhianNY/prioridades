@@ -1,3 +1,4 @@
+include ':main'
 include ':feature-magazine-reader'
 include ':custom-views'
 include ':foundations'

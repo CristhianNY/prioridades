@@ -21,6 +21,10 @@ class   AuthenticationActivity :BaseActivity<LoginState>(R.layout.activity_login
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
+            LoginState.UserAlreadyLogged->{
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
+            }
         }
     }
 }

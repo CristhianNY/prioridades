@@ -1,4 +1,4 @@
-package com.cristhianbonilla.data.repository.authentication
+package com.cristhianbonilla.data.repository.countries
 
 import com.cristhianbonilla.data.source.local.countries.CountriesRemoteSource
 import com.cristhianbonilla.domain.exception.Failure

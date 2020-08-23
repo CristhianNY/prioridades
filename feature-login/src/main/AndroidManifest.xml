@@ -6,11 +6,7 @@
         android:theme="@style/AppTheme"
         >
         <activity android:name="com.cristhianbonilla.feature_login.AuthenticationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

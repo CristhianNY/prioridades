@@ -6,4 +6,5 @@ open class LoginState : BaseState {
     object ErrorLogin : LoginState()
     object LoadingLogin : LoginState()
     object SuccessLogin : LoginState()
+    object UserAlreadyLogged : LoginState()
 }

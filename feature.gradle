@@ -56,5 +56,6 @@ dependencies {
 
     implementation app_android.values()
     implementation feature.values()
+    implementation my_libs.values()
 
 }

@@ -17,5 +17,6 @@ interface UseCase<in Params, out Type> where Type : Any {
             invoke(params, context)
         }
 
+
     object None
 }

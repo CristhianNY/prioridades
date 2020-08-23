@@ -30,8 +30,13 @@ class SessionHandler(
         return false
     }
 
+     override fun isTokenSaved():Boolean{
+        return secureLocalSource.getValue(USER_REFRESH, String::class).isSuccess
+    }
 
-    override fun isLogged() = accessToken.isNotEmpty()
+    override fun isLogged():Boolean {
+        return accessToken.isNotEmpty()
+    }
 
     override fun getAccessToken(): String = accessToken
 
@@ -39,7 +44,7 @@ class SessionHandler(
         secureLocalSource.getValue(USER_REFRESH, String::class).getOrElse("")
 
     private fun storeData(access: String, refresh: String): Boolean {
-        secureLocalSource.setValue(USER_REFRESH, refresh)
+        secureLocalSource.setValue(USER_REFRESH, access)
         this.accessToken = access
         return true
     }

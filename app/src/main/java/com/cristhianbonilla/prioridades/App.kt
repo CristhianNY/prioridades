@@ -11,6 +11,7 @@ class App : Application() , LifecycleObserver {
 
     override fun onCreate() {
         super.onCreate()
+
         initCore(
             AppConfigurationModel(
                 ModeTypeModel.DEBUG,

@@ -1,6 +1,6 @@
 package com.cristhianbonilla.prioridades.di.data.countries
 
-import com.cristhianbonilla.data.repository.authentication.CountriesRepositoryImpl
+import com.cristhianbonilla.data.repository.countries.CountriesRepositoryImpl
 import com.cristhianbonilla.data.source.local.countries.CountriesRemoteSource
 import com.cristhianbonilla.data.source.local.countries.CountriesRemoteSourceImpl
 import com.cristhianbonilla.domain.repository.countries.CountryRepository

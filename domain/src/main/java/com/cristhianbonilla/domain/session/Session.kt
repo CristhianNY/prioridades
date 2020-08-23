@@ -10,6 +10,8 @@ interface Session {
 
     fun isLogged(): Boolean
 
+    fun isTokenSaved():Boolean
+
     fun getAccessToken(): String
 
     fun getRefreshToken(): String

@@ -4,6 +4,7 @@ import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.usecase.Scope
 import com.cristhianbonilla.domain.usecase.UseCase
 import com.cristhianbonilla.domain.usecase.authtentication.DoLoginUseCase
+import com.cristhianbonilla.domain.usecase.authtentication.GetLoginStatus
 import com.cristhianbonilla.foundations.base.BaseViewModel
 import com.cristhianbonilla.foundations.extensions.execute
 
@@ -11,7 +12,8 @@ class LoginViewModel(
     scope: Scope,
     data: LoginData,
     tracker: LoginTracker,
-    private val doLoginUseCase: DoLoginUseCase
+    private val doLoginUseCase: DoLoginUseCase,
+    private val getLoginStatus: GetLoginStatus
 ) : BaseViewModel<LoginState, LoginData, LoginTracker>(scope, data, tracker) {
 
     fun doLogin() {
@@ -25,6 +27,15 @@ class LoginViewModel(
                 )
             ).fold(::handleLoginError, ::handleLoginSuccess)
         }
+    }
+
+    fun getLoginStatus() {
+        execute {
+            if (getLoginStatus.isLogin()){
+                data.userAlreadyLogged()
+            }
+        }
+
     }
 
     private fun handleLoginSuccess(none: UseCase.None) {
