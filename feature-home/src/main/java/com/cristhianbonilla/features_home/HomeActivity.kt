@@ -3,6 +3,7 @@ package com.cristhianbonilla.features_home
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.navigation.NavController
@@ -74,7 +75,10 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
                     // The dialog is automatically dismissed when a dialog button is clicked.
                     .setPositiveButton("Renovar",
                         DialogInterface.OnClickListener { dialog, which ->
-                            // Continue with delete operation
+                            val url = "https://tuiadpa.com/producto/prioridades-suscripcion-anual/"
+                            val i = Intent(Intent.ACTION_VIEW)
+                            i.data = Uri.parse(url)
+                            startActivity(i)
                         }) // A null listener allows the button to dismiss the dialog and take no further action.
                     .setNegativeButton("Cancelar", null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
