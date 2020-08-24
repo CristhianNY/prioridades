@@ -11,9 +11,7 @@ class MainConfigActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_config)
-
-        mainViewModel.getLoginStatus()
-
+        
         val background = object : Thread() {
             override fun run() {
                 super.run()
