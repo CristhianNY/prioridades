@@ -23,6 +23,9 @@ class PrivateInterceptor(
         private const val HEADER_NAME_CONTENT = "Content-Type"
         private const val HEADER_VALUE_JSON = "application/json; charset=utf-8"
         private const val HEADER_NAME_PROGRESSID = "progressId"
+        private const val TOKEN_NOT_SEND = 701
+        private const val TOKEN_EXPIRED = 302
+        private const val ATHORIZATION_HEADER_NOT_FOUND = 301
     }
 
     @Throws(NetworkException::class)
@@ -32,10 +35,9 @@ class PrivateInterceptor(
         }
         val request = chain.request()
         val requestBuilder = request.newBuilder()
-        if (session.isLogged()) {
             requestBuilder
                 .addHeader("Authorization","Bearer "+session.getAccessToken())
-        }
+
 
         var response = chain.proceed(requestBuilder.build())
         when (response.code) {
@@ -51,6 +53,16 @@ class PrivateInterceptor(
             }
             HTTP_PRECON_FAILED -> {
                 //TODO One session for channel
+            }
+            TOKEN_NOT_SEND ->{
+                GlobalScope.launch(IO) { session.logout() }
+            }
+
+            TOKEN_EXPIRED ->{
+                GlobalScope.launch(IO) { session.logout() }
+            }
+            ATHORIZATION_HEADER_NOT_FOUND->{
+
             }
         }
         return response

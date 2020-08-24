@@ -1,5 +1,7 @@
 package com.cristhianbonilla.features_home
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -49,6 +51,34 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
             val intent = Intent(baseContext, ReaderMagazineActivity::class.java)
               intent.putExtra("URL_MAGAZINE", state.pdfMagazineUrl)
               startActivity(intent)
+            }
+            is PreviewMagazineState.SessionExpired->{
+                AlertDialog.Builder(this)
+                    .setTitle("Login requerido")
+                    .setMessage("debes hacer login para leer las revistas") // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton("Entrar",
+                        DialogInterface.OnClickListener { dialog, which ->
+                            val intent = Intent()
+                            intent.setClassName(this, "com.cristhianbonilla.feature_login.AuthenticationActivity")
+                            startActivity(intent)
+                        }) // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setNegativeButton("Cancelar", null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show()
+            }
+            is PreviewMagazineState.SubscriptionNotActivated->{
+                AlertDialog.Builder(this)
+                    .setTitle("Subscripción")
+                    .setMessage("Subscripción no activa") // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton("Renovar",
+                        DialogInterface.OnClickListener { dialog, which ->
+                            // Continue with delete operation
+                        }) // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setNegativeButton("Cancelar", null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show()
             }
         }
     }

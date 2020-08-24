@@ -1,9 +1,10 @@
 package com.cristhianbonilla.feature_login
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import com.cristhianbonilla.feature_login.login.LoginState
-import com.cristhianbonilla.feature_magazine_reader.magazineViewer.ReaderMagazineActivity
 import com.cristhianbonilla.features_home.HomeActivity
 import com.cristhianbonilla.foundations.base.BaseActivity
 import com.cristhianbonilla.foundations.base.BaseState
@@ -17,15 +18,27 @@ class   AuthenticationActivity :BaseActivity<LoginState>(R.layout.activity_login
     override fun onStateChanged(state: LoginState) {
         super.onStateChanged(state)
         when (state) {
-            LoginState.SuccessLogin -> {
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
+            LoginState.ErrorLogin -> {
+                showInfoDialog("Error", "Email o contraseña incorrectos","Entrar")
             }
             LoginState.UserAlreadyLogged->{
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
         }
+    }
+
+    private fun showInfoDialog(title: String, message: String, positiveText: String){
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message) // Specifying a listener allows you to take an action before dismissing the dialog.
+            // The dialog is automatically dismissed when a dialog button is clicked.
+            .setPositiveButton(positiveText,
+                DialogInterface.OnClickListener { dialog, which ->
+                   dialog.dismiss()
+                }) // A null listener allows the button to dismiss the dialog and take no further action.
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .show()
     }
 }
 

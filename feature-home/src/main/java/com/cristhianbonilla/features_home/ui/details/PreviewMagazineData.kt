@@ -42,6 +42,14 @@ data class PreviewMagazineData(
         updateState(Success)
     }
 
+    fun sessionExpiredState(){
+        updateState(PreviewMagazineState.SessionExpired)
+    }
+
+    fun subscriptionNotActivated(){
+        updateState(PreviewMagazineState.SubscriptionNotActivated)
+    }
+
     fun onReadMagazinePdf(magazine:String){
         updateState(PreviewMagazineState.NavigateToMagazineReader(magazine))
     }

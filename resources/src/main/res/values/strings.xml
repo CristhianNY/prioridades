@@ -57,4 +57,6 @@
     <string name="title_contact_us">Contáctanos</string>
     <string name="title_toolbar_about_us">Nosotros</string>
     <string name="read_magazine">Leer Revista</string>
+    <string name="login_dialog">Entrar</string>
+    <string name="cancel_dialog">Cancelar Dialog</string>
 </resources>

@@ -14,8 +14,20 @@ interface RemoteSource {
     ): Result<Failure, M> =
         try {
             val response = call()
-            val responseBody: E = response.body()!!
-            Result.Success(handleSuccess(responseBody, response.code()))
+
+            when(response.code()){
+                SESSION_EXPIRED ->{
+                    Result.Error(Failure.SessionExpired)
+                }
+                SUBSCRIPTION_NOT_ACTIVATED ->{
+                    Result.Error(Failure.SubscriptionNotActivated)
+                }
+                else ->{
+                    val responseBody: E = response.body()!!
+
+                    Result.Success(handleSuccess(responseBody, response.code()))
+                }
+            }
         } catch (exception: Exception) {
             exception.toRemoteError(handleError)
         }
@@ -31,4 +43,9 @@ interface RemoteSource {
         } catch (exception: Exception) {
             exception.toRemoteError(handleError)
         }
+
+companion object{
+    const val SESSION_EXPIRED = 301
+    const val SUBSCRIPTION_NOT_ACTIVATED = 700
+}
 }

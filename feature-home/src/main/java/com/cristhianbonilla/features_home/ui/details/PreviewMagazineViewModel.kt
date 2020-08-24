@@ -1,7 +1,10 @@
 package com.cristhianbonilla.features_home.ui.details
 
-import android.util.Log
+import android.R
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.widget.Toast
+import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.model.home.MagazineModelItem
 import com.cristhianbonilla.domain.model.magazinepdf.MagazinePdfModel
 import com.cristhianbonilla.domain.usecase.Scope
@@ -11,6 +14,7 @@ import com.cristhianbonilla.domain.usecase.magazinepdf.GetMagazinePdfUseCase
 import com.cristhianbonilla.foundations.base.BaseViewModel
 import com.cristhianbonilla.foundations.extensions.context
 import com.cristhianbonilla.foundations.extensions.execute
+
 
 class PreviewMagazineViewModel(
     scope: Scope,
@@ -34,8 +38,9 @@ class PreviewMagazineViewModel(
     fun getMagazinePdf() {
         data.loading()
         execute {
+
             getMagazinePdfUseCase(GetMagazinePdfUseCase.Params(data.magazineId.value)).fold(
-                { handleGetMagazinePdfFailure() },
+                ::handleGetMagazinePdfFailure,
                 ::handleMagazinPdfSuccess
             )
         }
@@ -49,8 +54,17 @@ class PreviewMagazineViewModel(
 
     }
 
-    private fun handleGetMagazinePdfFailure() {
-        data.error()
-        Log.d("Error url del pdf", "Error Al traer magazines")
+    private fun handleGetMagazinePdfFailure(failure: Failure){
+        when(failure){
+            is Failure.SessionExpired ->{
+              data.sessionExpiredState()
+            }
+            is Failure.SubscriptionNotActivated ->{
+              data.subscriptionNotActivated()
+            }
+        }
     }
+
+
+
 }

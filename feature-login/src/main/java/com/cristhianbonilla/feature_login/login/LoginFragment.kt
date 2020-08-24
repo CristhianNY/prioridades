@@ -17,6 +17,5 @@ class LoginFragment : BaseFragment<
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getLoginStatus()
     }
 }

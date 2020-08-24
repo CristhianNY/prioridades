@@ -29,18 +29,9 @@ class LoginViewModel(
         }
     }
 
-    fun getLoginStatus() {
-        execute {
-            if (getLoginStatus.isLogin()){
-                data.userAlreadyLogged()
-            }
-        }
-
-    }
-
     private fun handleLoginSuccess(none: UseCase.None) {
         tracker.viewDisplayed()
-        data.success()
+        data.userAlreadyLogged()
     }
 
     private fun handleLoginError(failure: Failure) {
