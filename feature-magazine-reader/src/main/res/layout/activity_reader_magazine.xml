@@ -6,19 +6,12 @@
     android:background="@color/withe_color"
     android:orientation="vertical" >
 
-    <WebView
+    <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/webView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:visibility="invisible"/>
+        android:visibility="visible"/>
 
-    <ProgressBar
-        android:id="@+id/pb"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_centerInParent="true" />
+
 
 </RelativeLayout>
