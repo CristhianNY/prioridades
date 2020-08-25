@@ -34,6 +34,10 @@ class LoginViewModel(
         data.userAlreadyLogged()
     }
 
+    fun goToRegisterFragment(){
+        data.registerState()
+    }
+
     private fun handleLoginError(failure: Failure) {
         tracker.viewDisplayed()
         data.error()

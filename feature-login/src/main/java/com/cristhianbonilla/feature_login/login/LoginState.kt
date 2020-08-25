@@ -7,4 +7,5 @@ open class LoginState : BaseState {
     object LoadingLogin : LoginState()
     object SuccessLogin : LoginState()
     object UserAlreadyLogged : LoginState()
+    object RegisterUser : LoginState()
 }

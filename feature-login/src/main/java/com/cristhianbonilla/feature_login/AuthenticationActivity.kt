@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import com.cristhianbonilla.feature_login.login.LoginFragmentDirections
 import com.cristhianbonilla.feature_login.login.LoginState
 import com.cristhianbonilla.features_home.HomeActivity
 import com.cristhianbonilla.foundations.base.BaseActivity
@@ -25,6 +26,10 @@ class   AuthenticationActivity :BaseActivity<LoginState>(R.layout.activity_login
                 startActivity(Intent(this, HomeActivity::class.java))
                 finish()
             }
+            LoginState.RegisterUser->{
+                innerNavigate(LoginFragmentDirections.goToRegisterFragment())
+            }
+
         }
     }
 

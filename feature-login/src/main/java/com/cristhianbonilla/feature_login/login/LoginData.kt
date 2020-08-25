@@ -27,4 +27,8 @@ data class LoginData(
         this updateState LoginState.UserAlreadyLogged
     }
 
+    fun registerState(){
+        this updateState LoginState.RegisterUser
+    }
+
 }
