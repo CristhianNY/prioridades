@@ -1,5 +1,6 @@
 package com.cristhianbonilla.data.source.interceptor
 
+import android.util.Log
 import com.cristhianbonilla.data.main.NetworkException
 import com.cristhianbonilla.data.main.NetworkStatus
 import com.cristhianbonilla.data.source.local.LocalHandler
@@ -35,9 +36,15 @@ class PrivateInterceptor(
         }
         val request = chain.request()
         val requestBuilder = request.newBuilder()
+        if(session.getAccessToken()!=""){
             requestBuilder
                 .addHeader("Authorization","Bearer "+session.getAccessToken())
+        }else{
+            requestBuilder
+                .addHeader("Authorization","Bearer "+session.getRefreshToken())
+        }
 
+        Log.d("Cristhian",session.getAccessToken())
 
         var response = chain.proceed(requestBuilder.build())
         when (response.code) {
@@ -46,7 +53,7 @@ class PrivateInterceptor(
 //                localHandler.invalidateCaches()
             }
             HTTP_UNAUTHORIZED -> {
-                GlobalScope.launch(IO) { session.logout() }
+           //     GlobalScope.launch(IO) { session.logout() }
             }
             HTTP_FORBIDDEN -> {
 
@@ -55,11 +62,11 @@ class PrivateInterceptor(
                 //TODO One session for channel
             }
             TOKEN_NOT_SEND ->{
-                GlobalScope.launch(IO) { session.logout() }
+               // GlobalScope.launch(IO) { session.logout() }
             }
 
             TOKEN_EXPIRED ->{
-                GlobalScope.launch(IO) { session.logout() }
+             //   GlobalScope.launch(IO) { session.logout() }
             }
             ATHORIZATION_HEADER_NOT_FOUND->{
 

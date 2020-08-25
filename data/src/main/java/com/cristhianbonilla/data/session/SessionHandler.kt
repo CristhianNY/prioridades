@@ -1,5 +1,6 @@
 package com.cristhianbonilla.data.session
 
+import android.util.Log
 import com.cristhianbonilla.data.source.remote.authenication.AuthRemoteSource
 import com.cristhianbonilla.data.source.secure.SecureKeyPreferences.USER_REFRESH
 import com.cristhianbonilla.data.source.secure.SecureLocalSource
@@ -49,6 +50,9 @@ class SessionHandler(
         return true
     }
 
-    private fun deleteData(): Boolean =
-        storeData(DEFAULT_VALUE, DEFAULT_VALUE)
+    private fun deleteData(): Boolean {
+        Log.d("Cristhian","Se llamo eliminar")
+        return storeData(DEFAULT_VALUE, DEFAULT_VALUE)
+    }
+
 }
