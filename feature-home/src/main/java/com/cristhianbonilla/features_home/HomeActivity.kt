@@ -15,6 +15,7 @@ import com.cristhianbonilla.feature_magazine_reader.magazineViewer.ReaderMagazin
 import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState
 import com.cristhianbonilla.features_home.ui.home.HomeFragmentDirections
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
+import com.cristhianbonilla.features_home.ui.perfil.ProfileState
 import com.cristhianbonilla.foundations.base.BaseActivity
 import com.cristhianbonilla.foundations.base.BaseState
 import kotlinx.android.synthetic.main.activity_home.*
@@ -83,6 +84,13 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
                     .setNegativeButton("Cancelar", null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show()
+            }
+
+            is ProfileState.LoginRequired->{
+                val intent = Intent()
+                intent.setClassName(this, "com.cristhianbonilla.feature_login.AuthenticationActivity")
+                startActivity(intent)
+                finish()
             }
         }
     }

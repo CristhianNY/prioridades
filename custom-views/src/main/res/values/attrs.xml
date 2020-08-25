@@ -12,4 +12,12 @@
             <enum name="TITLE_BACK" value="2" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="PREmptyState">
+        <attr name="emptystate_message" format="string" />
+        <attr name="emptystate_icon" format="reference|integer" />
+        <attr name="emptystate_link" format="string" />
+        <attr name="emptystate_errorHeader" format="string" />
+
+    </declare-styleable>
 </resources>

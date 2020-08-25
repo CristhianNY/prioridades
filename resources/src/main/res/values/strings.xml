@@ -59,4 +59,9 @@
     <string name="read_magazine">Leer Revista</string>
     <string name="login_dialog">Entrar</string>
     <string name="cancel_dialog">Cancelar Dialog</string>
+    <string name="connection_error_text">Error de conexión</string>
+    <string name="login_error">Debes iniciar sesión</string>
+    <string name="session_title">Usuario no identificado</string>
+    <string name="no_existen_revistas_para_mostrar">No existen revistas para mostrar</string>
+    <string name="enter">Entrar</string>
 </resources>

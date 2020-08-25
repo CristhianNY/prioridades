@@ -6,4 +6,5 @@ sealed class ProfileState : HomeState() {
     object Error : ProfileState()
     object Loading : ProfileState()
     object Success : ProfileState()
+    object LoginRequired : ProfileState()
 }

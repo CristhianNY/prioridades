@@ -1,7 +1,9 @@
 package com.cristhianbonilla.features_home.ui.perfil
 
+import androidx.annotation.StringRes
 import com.cristhianbonilla.domain.model.home.MagazineModelItem
 import com.cristhianbonilla.domain.model.profile.UserModel
+import com.cristhianbonilla.feature_home.R
 import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
 import com.cristhianbonilla.foundations.base.BaseData
@@ -13,7 +15,9 @@ class ProfileData(
     val phone: MyLiveData<String> = MyLiveData(""),
     val country: MyLiveData<String> = MyLiveData(""),
     val city: MyLiveData<String> = MyLiveData(""),
-    val subscription: MyLiveData<String> = MyLiveData("")
+    val subscription: MyLiveData<String> = MyLiveData(""),
+    var errorMessage: MyLiveData<Int> = MyLiveData(R.string.connection_error_text),
+    var showContent: MyLiveData<Boolean> = MyLiveData(false)
 ) : BaseData<ProfileState>() {
 
     override fun loading() {
@@ -24,6 +28,7 @@ class ProfileData(
     fun success() {
         showLoading.update(false)
         showError.update(false)
+        showContent update (true)
         updateState(ProfileState.Success)
     }
 
@@ -39,5 +44,13 @@ class ProfileData(
         country update user.user?.pais.orEmpty()
         city update user.user?.ciudad.orEmpty()
         subscription update user.user?.fechaFin.orEmpty()
+    }
+
+    fun updateStateToLoginRequired(){
+        this updateState ProfileState.LoginRequired
+    }
+
+    fun updateErrorMessage(@StringRes errorMessage: Int) {
+        this.errorMessage update errorMessage
     }
 }

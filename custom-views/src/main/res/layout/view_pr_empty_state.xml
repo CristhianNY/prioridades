@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivEmptyStateIcon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_error_state" />
+
+    <TextView
+        android:id="@+id/lbEmptyStateErrorHeader"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        tools:text="@string/connection_error_text"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/lbEmptyStateMessage"
+        android:fontFamily="@font/poppinsbold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/connection_error_text" />
+
+    <Button
+        android:id="@+id/btnEmptyStateLink"
+        style="@style/newbuttonstyle"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:text="@string/enter"
+        tools:visibility="visible" />
+</LinearLayout>
