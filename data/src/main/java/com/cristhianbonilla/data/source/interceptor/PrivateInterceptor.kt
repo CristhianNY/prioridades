@@ -10,6 +10,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.Interceptor
 import okhttp3.Response
+import java.lang.AssertionError
 import java.net.HttpURLConnection.*
 
 class PrivateInterceptor(
@@ -40,8 +41,14 @@ class PrivateInterceptor(
             requestBuilder
                 .addHeader("Authorization","Bearer "+session.getAccessToken())
         }else{
-            requestBuilder
-                .addHeader("Authorization","Bearer "+session.getRefreshToken())
+            try {
+                requestBuilder
+                    .addHeader("Authorization","Bearer "+session.getRefreshToken())
+
+            }catch (e:AssertionError){
+                Log.d("Cristhian","no tiene token")
+            }
+
         }
 
         Log.d("Cristhian",session.getAccessToken())
