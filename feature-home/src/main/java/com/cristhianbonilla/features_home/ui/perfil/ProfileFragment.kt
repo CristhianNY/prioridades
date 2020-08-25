@@ -1,27 +1,21 @@
 package com.cristhianbonilla.features_home.ui.perfil
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import com.cristhianbonilla.feature_home.BR
 import com.cristhianbonilla.feature_home.R
+import com.cristhianbonilla.feature_home.databinding.FragmentPreviewMagazineBinding
+import com.cristhianbonilla.foundations.base.BaseFragment
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment<
+        ProfileState,
+        ProfileData,
+        ProfileTracker,
+        ProfileViewModel,
+        FragmentPreviewMagazineBinding>(R.layout.profile_dashboard, BR.viewModel, BR.data) {
 
-    private lateinit var dashboardViewModel: ProfileViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        dashboardViewModel =
-            ViewModelProviders.of(this).get(ProfileViewModel::class.java)
-        val root = inflater.inflate(R.layout.profile_dashboard, container, false)
-        return root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel.getUserInformation()
+        super.onViewCreated(view, savedInstanceState)
     }
 }

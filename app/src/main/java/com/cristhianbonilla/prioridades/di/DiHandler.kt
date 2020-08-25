@@ -6,15 +6,18 @@ import com.cristhianbonilla.prioridades.di.data.home.MagazineListDataModule
 import com.cristhianbonilla.prioridades.di.data.keywords.keywordsDataModule
 import com.cristhianbonilla.prioridades.di.data.local.localDataModule
 import com.cristhianbonilla.prioridades.di.data.networkModule
+import com.cristhianbonilla.prioridades.di.data.profile.profileDataModule
 import com.cristhianbonilla.prioridades.di.data.securityModule
 import com.cristhianbonilla.prioridades.di.domain.authentication.authenticationDomainModule
 import com.cristhianbonilla.prioridades.di.domain.countries.countriesDomainModule
 import com.cristhianbonilla.prioridades.di.domain.home.magazineListDomainModule
 import com.cristhianbonilla.prioridades.di.domain.keywords.keywordsDomainModule
 import com.cristhianbonilla.prioridades.di.domain.magazinepdf.magazinePdfDomainModule
+import com.cristhianbonilla.prioridades.di.domain.profile.profileDomainModule
 import com.cristhianbonilla.prioridades.di.presentation.authentication.loginPresentationModule
 import com.cristhianbonilla.prioridades.di.presentation.details.magazineDetailsModule
 import com.cristhianbonilla.prioridades.di.presentation.home.homeModule
+import com.cristhianbonilla.prioridades.di.presentation.profile.profilePresentationModule
 import com.cristhianbonilla.prioridades.di.presentation.register.registerUserModule
 import org.koin.core.module.Module
 
@@ -31,7 +34,8 @@ private fun getPresentationModules() =
         registerUserModule,
         homeModule,
         magazineDetailsModule,
-        loginPresentationModule
+        loginPresentationModule,
+        profilePresentationModule
     )
 
 private fun getDomainModules() =
@@ -39,7 +43,8 @@ private fun getDomainModules() =
         countriesDomainModule,
         keywordsDomainModule,
         magazineListDomainModule,
-        magazinePdfDomainModule
+        magazinePdfDomainModule,
+        profileDomainModule
     )
 
 private fun getDataModules() =
@@ -47,7 +52,8 @@ private fun getDataModules() =
         localDataModule,
         countryDataModule,
         keywordsDataModule,
-        MagazineListDataModule
+        MagazineListDataModule,
+        profileDataModule
     )
 
 private fun getCoreModule()=

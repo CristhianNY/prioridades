@@ -6,6 +6,9 @@ enum class TrackerSectionFamily : MyTrackerSectionFamily {
     },
     MAGAZINE {
         override fun type() = "magazine"
+    },
+    PROFILE {
+        override fun type() = "profile"
     }
 }
 enum class TrackerSectionCategory : MyTrackerSectionCategory {
@@ -14,6 +17,9 @@ enum class TrackerSectionCategory : MyTrackerSectionCategory {
     },
     MAGAZINE {
         override fun type() = "services"
+    },
+    PROFILE {
+        override fun type() = "profile"
     }
 }
 
@@ -28,4 +34,8 @@ enum class TrackerSectionName : MyTrackerSectionName {
     LOGIN {
         override fun type() = "user login"
     },
+
+    PROFILE {
+        override fun type() = "profile"
+    }
 }

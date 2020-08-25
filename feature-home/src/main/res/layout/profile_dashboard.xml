@@ -1,181 +1,210 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cristhianbonilla.features_home.ui.perfil.ProfileViewModel" />
+
+        <variable
+            name="data"
+            type="com.cristhianbonilla.features_home.ui.perfil.ProfileData" />
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <com.cristhianbonilla.custom_views.widget.PRToolbar
-            android:id="@+id/myCustomToolbar"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:contentInsetStart="0dp"
-            android:contentInsetLeft="0dp"
-            android:contentInsetEnd="0dp"
-            android:contentInsetRight="0dp"
-            app:contentInsetEnd="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetStart="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:toolbar_type="LOGO" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_16"
-            android:layout_marginTop="32dp"
-            android:fontFamily="@font/poppinsbold"
-            android:textAlignment="center"
-            android:textColor="@color/black_title"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/myCustomToolbar"
-            android:text="Cristhian Bonilla" />
+            <com.cristhianbonilla.custom_views.widget.PRToolbar
+                android:id="@+id/myCustomToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:contentInsetStart="0dp"
+                android:contentInsetLeft="0dp"
+                android:contentInsetEnd="0dp"
+                android:contentInsetRight="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:toolbar_type="LOGO" />
 
-        <TextView
-            android:id="@+id/tvTitleEmailUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/title_user_email"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@{data.fullName}"
+                android:textAlignment="center"
+                android:textColor="@color/black_title"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myCustomToolbar" />
 
-        <TextView
-            android:id="@+id/tvUserEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/librarygothic"
-            android:text="@string/title_user_email"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleEmailUser" />
+            <TextView
+                android:id="@+id/tvTitleEmailUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="48dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/title_user_email"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserName" />
 
-        <TextView
-            android:id="@+id/tvPhoneNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="38dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/phone_number"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvUserEmail" />
+            <TextView
+                android:id="@+id/tvUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/librarygothic"
+                android:text="@{data.email}"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleEmailUser" />
 
-        <TextView
-            android:id="@+id/tvCelNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/librarygothic"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber"
-            android:text=" 315 711 93 88" />
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/phone_number"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserEmail" />
 
-        <TextView
-            android:id="@+id/tvTitleUserCountry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="38dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/country"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCelNumber" />
+            <TextView
+                android:id="@+id/tvCelNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/librarygothic"
+                android:text="@{data.phone}"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
 
-        <TextView
-            android:id="@+id/tvUserCountry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/librarygothic"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleUserCountry"
-            android:text="Colombia" />
+            <TextView
+                android:id="@+id/tvTitleUserCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/country"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCelNumber" />
 
-        <TextView
-            android:id="@+id/tvTitleUserCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="38dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/city"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleUserCountry" />
+            <TextView
+                android:id="@+id/tvUserCountry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/librarygothic"
+                android:text="@{data.country}"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleUserCountry" />
 
-        <TextView
-            android:id="@+id/tvUserCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/librarygothic"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleUserCity"
-            android:text="Medellín" />
+            <TextView
+                android:id="@+id/tvTitleUserCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/city"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleUserCountry" />
 
-        <TextView
-            android:id="@+id/tvTitleLastSubscription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="38dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="@string/title_user_last_subscription"
-            android:textColor="@color/black_title"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvUserCity" />
+            <TextView
+                android:id="@+id/tvUserCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/librarygothic"
+                android:text="@{data.city}"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleUserCity" />
 
-        <TextView
-            android:id="@+id/tvUserLastSubscription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/librarygothic"
-            android:textColor="@color/color_red_divider"
-            android:textSize="@dimen/title_profile"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitleLastSubscription"
-            android:text="12/12/2020" />
+            <TextView
+                android:id="@+id/tvTitleLastSubscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="38dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="@string/title_user_last_subscription"
+                android:textColor="@color/black_title"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserCity" />
 
-        <Button
-            style="@style/newbuttonstyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_16"
-            android:layout_marginStart="16dp"
-            android:fontFamily="@font/librarygothicbold"
-            android:src="@android:drawable/ic_delete"
-            android:text="Cerrar Sesión"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvUserLastSubscription" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/tvUserLastSubscription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/librarygothic"
+                android:text="@{data.subscription}"
+                android:textColor="@color/color_red_divider"
+                android:textSize="@dimen/title_profile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleLastSubscription" />
+
+            <Button
+                style="@style/newbuttonstyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/librarygothicbold"
+                android:src="@android:drawable/ic_delete"
+                android:text="Cerrar Sesión"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserLastSubscription" />
+
+            <com.cristhianbonilla.custom_views.widget.PRLoader
+                android:id="@+id/progressBarBottom"
+                loader_visibility="@{data.showLoading}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateDrawable="@drawable/progress_loader"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
