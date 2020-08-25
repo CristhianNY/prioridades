@@ -26,11 +26,11 @@
         android:layout_height="match_parent"
         tools:context=".login.LoginFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <ImageView
+
+        <View
             android:id="@+id/ivImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:src="@drawable/ic_image_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -161,14 +161,14 @@
             android:id="@+id/forgot_password_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="30dp"
             android:text="@string/forgot_password_title"
             android:textColor="@color/black_color_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btn_login"
             app:layout_constraintStart_toStartOf="@+id/btn_login"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_login"
+            app:layout_constraintVertical_bias="0.155" />
 
         <com.cristhianbonilla.custom_views.widget.PRLoader
             android:id="@+id/progressBarBottom"
