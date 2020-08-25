@@ -11,7 +11,6 @@ import com.cristhianbonilla.domain.usecase.Scope
 import com.cristhianbonilla.domain.usecase.UseCase
 import com.cristhianbonilla.domain.usecase.home.GetMagazineListUseCase
 import com.cristhianbonilla.domain.usecase.keywords.GetKeyWordsUseCase
-import com.cristhianbonilla.domain.usecase.magazinepdf.GetMagazinePdfUseCase
 import com.cristhianbonilla.foundations.base.BaseViewModel
 import com.cristhianbonilla.foundations.extensions.context
 import com.cristhianbonilla.foundations.extensions.execute

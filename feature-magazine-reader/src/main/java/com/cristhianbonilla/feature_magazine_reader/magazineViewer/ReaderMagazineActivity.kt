@@ -17,8 +17,7 @@ import com.cristhianbonilla.feature_magazine_reader.R
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener
 import com.github.barteksc.pdfviewer.util.FitPolicy
 import kotlinx.android.synthetic.main.activity_reader_magazine.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.io.InputStream
 import java.net.URL
 
@@ -40,7 +39,7 @@ class ReaderMagazineActivity : AppCompatActivity(), OnLoadCompleteListener {
 
         val magazineUrl = intent.getStringExtra("URL_MAGAZINE")
         //  showPdfFile(magazineUrl.toString())
-        magazineUrl?.let { showPdfBase64(it) }
+        magazineUrl?.let { loadData(it) }
     }
 
     @RequiresApi(Build.VERSION_CODES.FROYO)
@@ -63,6 +62,34 @@ class ReaderMagazineActivity : AppCompatActivity(), OnLoadCompleteListener {
                 .load()
 
         }
+    }
+
+    fun loadData(magazineUrl: String) = CoroutineScope(Dispatchers.Main).launch {
+        val task = async(Dispatchers.IO) {
+            GlobalScope.launch {
+                val input: InputStream = URL(magazineUrl).openStream()
+                webView.fromBytes(input.readBytes())
+                    .enableSwipe(true) // allows to block changing pages using swipe
+                    .swipeHorizontal(false)
+                    .enableDoubletap(true)
+                    .defaultPage(0)
+                    .enableAnnotationRendering(false) // render annotations (such as comments, colors or forms)
+                    .password(null)
+                    .scrollHandle(null)
+                    .pageSnap(true)
+                    .enableAntialiasing(true) // improve rendering a little bit on low-res screens
+                    // spacing between pages in dp. To define spacing color, set view background
+                    .spacing(0)
+                    .pageFitPolicy(FitPolicy.WIDTH)
+                    .load()
+
+            }
+        }
+        task.await()
+        delay(4000)
+        pb.visibility = View.GONE
+        webView.visibility = View.VISIBLE
+
     }
 
     override fun loadComplete(nbPages: Int) {
