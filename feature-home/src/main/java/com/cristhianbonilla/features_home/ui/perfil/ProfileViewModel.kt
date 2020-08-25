@@ -5,6 +5,7 @@ import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.model.profile.UserModel
 import com.cristhianbonilla.domain.usecase.Scope
 import com.cristhianbonilla.domain.usecase.UseCase
+import com.cristhianbonilla.domain.usecase.authtentication.DoLogoutUseCase
 import com.cristhianbonilla.domain.usecase.profile.GetUserInformationUseCase
 import com.cristhianbonilla.feature_home.R
 import com.cristhianbonilla.foundations.base.BaseViewModel
@@ -15,7 +16,8 @@ class ProfileViewModel(
     scope: Scope,
     data: ProfileData,
     tracker: ProfileTracker,
-    private val getUserInformationUseCase: GetUserInformationUseCase
+    private val getUserInformationUseCase: GetUserInformationUseCase,
+    private val doLogoutUseCase: DoLogoutUseCase
 ) :
     BaseViewModel<ProfileState, ProfileData, ProfileTracker>(
         scope,
@@ -36,6 +38,26 @@ class ProfileViewModel(
         }
     }
 
+
+    fun doLogout(){
+        execute {
+
+            doLogoutUseCase(UseCase.None).fold(
+                ::handleErrorLogout,
+                ::handleSuccesLogout
+            )
+        }
+
+    }
+
+    private fun handleSuccesLogout(none: UseCase.None) {
+        data.updateStateToLoginRequired()
+    }
+
+    private fun handleErrorLogout(failure: Failure) {
+        Toast.makeText(context, "Error al cerrar Sesión", Toast.LENGTH_LONG).show()
+    }
+
     private fun handleUserInformationFail(failure: Failure) {
         data.error()
         when(failure){
@@ -53,4 +75,5 @@ class ProfileViewModel(
         data.success()
         data.setFragmentContent(userModel)
     }
+    
 }

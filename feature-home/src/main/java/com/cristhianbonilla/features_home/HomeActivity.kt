@@ -90,7 +90,6 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
                 val intent = Intent()
                 intent.setClassName(this, "com.cristhianbonilla.feature_login.AuthenticationActivity")
                 startActivity(intent)
-                finish()
             }
         }
     }

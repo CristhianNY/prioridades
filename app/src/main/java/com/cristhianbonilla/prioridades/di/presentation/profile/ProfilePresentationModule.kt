@@ -23,7 +23,8 @@ internal val profilePresentationModule = module {
                 scope = get(),
                 data = ProfileData(),
                 tracker = get(),
-                getUserInformationUseCase = get()
+                getUserInformationUseCase = get(),
+                doLogoutUseCase = get()
             )
         }
         scoped { ProfileTracker() }
