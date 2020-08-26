@@ -6,7 +6,15 @@ import com.cristhianbonilla.foundations.livedata.MyLiveData
 
 class RegisterData(
     var countryList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
-    var toolBarTitle: MyLiveData<String> = MyLiveData("Registrar Usuario")
+    var toolBarTitle: MyLiveData<String> = MyLiveData("Registrar Usuario"),
+    var names:MyLiveData<String> = MyLiveData(""),
+    var lastName:MyLiveData<String> = MyLiveData(""),
+    var email:MyLiveData<String> = MyLiveData(""),
+    var password:MyLiveData<String> = MyLiveData(""),
+    var confirmPassword:MyLiveData<String> = MyLiveData(""),
+    var country:MyLiveData<String> = MyLiveData(""),
+    var city:MyLiveData<String> = MyLiveData(""),
+    var phone:MyLiveData<String> = MyLiveData("")
 ) : BaseData<RegisterUserState>(){
 
     override fun loading() {
@@ -25,6 +33,9 @@ class RegisterData(
         updateState(Success)
     }
 
+    fun navigateToRegisterStep2State(){
+        updateState(NavigateToRegisterStep2)
+    }
 
     fun submitCountries(countries:List<String>){
         countryList update countries

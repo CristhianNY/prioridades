@@ -1,8 +1,8 @@
 package com.cristhianbonilla.feature_login.login
 
-import com.cristhianbonilla.foundations.base.BaseState
+import com.cristhianbonilla.feature_login.AuthenticationState
 
-open class LoginState : BaseState {
+sealed class LoginState : AuthenticationState() {
     object ErrorLogin : LoginState()
     object LoadingLogin : LoginState()
     object SuccessLogin : LoginState()

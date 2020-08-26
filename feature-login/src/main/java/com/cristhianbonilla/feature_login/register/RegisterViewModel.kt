@@ -23,6 +23,11 @@ class RegisterViewModel(
         ) }
     }
 
+
+    fun goToRegisterStep2(){
+        data.navigateToRegisterStep2State()
+    }
+
     private fun handleGetCountries(countries: CountryModel){
         val countriesString = ArrayList<String>()
         countries.countryList.forEach {
