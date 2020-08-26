@@ -1,8 +1,13 @@
 package com.cristhianbonilla.data.source.remote.authenication
 
 import com.cristhianbonilla.data.entity.authenticatin.toModel
+import com.cristhianbonilla.data.entity.profile.toModel
 import com.cristhianbonilla.data.source.remote.authenication.login.api.LoginApi
 import com.cristhianbonilla.data.source.remote.authenication.login.api.LoginApi.Companion.SIGNED_REQUEST_HEADER
+import com.cristhianbonilla.domain.exception.Failure
+import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.model.authentication.UserAuthModel
+import com.cristhianbonilla.domain.model.profile.UserModel
 
 class AuthService(
     private val api: LoginApi,
@@ -28,4 +33,18 @@ class AuthService(
         },
         { loginEntity, _ -> loginEntity.toModel() }
     )
+
+    override suspend fun postRegister(
+        name: String,
+        lastNames: String,
+        email: String,
+        password: String,
+        phone: String,
+        country: String,
+        city: String
+    ): Result<Failure, UserModel> {
+        return request({
+            api.registerUser(email,name,lastNames,country,city,phone,password)
+        }, { entity, _ -> entity.toModel() })
+    }
 }

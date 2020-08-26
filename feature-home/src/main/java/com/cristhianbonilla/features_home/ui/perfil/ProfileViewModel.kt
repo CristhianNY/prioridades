@@ -75,5 +75,5 @@ class ProfileViewModel(
         data.success()
         data.setFragmentContent(userModel)
     }
-    
+
 }

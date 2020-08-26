@@ -8,6 +8,7 @@ import com.cristhianbonilla.domain.functional.Result
 import com.cristhianbonilla.domain.functional.Result.Error
 import com.cristhianbonilla.domain.functional.Result.Success
 import com.cristhianbonilla.domain.functional.getOrNull
+import com.cristhianbonilla.domain.model.profile.UserModel
 import com.cristhianbonilla.domain.repository.auth.AuthRepository
 import com.cristhianbonilla.domain.session.Session
 import com.cristhianbonilla.domain.usecase.UseCase
@@ -41,6 +42,24 @@ class AuthRepositoryImpl(
     override suspend fun doLogout() =
         if (session.logout()) Success(UseCase.None) else Error(Failure.LocalError)
 
-    override fun isLogged()=session.isTokenSaved()
-
+    override fun isLogged() = session.isTokenSaved()
+    override suspend fun doRegister(
+        email: String,
+        names: String,
+        lastNames: String,
+        country: String,
+        city: String,
+        phone: String,
+        password: String
+    ): Result<Failure, UserModel> {
+        return authRemoteSource.postRegister(
+            names,
+            lastNames,
+            email,
+            password,
+            phone,
+            country,
+            city
+        )
+    }
 }
