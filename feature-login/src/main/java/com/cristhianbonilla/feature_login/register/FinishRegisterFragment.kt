@@ -36,9 +36,7 @@ class FinishRegisterFragment : BaseFragment<
             input(R.id.editCity) {
                 isNotEmpty().description(R.string.city_required)
             }
-            spinner(R.id.spineerCountry) {
-                selection().greaterThan(0).description(R.string.country_required)
-            }
+
             input(R.id.editCity) {
                 isNotEmpty().description(R.string.city_required)
             }

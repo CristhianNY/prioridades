@@ -1,12 +1,16 @@
 package com.cristhianbonilla.feature_login.register
 
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
+import androidx.databinding.Observable
+import androidx.databinding.ObservableField
 import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.model.countries.CountryModel
 import com.cristhianbonilla.domain.model.profile.UserModel
 import com.cristhianbonilla.domain.usecase.Scope
 import com.cristhianbonilla.domain.usecase.UseCase.None
-import com.cristhianbonilla.domain.usecase.authtentication.DoLoginUseCase
 import com.cristhianbonilla.domain.usecase.contries.GetcountryUseCase
 import com.cristhianbonilla.domain.usecase.register.DoRegisterUseCase
 import com.cristhianbonilla.foundations.base.BaseViewModel
@@ -41,19 +45,23 @@ class RegisterViewModel(
     }
 
     fun registerUser() {
-        data.loading()
-        execute {
-            doRegisterUseCase(
-                DoRegisterUseCase.Params(
-                    data.names.value,
-                    data.lastName.value,
-                    data.email.value,
-                    data.password.value,
-                    data.phone.value,
-                    data.country.value,
-                    data.city.value
-                )
-            ).fold(::handleRegisterFail, ::handleRegisterUserSuccess)
+        if (data.country.value != "País") {
+            data.loading()
+            execute {
+                doRegisterUseCase(
+                    DoRegisterUseCase.Params(
+                        data.names.value,
+                        data.lastName.value,
+                        data.email.value,
+                        data.password.value,
+                        data.phone.value,
+                        data.country.value,
+                        data.city.value
+                    )
+                ).fold(::handleRegisterFail, ::handleRegisterUserSuccess)
+            }
+        } else {
+            Toast.makeText(context, "Por favor selecciona tu pais", Toast.LENGTH_LONG).show()
         }
 
     }
@@ -73,6 +81,18 @@ class RegisterViewModel(
                 data.email.value,
                 data.password.value
             )
+        }
+    }
+
+    val clicksListener = object : AdapterView.OnItemSelectedListener {
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+            data.updateCountry("País")
+        }
+
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            val country
+                    = parent?.getItemAtPosition(position) as String
+            data.updateCountry(country)
         }
     }
 

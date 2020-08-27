@@ -44,6 +44,10 @@ class RegisterData(
         showError.update(false)
         updateState(UserRegistrationSuccess)
     }
+    
+    fun updateCountry(countryUpdate:String){
+        country update countryUpdate
+    }
 
     fun navigateToRegisterStep2State(
         names: String,
