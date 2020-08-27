@@ -52,8 +52,8 @@
             app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
 
         <EditText
-            android:id="@+id/editText3"
-            android:layout_width="0dp"
+            android:id="@+id/edit_phone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginEnd="8dp"
@@ -77,7 +77,7 @@
             android:textColor="@color/black_color_title"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/edit_phone" />
 
         <com.cristhianbonilla.custom_views.widget.PRSpinner
             android:id="@+id/spineerCountry"
@@ -106,7 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/spineerCountry" />
 
         <EditText
-            android:id="@+id/spinnerCity"
+            android:id="@+id/editCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -128,8 +128,17 @@
             android:text="@string/btn_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerCity" />
+            app:layout_constraintTop_toBottomOf="@+id/editCity" />
 
-
+        <com.cristhianbonilla.custom_views.widget.PRLoader
+            android:id="@+id/progressBarBottom"
+            loader_visibility="@{data.showLoading}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/progress_loader"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

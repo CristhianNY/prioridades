@@ -35,6 +35,21 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
             is RegisterUserState.NavigateToRegisterStep2 -> {
                 innerNavigate(RegisterFragmentDirections.goToFinishRegisterFragment())
             }
+            is RegisterUserState.Error -> {
+                showInfoDialog(
+                    resources.getString(R.string.error),
+                    resources.getString(R.string.error_register_user),
+                    resources.getString(R.string.enter)
+                )
+            }
+
+            is RegisterUserState.UserAlreadyExist ->{
+                showInfoDialog(
+                    resources.getString(R.string.error),
+                    resources.getString(R.string.error_user_already_exist),
+                    resources.getString(R.string.enter)
+                )
+            }
         }
     }
 

@@ -22,6 +22,9 @@ interface RemoteSource {
                 SUBSCRIPTION_NOT_ACTIVATED ->{
                     Result.Error(Failure.SubscriptionNotActivated)
                 }
+                USER_EXIST ->{
+                    Result.Error(Failure.UserAlreadyExist)
+                }
                 else ->{
                     val responseBody: E = response.body()!!
 
@@ -47,5 +50,6 @@ interface RemoteSource {
 companion object{
     const val SESSION_EXPIRED = 301
     const val SUBSCRIPTION_NOT_ACTIVATED = 700
+    const val USER_EXIST = 703
 }
 }

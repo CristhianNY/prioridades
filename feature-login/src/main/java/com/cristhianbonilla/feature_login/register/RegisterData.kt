@@ -27,6 +27,10 @@ class RegisterData(
         this updateState Error
     }
 
+    fun updateUserExist(){
+        this updateState  UserAlreadyExist
+    }
+
     fun success() {
         showLoading.update(false)
         showError.update(false)

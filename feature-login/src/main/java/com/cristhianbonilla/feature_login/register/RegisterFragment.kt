@@ -36,10 +36,7 @@ class RegisterFragment : BaseFragment<
             }
 
             input(R.id.editConfirmPassword){
-                conditional({ R.id.editPassword != R.id.editConfirmPassword }){
-                    assert("La contraseña no coincide ") { view -> false }
-
-                }
+                isNotEmpty()
             }
             submitWith(R.id.btnNextRegister) { result ->
             viewModel.goToRegisterStep2()

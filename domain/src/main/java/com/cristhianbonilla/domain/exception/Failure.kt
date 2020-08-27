@@ -10,6 +10,7 @@ sealed class Failure {
     object LocalError : Failure()
     object SessionExpired : Failure()
     object SubscriptionNotActivated : Failure()
+    object UserAlreadyExist : Failure()
     class InvalidRequestParam(val description: String?) : Failure()
     sealed class SecurityError : Failure() {
         object NotSupportedError : SecurityError()

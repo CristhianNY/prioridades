@@ -75,4 +75,9 @@
     <string name="password_not_match_required">la contraseña no concide </string>
     <string name="city_required">Ciudad requerida</string>
     <string name="country_required">Ciudad requerida</string>
+
+    <!---->
+    <string name="error">Error</string>
+    <string name="error_register_user">Ha ocurrido un error al intentar registrar el usuario</string>
+    <string name="error_user_already_exist">El correo ingresado ya se encuentra registrado con nosotros</string>
 </resources>

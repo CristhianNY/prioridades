@@ -19,7 +19,8 @@ internal val registerUserModule = module {
                 scope = get(),
                 data = RegisterData(),
                 tracker = get(),
-                getCountriesUseCase = get()
+                getCountriesUseCase = get(),
+                doRegisterUseCase = get()
             )
         }
         scoped { RegisterTracker() }
@@ -32,7 +33,8 @@ internal val registerUserModule = module {
                 scope = get(),
                 data = RegisterData(),
                 tracker = get(),
-                getCountriesUseCase = get()
+                getCountriesUseCase = get(),
+                doRegisterUseCase = get()
             )
         }
         scoped { RegisterTracker() }
