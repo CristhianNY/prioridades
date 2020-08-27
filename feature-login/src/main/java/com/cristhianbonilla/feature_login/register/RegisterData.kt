@@ -31,14 +31,27 @@ class RegisterData(
         this updateState  UserAlreadyExist
     }
 
+    fun updateDataFromStep1(namesUpdate:String,lasNamesUpdate:String,emailUpdate:String,passwordUpdate:String){
+        names.update(namesUpdate)
+        lastName update lasNamesUpdate
+        email update emailUpdate
+        password update passwordUpdate
+
+    }
+
     fun success() {
         showLoading.update(false)
         showError.update(false)
-        updateState(Success)
+        updateState(UserRegistrationSuccess)
     }
 
-    fun navigateToRegisterStep2State(){
-        updateState(NavigateToRegisterStep2)
+    fun navigateToRegisterStep2State(
+        names: String,
+        lastNames: String,
+        email: String,
+        password: String
+    ) {
+        updateState(NavigateToRegisterStep2(names,lastNames,email,password))
     }
 
     fun submitCountries(countries:List<String>){

@@ -9,7 +9,6 @@ import com.cristhianbonilla.domain.usecase.UseCase.None
 import com.cristhianbonilla.domain.usecase.authtentication.DoLoginUseCase
 import com.cristhianbonilla.domain.usecase.contries.GetcountryUseCase
 import com.cristhianbonilla.domain.usecase.register.DoRegisterUseCase
-import com.cristhianbonilla.feature_home.R
 import com.cristhianbonilla.foundations.base.BaseViewModel
 import com.cristhianbonilla.foundations.extensions.context
 import com.cristhianbonilla.foundations.extensions.execute
@@ -32,6 +31,15 @@ class RegisterViewModel(
         }
     }
 
+    fun fillDataFromFragmentRegisterOne(
+        namesUpdate: String,
+        lasNamesUpdate: String,
+        emailUpdate: String,
+        passwordUpdate: String
+    ) {
+        data.updateDataFromStep1(namesUpdate, lasNamesUpdate, emailUpdate, passwordUpdate)
+    }
+
     fun registerUser() {
         data.loading()
         execute {
@@ -45,12 +53,9 @@ class RegisterViewModel(
                     data.country.value,
                     data.city.value
                 )
-            ).fold(
-                {
-                    ::handleRegisterFail
-                }, ::handleRegisterUserSuccess
-            )
+            ).fold(::handleRegisterFail, ::handleRegisterUserSuccess)
         }
+
     }
 
     private fun handleRegisterUserSuccess(userModel: UserModel) {
@@ -62,7 +67,12 @@ class RegisterViewModel(
         if (data.password.value != data.confirmPassword.value) {
             Toast.makeText(context, "Las contraseñas no conciden", Toast.LENGTH_LONG).show()
         } else {
-            data.navigateToRegisterStep2State()
+            data.navigateToRegisterStep2State(
+                data.names.value,
+                data.lastName.value,
+                data.email.value,
+                data.password.value
+            )
         }
     }
 
@@ -84,5 +94,9 @@ class RegisterViewModel(
                 data.error()
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
     }
 }

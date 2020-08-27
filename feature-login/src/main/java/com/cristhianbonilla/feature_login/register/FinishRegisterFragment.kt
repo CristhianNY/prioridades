@@ -2,6 +2,7 @@ package com.cristhianbonilla.feature_login.register
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.navArgs
 import com.afollestad.vvalidator.form
 import com.cristhianbonilla.feature_login.BR
 import com.cristhianbonilla.feature_login.R
@@ -15,9 +16,17 @@ class FinishRegisterFragment : BaseFragment<
         RegisterViewModel,
         FragmentFinishRegisterBinding>(R.layout.fragment_finish_register, BR.viewModel, BR.data) {
 
+    private val args: FinishRegisterFragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         viewModel.getCountries()
+        viewModel.fillDataFromFragmentRegisterOne(
+            args.names,
+            args.lastNames,
+            args.email,
+            args.password
+        )
         super.onCreate(savedInstanceState)
     }
 
@@ -28,7 +37,7 @@ class FinishRegisterFragment : BaseFragment<
                 isNotEmpty().description(R.string.city_required)
             }
             spinner(R.id.spineerCountry) {
-                selection().lessThan(1).description(R.string.country_required)
+                selection().greaterThan(0).description(R.string.country_required)
             }
             input(R.id.editCity) {
                 isNotEmpty().description(R.string.city_required)

@@ -38,5 +38,17 @@
         <action
             android:id="@+id/action_finishRegisterFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <argument
+            android:name="names"
+            app:argType="string" />
+        <argument
+            android:name="lastNames"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="password"
+            app:argType="string" />
     </fragment>
 </navigation>

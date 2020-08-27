@@ -22,7 +22,7 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
         super.onStateChanged(state)
         when (state) {
             LoginState.ErrorLogin -> {
-                showInfoDialog("Error", "Email o contraseña incorrectos", "Entrar")
+                showInfoDialogError("Error", "Email o contraseña incorrectos", "Entrar")
             }
             LoginState.UserAlreadyLogged -> {
                 startActivity(Intent(this, HomeActivity::class.java))
@@ -33,27 +33,42 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
             }
 
             is RegisterUserState.NavigateToRegisterStep2 -> {
-                innerNavigate(RegisterFragmentDirections.goToFinishRegisterFragment())
+                innerNavigate(
+                    RegisterFragmentDirections.goToFinishRegisterFragment(
+                        state.names,
+                        state.lastNames,
+                        state.email,
+                        state.password
+                    )
+                )
             }
             is RegisterUserState.Error -> {
-                showInfoDialog(
+                showInfoDialogError(
                     resources.getString(R.string.error),
                     resources.getString(R.string.error_register_user),
-                    resources.getString(R.string.enter)
+                    resources.getString(R.string.out)
                 )
             }
 
-            is RegisterUserState.UserAlreadyExist ->{
-                showInfoDialog(
+            is RegisterUserState.UserAlreadyExist -> {
+                showInfoDialogError(
                     resources.getString(R.string.error),
                     resources.getString(R.string.error_user_already_exist),
                     resources.getString(R.string.enter)
                 )
             }
+
+            is RegisterUserState.UserRegistrationSuccess -> {
+                showInfoDialogSuccess(
+                    resources.getString(R.string.great),
+                    resources.getString(R.string.user_registered_success),
+                    resources.getString(R.string.out)
+                )
+            }
         }
     }
 
-    private fun showInfoDialog(title: String, message: String, positiveText: String) {
+    private fun showInfoDialogError(title: String, message: String, positiveText: String) {
         AlertDialog.Builder(this)
             .setTitle(title)
             .setMessage(message) // Specifying a listener allows you to take an action before dismissing the dialog.
@@ -63,6 +78,20 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
                     dialog.dismiss()
                 }) // A null listener allows the button to dismiss the dialog and take no further action.
             .setIcon(android.R.drawable.ic_dialog_alert)
+            .show()
+    }
+
+    private fun showInfoDialogSuccess(title: String, message: String, positiveText: String) {
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message) // Specifying a listener allows you to take an action before dismissing the dialog.
+            // The dialog is automatically dismissed when a dialog button is clicked.
+            .setPositiveButton(positiveText,
+                DialogInterface.OnClickListener { dialog, which ->
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                }) // A null listener allows the button to dismiss the dialog and take no further action.
+            .setIcon(android.R.drawable.ic_dialog_alert).setCancelable(false)
             .show()
     }
 }

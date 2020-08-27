@@ -7,9 +7,11 @@ sealed class RegisterUserState : AuthenticationState() {
     object Loading : RegisterUserState()
     object Success : RegisterUserState()
     object UserAlreadyExist : RegisterUserState()
-    object DrawerItemClicked : RegisterUserState()
-    object NavigateToRegisterStep2 : RegisterUserState()
-    data class NavigateToAccountTransactions(val accountId: String) : RegisterUserState()
-    data class NavigateToDeposits(val depositId: String) : RegisterUserState()
-    object NavigateToPreferences : RegisterUserState()
+    data class NavigateToRegisterStep2(
+        val names: String,
+        val lastNames: String,
+        val email: String,
+        val password: String
+    ) : RegisterUserState()
+    object UserRegistrationSuccess : RegisterUserState()
 }

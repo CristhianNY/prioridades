@@ -76,8 +76,11 @@
     <string name="city_required">Ciudad requerida</string>
     <string name="country_required">Ciudad requerida</string>
 
-    <!---->
+    <!--Mensajes de validación -->
     <string name="error">Error</string>
     <string name="error_register_user">Ha ocurrido un error al intentar registrar el usuario</string>
     <string name="error_user_already_exist">El correo ingresado ya se encuentra registrado con nosotros</string>
+    <string name="great">Genial</string>
+    <string name="user_registered_success">Usuario registrado correctamente</string>
+    <string name="out">Salir</string>
 </resources>
