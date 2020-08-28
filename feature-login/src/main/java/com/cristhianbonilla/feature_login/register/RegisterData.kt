@@ -6,16 +6,19 @@ import com.cristhianbonilla.foundations.livedata.MyLiveData
 
 class RegisterData(
     var countryList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
+    var countryListDialCode: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
     var toolBarTitle: MyLiveData<String> = MyLiveData("Registrar Usuario"),
-    var names:MyLiveData<String> = MyLiveData(""),
-    var lastName:MyLiveData<String> = MyLiveData(""),
-    var email:MyLiveData<String> = MyLiveData(""),
-    var password:MyLiveData<String> = MyLiveData(""),
-    var confirmPassword:MyLiveData<String> = MyLiveData(""),
-    var country:MyLiveData<String> = MyLiveData(""),
-    var city:MyLiveData<String> = MyLiveData(""),
-    var phone:MyLiveData<String> = MyLiveData("")
-) : BaseData<RegisterUserState>(){
+    var names: MyLiveData<String> = MyLiveData(""),
+    var lastName: MyLiveData<String> = MyLiveData(""),
+    var email: MyLiveData<String> = MyLiveData(""),
+    var password: MyLiveData<String> = MyLiveData(""),
+    var confirmPassword: MyLiveData<String> = MyLiveData(""),
+    var country: MyLiveData<String> = MyLiveData(""),
+    var city: MyLiveData<String> = MyLiveData(""),
+    var phone: MyLiveData<String> = MyLiveData(""),
+    var checkTerm: MyLiveData<Boolean> = MyLiveData(false),
+    var countryCode: MyLiveData<String> = MyLiveData("+57")
+) : BaseData<RegisterUserState>() {
 
     override fun loading() {
         super.loading()
@@ -27,11 +30,20 @@ class RegisterData(
         this updateState Error
     }
 
-    fun updateUserExist(){
-        this updateState  UserAlreadyExist
+    fun updateUserExist() {
+        this updateState UserAlreadyExist
     }
 
-    fun updateDataFromStep1(namesUpdate:String,lasNamesUpdate:String,emailUpdate:String,passwordUpdate:String){
+    fun updateCheck(isChecked: Boolean) {
+        checkTerm update isChecked
+    }
+
+    fun updateDataFromStep1(
+        namesUpdate: String,
+        lasNamesUpdate: String,
+        emailUpdate: String,
+        passwordUpdate: String
+    ) {
         names.update(namesUpdate)
         lastName update lasNamesUpdate
         email update emailUpdate
@@ -44,9 +56,13 @@ class RegisterData(
         showError.update(false)
         updateState(UserRegistrationSuccess)
     }
-    
-    fun updateCountry(countryUpdate:String){
+
+    fun updateCountry(countryUpdate: String) {
         country update countryUpdate
+    }
+
+    fun updateCountryDialCode(countryUpdateDialCode: String) {
+        countryCode update countryUpdateDialCode
     }
 
     fun navigateToRegisterStep2State(
@@ -55,12 +71,16 @@ class RegisterData(
         email: String,
         password: String
     ) {
-        updateState(NavigateToRegisterStep2(names,lastNames,email,password))
+        updateState(NavigateToRegisterStep2(names, lastNames, email, password))
     }
 
-    fun submitCountries(countries:List<String>){
+    fun submitCountries(countries: List<String>) {
         countryList update countries
         toolBarTitle update "RegistraUSuario"
+    }
+
+    fun submitCountriesDialCode(countriesDialCode: List<String>) {
+        countryListDialCode update countriesDialCode
     }
 
 }

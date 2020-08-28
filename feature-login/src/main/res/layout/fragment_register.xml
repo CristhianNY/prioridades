@@ -30,9 +30,9 @@
             <!-- TODO: Update blank fragment layout -->
             <ImageView
                 android:id="@+id/ivImage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_image_register"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_logo_inicio"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,6 +45,7 @@
                 android:layout_marginEnd="@dimen/margin_end_20"
                 android:alpha="0.5"
                 android:fontFamily="@font/librarygothicbold"
+                android:onClick="@{() -> viewModel.goToLoginFragment()}"
                 android:text="@string/login_title"
                 android:textColor="@color/black_title"
                 android:textSize="@dimen/title_size"

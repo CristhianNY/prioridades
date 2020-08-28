@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -15,6 +16,7 @@
             type="com.cristhianbonilla.feature_login.register.RegisterData" />
 
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +28,7 @@
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvPhoneNumber"
@@ -41,26 +43,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myCustomToolbar" />
 
-
-        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+        <com.cristhianbonilla.custom_views.widget.PRSpinner
             android:id="@+id/spineerPhoneIndicator"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="11dp"
+            android:spinnerMode="dialog"
             app:ccp_defaultNameCode="CO"
+            app:dialCodes="@{data.countryListDialCode}"
             app:layout_constraintStart_toStartOf="@+id/tvPhoneNumber"
-            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber"
+            tools:setOnItemSelectedListener="@{viewModel.clickDialCodeListener}" />
 
         <EditText
             android:id="@+id/edit_phone"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
             android:layout_marginEnd="8dp"
             android:hint="@string/write_here_your_phone_number"
             android:inputType="phone"
-            android:text="@={data.phone}"
             android:maxLength="10"
+            android:text="@={data.phone}"
             app:layout_constraintBottom_toBottomOf="@+id/spineerPhoneIndicator"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/spineerPhoneIndicator"
@@ -85,13 +89,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:spinnerMode="dialog"
             android:layout_marginEnd="16dp"
+            android:spinnerMode="dialog"
             app:item_list="@{data.countryList}"
-            tools:setOnItemSelectedListener="@{viewModel.clicksListener}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCountry" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCountry"
+            tools:setOnItemSelectedListener="@{viewModel.clicksListener}" />
 
         <TextView
             android:id="@+id/tvCity"
@@ -118,6 +122,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCity" />
 
+        <CheckBox
+            android:id="@+id/term_and_conditions"
+            android:layout_width="34dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:onCheckedChanged="@{(v, checked) -> viewModel.onCheckedChanged(checked)}"
+            android:textColor="@color/black_color_title"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/editCity" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <TextView
+            android:id="@+id/tv_term_and_conditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_and_conditions"
+            app:layout_constraintBottom_toBottomOf="@+id/term_and_conditions"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/term_and_conditions"/>
+
         <Button
             android:id="@+id/btn_finish_register"
             style="@style/newbuttonstyle"
@@ -129,7 +160,8 @@
             android:text="@string/btn_finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editCity" />
+            app:layout_constraintTop_toBottomOf="@+id/term_and_conditions" />
+
 
         <com.cristhianbonilla.custom_views.widget.PRLoader
             android:id="@+id/progressBarBottom"
@@ -141,5 +173,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

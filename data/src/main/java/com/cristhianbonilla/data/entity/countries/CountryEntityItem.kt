@@ -10,6 +10,8 @@ import com.squareup.moshi.JsonClass
 data class CountryEntityItem(
     @Json(name = "code")
     val code: String,
+    @Json(name = "dial_code")
+    val dialCode: String,
     @Json(name = "name")
     val name: String
 )
@@ -17,5 +19,6 @@ data class CountryEntityItem(
 fun CountryEntityItem.toModel() =
     CountryItemModel(
         code.orEmpty(),
+        dialCode.orEmpty(),
         name.orEmpty()
     )

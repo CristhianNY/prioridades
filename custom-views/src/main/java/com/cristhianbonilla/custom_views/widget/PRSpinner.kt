@@ -29,6 +29,17 @@ class PRSpinner( context: Context, attrs: AttributeSet?) : androidx.appcompat.wi
             val adapter = ArrayAdapter(view.context, android.R.layout.simple_list_item_1, listOfElements)
             view.adapter = adapter
         }
+
+        @BindingAdapter("dialCodes")
+        @JvmStatic
+        fun seDialCode(view: PRSpinner, listOfElements: List<String>) {
+            val adapter = ArrayAdapter(view.context, android.R.layout.simple_list_item_1, listOfElements)
+            view.adapter = adapter
+        }
+
     }
+
+
+
 
 }

@@ -14,14 +14,15 @@
     <string name="write_here_yout_email">Escribe aquí tu correo electronico</string>
     <string name="login_btb_title">Iniciar Sesión</string>
     <string name="forgot_password_title"><u>¿Olvidaste la contraseña?</u></string>
+    <string name="terms_and_conditions"><u>Terminos y condiciones</u></string>
     <string name="last_name_title">Apellidos</string>
     <string name="write_here_lastname">Escribe aquí tus apellidos</string>
     <string name="write_here_your_password">Escribe aquí tu contraseña</string>
     <string name="password">Contraseña</string>
     <string name="confirm_password">Confirmar Contraseña</string>
     <string name="btn_next_register">Siguiente</string>
-    <string name="write_here_your_phone_number">Escribe Aquí tu número de celuldar</string>
-    <string name="phone_number">Número de celular</string>
+    <string name="write_here_your_phone_number">Celular</string>
+    <string name="phone_number">Celular</string>
     <string name="country">País</string>
     <string name="city">Ciudad</string>
     <string name="btn_finish">Finalizar</string>
@@ -71,10 +72,12 @@
     <string name="username_required">Nombre requerido</string>
     <string name="last_name_required">Apellidos requeridos </string>
     <string name="email_required">Correo electrónico requerido</string>
+    <string name="email_no_valid">Correo electrónico invalido</string>
     <string name="password_required">Contraseña requerida</string>
     <string name="password_not_match_required">la contraseña no concide </string>
     <string name="city_required">Ciudad requerida</string>
     <string name="country_required">Ciudad requerida</string>
+    <string name="please_accept_terms_and_conditions"> Por favor acepter los terminos y condiciones</string>
 
     <!--Mensajes de validación -->
     <string name="error">Error</string>

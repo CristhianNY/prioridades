@@ -13,5 +13,7 @@ sealed class RegisterUserState : AuthenticationState() {
         val email: String,
         val password: String
     ) : RegisterUserState()
+
+    object NavigateToLogin : RegisterUserState()
     object UserRegistrationSuccess : RegisterUserState()
 }

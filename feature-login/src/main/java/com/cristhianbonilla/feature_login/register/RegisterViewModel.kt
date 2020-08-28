@@ -1,11 +1,8 @@
 package com.cristhianbonilla.feature_login.register
 
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.databinding.Observable
-import androidx.databinding.ObservableField
 import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.model.countries.CountryModel
 import com.cristhianbonilla.domain.model.profile.UserModel
@@ -45,24 +42,38 @@ class RegisterViewModel(
     }
 
     fun registerUser() {
-        if (data.country.value != "País") {
-            data.loading()
-            execute {
-                doRegisterUseCase(
-                    DoRegisterUseCase.Params(
-                        data.names.value,
-                        data.lastName.value,
-                        data.email.value,
-                        data.password.value,
-                        data.phone.value,
-                        data.country.value,
-                        data.city.value
-                    )
-                ).fold(::handleRegisterFail, ::handleRegisterUserSuccess)
+        if (data.checkTerm.value) {
+            if (data.country.value != "País") {
+                data.loading()
+                if (data.phone.value != "") {
+                    data.phone.update(data.countryCode.value + data.phone.value)
+                } else {
+                    data.phone.update("--")
+                }
+                execute {
+                    doRegisterUseCase(
+                        DoRegisterUseCase.Params(
+                            data.names.value,
+                            data.lastName.value,
+                            data.email.value,
+                            data.password.value,
+                            data.phone.value,
+                            data.country.value,
+                            data.city.value
+                        )
+                    ).fold(::handleRegisterFail, ::handleRegisterUserSuccess)
+                }
+            } else {
+                Toast.makeText(context, "Por favor selecciona tu pais", Toast.LENGTH_LONG).show()
             }
         } else {
-            Toast.makeText(context, "Por favor selecciona tu pais", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                context,
+                "Por favor acepta los terminos y condiciones",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
 
     }
 
@@ -70,6 +81,9 @@ class RegisterViewModel(
         data.success()
     }
 
+    fun goToLoginFragment() {
+        data.updateState(RegisterUserState.NavigateToLogin)
+    }
 
     fun goToRegisterStep2() {
         if (data.password.value != data.confirmPassword.value) {
@@ -90,18 +104,44 @@ class RegisterViewModel(
         }
 
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            val country
-                    = parent?.getItemAtPosition(position) as String
+            val country = parent?.getItemAtPosition(position) as String
             data.updateCountry(country)
+        }
+    }
+
+    val clickDialCodeListener = object : AdapterView.OnItemSelectedListener {
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+            data.updateCountryDialCode("+57")
+        }
+
+        override fun onItemSelected(
+            parent: AdapterView<*>?,
+            view: View?,
+            position: Int,
+            id: Long
+        ) {
+            val countryDialCode = parent?.getItemAtPosition(position) as String
+            data.updateCountryDialCode(countryDialCode)
         }
     }
 
     private fun handleGetCountries(countries: CountryModel) {
         val countriesString = ArrayList<String>()
+        val countriesDialCode = ArrayList<String>()
         countries.countryList.forEach {
             countriesString.add(it.name)
+            countriesDialCode.add(it.dialCode)
         }
         data.submitCountries(countriesString)
+        data.submitCountriesDialCode(countriesDialCode)
+    }
+
+    fun onCheckedChanged(isCheck: Boolean) {
+        data.updateCheck(isCheck)
+    }
+
+    val getCountryCode: (String) -> Unit = { text ->
+        var codigo = text
     }
 
     private fun handleRegisterFail(failure: Failure) {

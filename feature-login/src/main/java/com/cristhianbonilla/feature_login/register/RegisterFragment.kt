@@ -14,7 +14,7 @@ class RegisterFragment : BaseFragment<
         RegisterData,
         RegisterTracker,
         RegisterViewModel,
-        FragmentRegisterBindingImpl>(R.layout.fragment_register, BR.viewModel, BR.data){
+        FragmentRegisterBindingImpl>(R.layout.fragment_register, BR.viewModel, BR.data) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,21 +25,19 @@ class RegisterFragment : BaseFragment<
             input(R.id.editLastName) {
                 isNotEmpty().description(R.string.last_name_required)
             }
-            input(R.id.editEmail ) {
+            input(R.id.editEmail) {
                 isNotEmpty().description(R.string.email_required)
+                isEmail().description(R.string.email_no_valid)
             }
             input(R.id.editPassword) {
                 isNotEmpty().description(R.string.password_required)
             }
-            input(R.id.editPassword){
-               isNotEmpty()
-            }
 
-            input(R.id.editConfirmPassword){
-                isNotEmpty()
+            input(R.id.editConfirmPassword) {
+                isNotEmpty().description(R.string.password_required)
             }
             submitWith(R.id.btnNextRegister) { result ->
-            viewModel.goToRegisterStep2()
+                viewModel.goToRegisterStep2()
             }
         }
 

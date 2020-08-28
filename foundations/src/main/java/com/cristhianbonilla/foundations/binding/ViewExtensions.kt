@@ -1,5 +1,6 @@
 package com.cristhianbonilla.foundations.binding
 
+
 import android.view.View
 import androidx.databinding.BindingAdapter
 
@@ -12,3 +13,5 @@ fun View.customVisibility(isVisible: Boolean) {
         this.visibility = View.INVISIBLE
     }
 }
+
+

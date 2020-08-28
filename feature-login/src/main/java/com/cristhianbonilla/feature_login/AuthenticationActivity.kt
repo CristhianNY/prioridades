@@ -32,6 +32,10 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
                 innerNavigate(LoginFragmentDirections.goToRegisterFragment())
             }
 
+            is RegisterUserState.NavigateToLogin->{
+                innerNavigate(RegisterFragmentDirections.goToLoginFragment())
+            }
+
             is RegisterUserState.NavigateToRegisterStep2 -> {
                 innerNavigate(
                     RegisterFragmentDirections.goToFinishRegisterFragment(
@@ -91,7 +95,7 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()
                 }) // A null listener allows the button to dismiss the dialog and take no further action.
-            .setIcon(android.R.drawable.ic_dialog_alert).setCancelable(false)
+            .setIcon(R.drawable.ic_checksucess).setCancelable(false)
             .show()
     }
 }

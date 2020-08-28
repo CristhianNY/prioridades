@@ -40,6 +40,7 @@ class FinishRegisterFragment : BaseFragment<
             input(R.id.editCity) {
                 isNotEmpty().description(R.string.city_required)
             }
+
             submitWith(R.id.btn_finish_register) { result ->
                 viewModel.registerUser()
             }

@@ -38,6 +38,7 @@ abstract class BaseViewModel<S : BaseState, UI : BaseData<S>, T : BaseTracker>(
         data.clearState()
     }
 
+
     internal fun trackOnViewDisplayed() {
         tracker.viewDisplayed()
     }
