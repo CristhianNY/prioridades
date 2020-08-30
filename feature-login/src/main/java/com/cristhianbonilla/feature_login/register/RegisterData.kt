@@ -17,7 +17,8 @@ class RegisterData(
     var city: MyLiveData<String> = MyLiveData(""),
     var phone: MyLiveData<String> = MyLiveData(""),
     var checkTerm: MyLiveData<Boolean> = MyLiveData(false),
-    var countryCode: MyLiveData<String> = MyLiveData("+57")
+    var countryCode: MyLiveData<String> = MyLiveData("+57"),
+    var trim: MyLiveData<Boolean> = MyLiveData(true)
 ) : BaseData<RegisterUserState>() {
 
     override fun loading() {
@@ -49,6 +50,10 @@ class RegisterData(
         email update emailUpdate
         password update passwordUpdate
 
+    }
+
+    fun navigateToTermAndConditionsState() {
+        updateState(NavigateToTermsAndConditions)
     }
 
     fun success() {

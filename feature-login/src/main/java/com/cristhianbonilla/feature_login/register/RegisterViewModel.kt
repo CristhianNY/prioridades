@@ -1,5 +1,6 @@
 package com.cristhianbonilla.feature_login.register
 
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
@@ -45,11 +46,6 @@ class RegisterViewModel(
         if (data.checkTerm.value) {
             if (data.country.value != "País") {
                 data.loading()
-                if (data.phone.value != "") {
-                    data.phone.update(data.countryCode.value + data.phone.value)
-                } else {
-                    data.phone.update("--")
-                }
                 execute {
                     doRegisterUseCase(
                         DoRegisterUseCase.Params(
@@ -57,7 +53,7 @@ class RegisterViewModel(
                             data.lastName.value,
                             data.email.value,
                             data.password.value,
-                            data.phone.value,
+                            data.countryCode.value + data.phone.value,
                             data.country.value,
                             data.city.value
                         )
@@ -75,6 +71,15 @@ class RegisterViewModel(
         }
 
 
+    }
+
+    fun onTextChanged(
+        s: CharSequence,
+        start: Int,
+        before: Int,
+        count: Int
+    ) {
+        data.email.update(s.trim().toString())
     }
 
     private fun handleRegisterUserSuccess(userModel: UserModel) {
@@ -97,7 +102,9 @@ class RegisterViewModel(
             )
         }
     }
-
+    fun goToTermsAndConditions(){
+        data.navigateToTermAndConditionsState()
+    }
     val clicksListener = object : AdapterView.OnItemSelectedListener {
         override fun onNothingSelected(parent: AdapterView<*>?) {
             data.updateCountry("País")
@@ -140,9 +147,6 @@ class RegisterViewModel(
         data.updateCheck(isCheck)
     }
 
-    val getCountryCode: (String) -> Unit = { text ->
-        var codigo = text
-    }
 
     private fun handleRegisterFail(failure: Failure) {
         data.error()

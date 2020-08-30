@@ -12,7 +12,6 @@
             android:id="@+id/myCustomToolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:toolbar_title="@string/title_toolbar_about_us"
             android:contentInsetStart="0dp"
             android:contentInsetLeft="0dp"
             android:contentInsetEnd="0dp"

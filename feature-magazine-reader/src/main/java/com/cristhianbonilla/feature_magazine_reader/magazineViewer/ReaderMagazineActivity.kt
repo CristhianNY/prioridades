@@ -30,6 +30,7 @@ class ReaderMagazineActivity : AppCompatActivity(), OnLoadCompleteListener {
 
         setContentView(R.layout.activity_reader_magazine)
 
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_SECURE,
             WindowManager.LayoutParams.FLAG_SECURE

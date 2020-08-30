@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import com.cristhianbonilla.feature_login.login.LoginFragmentDirections
 import com.cristhianbonilla.feature_login.login.LoginState
 import com.cristhianbonilla.feature_login.register.RegisterFragmentDirections
@@ -68,6 +69,12 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
                     resources.getString(R.string.user_registered_success),
                     resources.getString(R.string.out)
                 )
+            }
+
+            is RegisterUserState.NavigateToTermsAndConditions->{
+                val browserIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://tuiadpa.com/proteccion-de-datos-personales/"))
+                startActivity(browserIntent)
             }
         }
     }

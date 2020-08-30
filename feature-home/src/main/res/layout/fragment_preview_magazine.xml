@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.cristhianbonilla.features_home.ui.details.PreviewMagazineViewModel" />
@@ -21,28 +23,47 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin_16"
+            android:layout_height="0dp"
             tools:context="com.cristhianbonilla.features_home.ui.details.MagazineDetailsFragment">
+
+            <com.cristhianbonilla.custom_views.widget.PRToolbar
+                android:id="@+id/myCustomToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentInsetStart="0dp"
+                android:contentInsetLeft="0dp"
+                android:contentInsetEnd="0dp"
+                android:contentInsetRight="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetRight="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:toolbar_type="TITLE_BACK" />
 
             <ImageView
                 android:id="@+id/ivMagazine"
                 android:layout_width="match_parent"
                 android:layout_height="447dp"
-                app:showImage="@{data.magazineImage}"
+                android:layout_margin="@dimen/margin_16"
+                android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/myCustomToolbar"
+                app:showImage="@{data.magazineImage}" />
 
             <TextView
                 android:id="@+id/DateMagazineTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/poppinsbold"
+                android:text="@{data.magazineDate}"
                 android:textColor="@color/black_title"
                 android:textSize="20dp"
-                android:text="@{data.magazineDate}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivMagazine"
                 tools:text="Julio 2020" />
@@ -51,21 +72,31 @@
                 android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
                 android:text="@{data.magazineDescription}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/DateMagazineTv"
                 tools:text="@string/text_with_paragraphs" />
 
             <Button
+                android:id="@+id/button"
                 style="@style/newbuttonstyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
                 android:layout_marginTop="16dp"
-                android:text="@string/read_magazine"
-                android:onClick="@{() -> viewModel.getMagazinePdf()}"
                 android:fontFamily="@font/librarygothicbold"
+                android:onClick="@{() -> viewModel.getMagazinePdf()}"
+                android:text="@string/read_magazine"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/button" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

@@ -24,13 +24,12 @@ class PRToolbar(context: Context, attrs: AttributeSet?) : androidx.appcompat.wid
           }
           1->{
               this.logo_toolbar.visibility = View.GONE
-              this.ivGoBack.visibility = View.GONE
-              this.toolbarTitle.text = mytoolbarTitle
+              this.ivGoBack.visibility = View.INVISIBLE
 
           }
           2 ->{
-              this.logo_toolbar.visibility = View.GONE
-              this.toolbarTitle.text = mytoolbarTitle
+              this.logo_toolbar.visibility = View.INVISIBLE
+              this.ivGoBack.visibility = View.VISIBLE
           }
       }
     }
@@ -46,14 +45,13 @@ class PRToolbar(context: Context, attrs: AttributeSet?) : androidx.appcompat.wid
             R.styleable.PRToolbar,
             0, 0
         ).apply {
-            mytoolbarTitle = getString(R.styleable.PRToolbar_toolbar_title)
             toolbarType = getInt(R.styleable.PRToolbar_toolbar_type,0)
             recycle()
         }
     }
 
     companion object {
-        @BindingAdapter("toolbar_title")
+        @BindingAdapter("title_custom_toolbar")
         @JvmStatic
         fun setTitle(view: PRSpinner, toolbarTitle: String) {
             view.toolbarTitle.text = toolbarTitle

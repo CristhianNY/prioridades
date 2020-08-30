@@ -137,6 +137,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:inputType="textPassword"
             android:fontFamily="@font/slabo27pxregular"
             android:text="@={data.password}"
             android:hint="@string/write_here_yout_email"

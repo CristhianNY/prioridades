@@ -145,6 +145,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/terms_and_conditions"
+            android:onClick="@{() -> viewModel.goToTermsAndConditions()}"
             app:layout_constraintBottom_toBottomOf="@+id/term_and_conditions"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="@+id/term_and_conditions"/>

@@ -110,9 +110,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@={data.names}"
                 android:fontFamily="@font/slabo27pxregular"
                 android:hint="@string/write_your_name_here"
+                android:text="@={data.names}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvName" />
@@ -137,9 +137,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@={data.lastName}"
                 android:fontFamily="@font/slabo27pxregular"
                 android:hint="@string/write_here_lastname"
+                android:text="@={data.lastName}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
@@ -164,12 +164,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@={data.email}"
                 android:fontFamily="@font/slabo27pxregular"
                 android:hint="@string/write_here_yout_email"
+                android:text="@={data.email}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+                android:onTextChanged="@{viewModel.onTextChanged}" />
 
             <TextView
                 android:id="@+id/tvPasswordTitle"
@@ -191,10 +192,10 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="@={data.password}"
                 android:fontFamily="@font/slabo27pxregular"
                 android:hint="@string/write_here_your_password"
                 android:inputType="textPassword"
+                android:text="@={data.password}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPasswordTitle" />
@@ -220,9 +221,9 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/slabo27pxregular"
-                android:text="@={data.confirmPassword}"
                 android:hint="@string/write_here_your_password"
                 android:inputType="textPassword"
+                android:text="@={data.confirmPassword}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvConfirmPassword" />

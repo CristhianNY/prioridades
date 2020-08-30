@@ -7,6 +7,7 @@ sealed class RegisterUserState : AuthenticationState() {
     object Loading : RegisterUserState()
     object Success : RegisterUserState()
     object UserAlreadyExist : RegisterUserState()
+    object NavigateToTermsAndConditions : RegisterUserState()
     data class NavigateToRegisterStep2(
         val names: String,
         val lastNames: String,

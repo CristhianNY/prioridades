@@ -12,7 +12,8 @@ data class PreviewMagazineData(
     val magazineImage:MyLiveData<String> = MyLiveData(""),
     val magazineDate:MyLiveData<String> = MyLiveData(""),
     val magazinePdf:MyLiveData<String> = MyLiveData(""),
-    val magazineId:MyLiveData<String> = MyLiveData("")
+    val magazineId:MyLiveData<String> = MyLiveData(""),
+    val toolbar_title :MyLiveData<String> = MyLiveData("Cristhian")
 ): BaseData<PreviewMagazineState>() {
 
     override fun loading() {
