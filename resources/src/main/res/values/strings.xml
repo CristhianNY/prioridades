@@ -33,21 +33,11 @@
     <string name="title_about_us">Nosotros</string>
 
     <string name="text_with_paragraphs">
-           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
-           Adding a 2nd line like this should work.
-           It should not cause parsing errors.
-           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
-           Adding a 2nd line like this should work.
-           It should not cause parsing errors.
-           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
-           Adding a 2nd line like this should work.
-           It should not cause parsing errors.
-           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
-           Adding a 2nd line like this should work.
-           It should not cause parsing errors.
-           Can this contain a lot of text? Can it contain \n a newline? Yes, it can.
-           Adding a 2nd line like this should work.
-           It should not cause parsing errors.
+       Principios de vida al alcance de todos
+
+La misión de Prioridades es comunicar a sus lectores el profundo interés que Dios tiene de guiar, sanar y salvar a cada miembro de la raza humana.
+
+Prioridades en una publicación mensual publicada por la Iglesia Adventista del Séptimo Día, producida y distribuida por IADPA en español, inglés, francés, papiamento y holandés, con una tirada mensual de 400.000 ejemplares.
        </string>
     <string name="title_user_email">Correo electrónico</string>
     <string name="title_user_phone">Número de celular</string>
