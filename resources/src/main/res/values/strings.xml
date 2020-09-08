@@ -48,7 +48,7 @@ Prioridades en una publicación mensual publicada por la Iglesia Adventista del 
     <string name="title_contact_us">Contáctanos</string>
     <string name="title_toolbar_about_us">Nosotros</string>
     <string name="read_magazine">Leer Revista</string>
-    <string name="login_dialog">Entrar</string>
+    <string name="login_dialog">Ingresar</string>
     <string name="cancel_dialog">Cancelar Dialog</string>
     <string name="connection_error_text">Error de conexión</string>
     <string name="login_error">Debes iniciar sesión</string>
@@ -73,7 +73,8 @@ Prioridades en una publicación mensual publicada por la Iglesia Adventista del 
     <string name="error">Error</string>
     <string name="error_register_user">Ha ocurrido un error al intentar registrar el usuario</string>
     <string name="error_user_already_exist">El correo ingresado ya se encuentra registrado con nosotros</string>
-    <string name="great">Genial</string>
+    <string name="great">Bienvenido</string>
     <string name="user_registered_success">Usuario registrado correctamente</string>
     <string name="out">Salir</string>
+    <string name="enviar_correo">Enviar correo</string>
 </resources>

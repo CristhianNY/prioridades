@@ -57,10 +57,10 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
             }
             is PreviewMagazineState.SessionExpired->{
                 AlertDialog.Builder(this)
-                    .setTitle("Login requerido")
-                    .setMessage("debes hacer login para leer las revistas") // Specifying a listener allows you to take an action before dismissing the dialog.
+                    .setTitle("Registro requerido")
+                    .setMessage("Debes iniciar sesión o registrarte para leer la revista”") // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton("Entrar",
+                    .setPositiveButton("“Ingresar”",
                         DialogInterface.OnClickListener { dialog, which ->
                             val intent = Intent()
                             intent.setClassName(this, "com.cristhianbonilla.feature_login.AuthenticationActivity")
