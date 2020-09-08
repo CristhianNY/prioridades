@@ -12,6 +12,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.cristhianbonilla.feature_home.R
 import com.cristhianbonilla.feature_magazine_reader.magazineViewer.ReaderMagazineActivity
+import com.cristhianbonilla.features_home.ui.details.MagazineDetailsFragmentDirections
 import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState
 import com.cristhianbonilla.features_home.ui.home.HomeFragmentDirections
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
@@ -90,6 +91,10 @@ class HomeActivity : BaseActivity<HomeState>(R.layout.activity_home, R.navigatio
                 val intent = Intent()
                 intent.setClassName(this, "com.cristhianbonilla.feature_login.AuthenticationActivity")
                 startActivity(intent)
+            }
+
+            is PreviewMagazineState.GoBack ->{
+                innerNavigate(MagazineDetailsFragmentDirections.actionPreviewMagazineFragmentToNavigationHome())
             }
         }
     }

@@ -9,7 +9,7 @@
         android:id="@+id/my_toolbar"
         style="@style/HeaderBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:contentDescription="TODO"
-            android:visibility="visible"
-            tools:src="@drawable/ic_icon_back" />
+            android:src="@drawable/ic_icon_back" />
 
         <TextView
             android:id="@+id/toolbarTitle"

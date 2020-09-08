@@ -8,22 +8,25 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class MagazineItemEntity(
     @Json(name = "description")
-    val description: String,
+    val description: String?,
     @Json(name = "id")
-    val id: String,
+    val id: String?,
     @Json(name = "image")
-    val image: String,
+    val image: String?,
     @Json(name = "month")
-    val month: String,
+    val month: String?,
     @Json(name = "title")
-    val title: String
+    val title: String?,
+    @Json(name = "monthname")
+    val mothName: String?
 )
 
 fun MagazineItemEntity.toModel() =
     MagazineModelItem(
-        description,
-        id,
-        image,
-        month,
-        title
+        description.orEmpty(),
+        id.orEmpty(),
+        image.orEmpty(),
+        month.orEmpty(),
+        title.orEmpty(),
+        mothName.orEmpty()
     )

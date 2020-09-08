@@ -34,6 +34,9 @@ class PreviewMagazineViewModel(
         data.setFragmentContent(item)
     }
 
+    val goBack = {
+        data.onGoBack()
+    }
 
     fun getMagazinePdf() {
         data.loading()
@@ -53,17 +56,16 @@ class PreviewMagazineViewModel(
 
     }
 
-    private fun handleGetMagazinePdfFailure(failure: Failure){
-        when(failure){
-            is Failure.SessionExpired ->{
-              data.sessionExpiredState()
+    private fun handleGetMagazinePdfFailure(failure: Failure) {
+        when (failure) {
+            is Failure.SessionExpired -> {
+                data.sessionExpiredState()
             }
-            is Failure.SubscriptionNotActivated ->{
-              data.subscriptionNotActivated()
+            is Failure.SubscriptionNotActivated -> {
+                data.subscriptionNotActivated()
             }
         }
     }
-
 
 
 }
