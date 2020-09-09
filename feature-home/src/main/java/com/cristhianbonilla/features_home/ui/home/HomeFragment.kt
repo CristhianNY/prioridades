@@ -16,9 +16,7 @@ class HomeFragment : BaseFragment<
         FragmentHomeBinding>(R.layout.fragment_home, BR.viewModel, BR.data) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
+        viewModel.getKeyWord()
         super.onCreate(savedInstanceState)
     }
 
@@ -31,7 +29,7 @@ class HomeFragment : BaseFragment<
 
         if (savedInstanceState == null) {
             viewModel.getMagazineList()
-        }else{
+        } else {
             savedInstanceState?.let { inState ->
                 (inState["magazine_list"] as ArrayList<MagazineModelItem>)?.let { magazineList ->
                     viewModel.savedMagazineList(

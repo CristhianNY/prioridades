@@ -19,6 +19,7 @@ import com.cristhianbonilla.prioridades.di.presentation.details.magazineDetailsM
 import com.cristhianbonilla.prioridades.di.presentation.home.homeModule
 import com.cristhianbonilla.prioridades.di.presentation.profile.profilePresentationModule
 import com.cristhianbonilla.prioridades.di.presentation.register.registerUserModule
+import com.cristhianbonilla.prioridades.di.presentation.search.searchModule
 import org.koin.core.module.Module
 
 internal fun getModules() = mutableListOf<Module>().apply {
@@ -61,5 +62,6 @@ private fun getCoreModule()=
         networkModule,
         authenticationDataModule,
         securityModule,
-        authenticationDomainModule
+        authenticationDomainModule,
+        searchModule
     )

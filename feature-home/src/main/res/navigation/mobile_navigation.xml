@@ -14,6 +14,9 @@
             android:id="@+id/action_navigation_home_to_previewMagazineFragment"
             app:destination="@id/previewMagazineFragment"
             app:enterAnim="@android:anim/slide_in_left" />
+        <action
+            android:id="@+id/action_navigation_home_to_searchDialogFragment2"
+            app:destination="@id/searchDialogFragment" />
     </fragment>
 
     <fragment
@@ -36,6 +39,16 @@
             app:argType="com.cristhianbonilla.domain.model.home.MagazineModelItem" />
         <action
             android:id="@+id/action_previewMagazineFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/searchDialogFragment"
+        android:name="com.cristhianbonilla.features_home.ui.search.SearchDialogFragment"
+        android:label="SearchDialogFragment" >
+        <action
+            android:id="@+id/action_searchDialogFragment_to_navigation_home2"
             app:destination="@id/navigation_home"
             app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="true"/>

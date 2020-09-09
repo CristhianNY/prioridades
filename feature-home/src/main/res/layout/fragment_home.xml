@@ -39,6 +39,7 @@
                 app:contentInsetLeft="0dp"
                 app:contentInsetRight="0dp"
                 app:contentInsetStart="0dp"
+                app:go_to_search="@{viewModel.goToSearch}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -48,13 +49,13 @@
             <com.cristhianbonilla.custom_views.widget.PRMagazineRecyclerView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:magazine_list="@{data.magazineList}"
                 app:item_clicked="@{viewModel.magazineItemClick}"
                 app:layout_constrainedHeight="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/myCustomToolbar"/>
+                app:layout_constraintTop_toBottomOf="@+id/myCustomToolbar"
+                app:magazine_list="@{data.magazineList}" />
 
 
             <com.cristhianbonilla.custom_views.widget.PRLoader

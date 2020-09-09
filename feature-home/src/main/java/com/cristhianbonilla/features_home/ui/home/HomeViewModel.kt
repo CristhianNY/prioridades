@@ -1,7 +1,9 @@
 package com.cristhianbonilla.features_home.ui.home
 
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import com.cristhianbonilla.custom_views.widget.prradio.PRRadioGroupListener
 import com.cristhianbonilla.domain.model.home.MagazineModel
@@ -14,6 +16,9 @@ import com.cristhianbonilla.domain.usecase.keywords.GetKeyWordsUseCase
 import com.cristhianbonilla.foundations.base.BaseViewModel
 import com.cristhianbonilla.foundations.extensions.context
 import com.cristhianbonilla.foundations.extensions.execute
+import java.util.*
+import java.util.stream.Collectors
+import kotlin.collections.ArrayList
 
 class HomeViewModel(
     scope: Scope,
@@ -34,11 +39,16 @@ class HomeViewModel(
     val onYearItemClick: (String) -> Unit = { clickType ->
         Toast.makeText(context, clickType, Toast.LENGTH_LONG).show()
     }
+
     val magazineItemClick: (MagazineModelItem) -> Unit = { itemClicked ->
         data.onMagazineItemClicked(itemClicked)
     }
 
     var yearListener: MutableLiveData<PRRadioGroupListener> = MutableLiveData()
+
+    val goToSearch = {
+        data.updateStateToSearch()
+    }
 
     fun getKeyWord() {
         data.loading()
@@ -81,12 +91,24 @@ class HomeViewModel(
         data.submitMagazineList(magazineList)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun handleKeyWords(keywords: KeyWordModel) {
         val keyWordsString = ArrayList<String>()
         keywords.keywordList.forEach {
             keyWordsString.add(it.name)
         }
+
+        val years = ArrayList<String>()
+
+        for (year in 1930 until  Calendar.getInstance().get(Calendar.YEAR)+1) {
+            years.add(year.toString())
+        }
+
+        keyWordsString.removeIf(String::isEmpty)
+
+        keyWordsString.add(0,"Palabra clave")
         data.submitKeyWords(keyWordsString)
+        data.submitYearsList(years.reversed())
         data.submitLastFourYear()
         yearListener.postValue(impl)
     }

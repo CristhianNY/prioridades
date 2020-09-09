@@ -24,3 +24,18 @@ private fun <S : BaseState,
         VM : BaseViewModel<S, UI, T>,
         DB : ViewDataBinding> BaseFragment<S, UI, T, VM, DB>.getViewModelClass(): KClass<VM> =
     ((javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[INDEX_BASE_VIEW_MODEL] as Class<VM>).kotlin
+
+internal fun <S : BaseState,
+        UI : BaseData<S>,
+        T : BaseTracker,
+        VM : BaseViewModel<S, UI, T>,
+        DB : ViewDataBinding> BaseFragmentDialog<S, UI, T, VM, DB>.injectViewModel() =
+    lifecycleScope.getViewModel(this, getViewModelClass())
+
+@Suppress("UNCHECKED_CAST")
+private fun <S : BaseState,
+        UI : BaseData<S>,
+        T : BaseTracker,
+        VM : BaseViewModel<S, UI, T>,
+        DB : ViewDataBinding> BaseFragmentDialog<S, UI, T, VM, DB>.getViewModelClass(): KClass<VM> =
+    ((javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[INDEX_BASE_VIEW_MODEL] as Class<VM>).kotlin

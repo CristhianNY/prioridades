@@ -6,6 +6,5 @@ import com.cristhianbonilla.domain.model.countries.CountryModel
 import com.cristhianbonilla.domain.model.keywords.KeyWordModel
 
 interface KeyWordsRepository {
-
     suspend fun getKeyWordsList(): Result<Failure, KeyWordModel>
 }

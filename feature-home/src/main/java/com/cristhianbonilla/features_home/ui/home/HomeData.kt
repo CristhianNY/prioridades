@@ -13,9 +13,10 @@ import kotlin.collections.ArrayList
 class HomeData(
     var magazineList: MyLiveData<ArrayList<MagazineModelItem>> = MyLiveData(ArrayList()),
     var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
-    var lastYears: MyLiveData<List<String>> = MyLiveData(mutableListOf())
+    var lastYears: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
+    var listYears: MyLiveData<List<String>> = MyLiveData(mutableListOf())
 
-    ) : BaseData<HomeMagazineState>() {
+) : BaseData<HomeMagazineState>() {
 
     override fun loading() {
         super.loading()
@@ -33,19 +34,27 @@ class HomeData(
         updateState(Success)
     }
 
-    fun onMagazineItemClicked(magazineModelItem: MagazineModelItem){
+    fun onMagazineItemClicked(magazineModelItem: MagazineModelItem) {
         updateState(NavigateToMagazineDetails(magazineModelItem))
     }
 
     fun submitMagazineList(magazine: ArrayList<MagazineModelItem>) {
-        with(magazineList){
+        with(magazineList) {
             clearState()
         }
         magazineList update magazine
     }
 
+    fun updateStateToSearch() {
+        updateState(Search(keyWordList.value, listYears.value))
+    }
+
     fun submitKeyWords(keyWords: List<String>) {
         keyWordList update keyWords
+    }
+
+    fun submitYearsList(yearsList: List<String>) {
+        listYears update yearsList
     }
 
     fun submitLastFourYear() {

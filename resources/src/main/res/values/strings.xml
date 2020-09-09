@@ -77,4 +77,6 @@ Prioridades en una publicación mensual publicada por la Iglesia Adventista del 
     <string name="user_registered_success">Usuario registrado correctamente</string>
     <string name="out">Salir</string>
     <string name="enviar_correo">Enviar correo</string>
+    <string name="buscar">Buscar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

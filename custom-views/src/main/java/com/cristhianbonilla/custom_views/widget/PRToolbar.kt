@@ -23,6 +23,7 @@ class PRToolbar(context: Context, attrs: AttributeSet?) :
         when (toolbarType) {
             0 -> {
                 this.ivGoBack.visibility = View.GONE
+                this.ivSearch.visibility = View.VISIBLE
             }
             1 -> {
                 this.logo_toolbar.visibility = View.GONE
@@ -38,6 +39,11 @@ class PRToolbar(context: Context, attrs: AttributeSet?) :
 
     fun setGoBackListener(action: () -> Unit): PRToolbar {
         ivGoBack.setOnClickListener { action() }
+        return this
+    }
+
+    fun setGoSearchListener(action: () -> Unit): PRToolbar {
+        ivSearch.setOnClickListener { action() }
         return this
     }
 
@@ -65,6 +71,12 @@ class PRToolbar(context: Context, attrs: AttributeSet?) :
         @JvmStatic
         fun onClickLinked(view: PRToolbar, onClickLink: () -> Unit) {
             view.setGoBackListener(onClickLink)
+        }
+
+        @BindingAdapter("go_to_search")
+        @JvmStatic
+        fun onSearchClick(view: PRToolbar, onClickLink: () -> Unit) {
+            view.setGoSearchListener(onClickLink)
         }
     }
 

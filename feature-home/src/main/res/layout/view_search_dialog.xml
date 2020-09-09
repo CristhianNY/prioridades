@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <com.cristhianbonilla.custom_views.widget.PRSpinner
+        android:id="@+id/keyWordSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog" />
+
+    <com.cristhianbonilla.custom_views.widget.PRSpinner
+        android:id="@+id/yearsSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dialog" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialogCancelBtn"
+            android:layout_marginRight="10dp"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:background="@drawable/rond_butto"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar" />
+
+        <Button
+            android:id="@+id/dialogLoginBtn"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rond_butto"
+            android:text="@string/buscar" />
+    </LinearLayout>
+
+</LinearLayout>
