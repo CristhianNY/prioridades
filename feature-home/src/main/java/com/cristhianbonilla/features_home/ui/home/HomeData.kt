@@ -14,7 +14,10 @@ class HomeData(
     var magazineList: MyLiveData<ArrayList<MagazineModelItem>> = MyLiveData(ArrayList()),
     var keyWordList: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
     var lastYears: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
-    var listYears: MyLiveData<List<String>> = MyLiveData(mutableListOf())
+    var listYears: MyLiveData<List<String>> = MyLiveData(mutableListOf()),
+    var isEmpty:MyLiveData<Boolean> = MyLiveData(false),
+    var showMagazineList:MyLiveData<Boolean> = MyLiveData(true),
+    var infoListMagazineEmpty:MyLiveData<String>  = MyLiveData("Lo sentimos, no tenemos revistas con sus direcciones")
 
 ) : BaseData<HomeMagazineState>() {
 
@@ -47,6 +50,15 @@ class HomeData(
 
     fun updateStateToSearch() {
         updateState(Search(keyWordList.value, listYears.value))
+    }
+
+    fun showEmptyState(){
+        isEmpty update true
+        showMagazineList update false
+    }
+    fun hideEmptyState(){
+        isEmpty update false
+        showMagazineList update true
     }
 
     fun submitKeyWords(keyWords: List<String>) {

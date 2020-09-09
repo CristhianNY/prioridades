@@ -17,7 +17,6 @@ import com.cristhianbonilla.foundations.base.BaseViewModel
 import com.cristhianbonilla.foundations.extensions.context
 import com.cristhianbonilla.foundations.extensions.execute
 import java.util.*
-import java.util.stream.Collectors
 import kotlin.collections.ArrayList
 
 class HomeViewModel(
@@ -61,7 +60,7 @@ class HomeViewModel(
         }
     }
 
-    fun getMagazineList(year: String,keyWord: String) {
+    fun getMagazineList(year: String, keyWord: String) {
         data.loading()
         execute {
             getMagazineListUseCase(GetMagazineListUseCase.Params(year, keyWord)).fold(
@@ -73,7 +72,7 @@ class HomeViewModel(
 
     private fun handleGetMagazineFailure() {
         data.error()
-        Log.d("Error al traer revisas", "Error Al traer magazines")
+        data.showEmptyState()
     }
 
     private fun handleMagazineListSuccess(magazineList: MagazineModel) {
@@ -83,8 +82,10 @@ class HomeViewModel(
 
             magazineArrayList.add(magazine)
         }
-
         data.submitMagazineList(magazineArrayList)
+        data.hideEmptyState()
+
+
     }
 
     fun savedMagazineList(magazineList: ArrayList<MagazineModelItem>) {
@@ -100,13 +101,13 @@ class HomeViewModel(
 
         val years = ArrayList<String>()
 
-        for (year in 1930 until  Calendar.getInstance().get(Calendar.YEAR)+1) {
+        for (year in 1930 until Calendar.getInstance().get(Calendar.YEAR) + 1) {
             years.add(year.toString())
         }
 
         keyWordsString.removeIf(String::isEmpty)
 
-        keyWordsString.add(0,"Palabra clave")
+        keyWordsString.add(0, "Palabra clave")
         data.submitKeyWords(keyWordsString)
         data.submitYearsList(years.reversed())
         data.submitLastFourYear()

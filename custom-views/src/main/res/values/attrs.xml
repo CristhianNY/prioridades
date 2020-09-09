@@ -14,6 +14,10 @@
     </declare-styleable>
 
     <declare-styleable name="PREmptyState">
+        <attr name="empty_state_type" format="enum">
+        <enum name="with_buttom" value="0" />
+        <enum name="witout_buttom" value="1" />
+        </attr>
         <attr name="emptystate_message" format="string" />
         <attr name="emptystate_icon" format="reference|integer" />
         <attr name="emptystate_link" format="string" />

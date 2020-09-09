@@ -53,6 +53,7 @@ Prioridades en una publicación mensual publicada por la Iglesia Adventista del 
     <string name="connection_error_text">Error de conexión</string>
     <string name="login_error">Debes iniciar sesión</string>
     <string name="session_title">Usuario no identificado</string>
+    <string name="magazines_not_found">Revistas no encontradas</string>
     <string name="no_existen_revistas_para_mostrar">No existen revistas para mostrar</string>
     <string name="enter">Entrar</string>
 

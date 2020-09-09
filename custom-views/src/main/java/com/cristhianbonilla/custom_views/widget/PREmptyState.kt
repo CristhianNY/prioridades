@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
@@ -11,6 +12,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.cristhianbonilla.custom_views.R
 import kotlinx.android.synthetic.main.view_pr_empty_state.view.*
+import kotlinx.android.synthetic.main.view_toolbar.view.*
 import kotlin.properties.Delegates
 
 
@@ -20,6 +22,8 @@ class PREmptyState @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
+
+    private var type: Int? = null
 
     private var linkEmptyState by Delegates.observable<CharSequence>("") { _, _, text ->
         btnEmptyStateLink.text = text
@@ -38,10 +42,21 @@ class PREmptyState @JvmOverloads constructor(
     private fun initialize(attrs: AttributeSet?) {
         initView()
         loadAttrs(attrs)
+        style()
+    }
+
+    private fun style() {
+        when (type) {
+            1 -> {
+                btnEmptyStateLink.visibility = View.GONE
+            }
+        }
     }
 
     private fun loadAttrs(attrs: AttributeSet?) {
         with(context.obtainStyledAttributes(attrs, R.styleable.PREmptyState, 0, 0)) {
+
+            type = getInt(R.styleable.PREmptyState_empty_state_type, 0)
 
             lbEmptyStateMessage.text = resources.getText(
                 getResourceId(R.styleable.PREmptyState_emptystate_message, -1), ""
