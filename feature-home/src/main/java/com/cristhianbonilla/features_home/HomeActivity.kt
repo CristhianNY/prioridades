@@ -7,7 +7,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.LayoutInflater
-import androidx.fragment.app.DialogFragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,10 +18,10 @@ import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState
 import com.cristhianbonilla.features_home.ui.home.HomeFragmentDirections
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
 import com.cristhianbonilla.features_home.ui.perfil.ProfileState
-import com.cristhianbonilla.features_home.ui.search.SearchDialogFragment
 import com.cristhianbonilla.foundations.base.BaseActivity
 import com.cristhianbonilla.foundations.base.BaseState
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.view_search_dialog.*
 import kotlinx.android.synthetic.main.view_search_dialog.view.*
 
 
@@ -113,7 +112,7 @@ class HomeActivity : BaseActivity<HomeState>(
             }
 
             is PreviewMagazineState.GoBack -> {
-                innerNavigate(MagazineDetailsFragmentDirections.actionPreviewMagazineFragmentToNavigationHome())
+                innerNavigate(MagazineDetailsFragmentDirections.actionPreviewMagazineFragmentToNavigationHome("",""))
             }
 
             is HomeMagazineState.Search -> {
@@ -128,16 +127,20 @@ class HomeActivity : BaseActivity<HomeState>(
                 mDialogView.keyWordSpinner.setElements(state.keyWords)
                 mDialogView.yearsSpinner.setElements(state.years)
                 mDialogView.dialogLoginBtn.setOnClickListener {
+                    var keyWord: String = mDialogView.keyWordSpinner.selectedItem.toString()
+                    if(keyWord=="Palabra clave"){
+                        keyWord = ""
+                    }
 
+                    val year: String =  mDialogView.yearsSpinner.selectedItem.toString()
                     mAlertDialog.dismiss()
+                    innerNavigate(HomeFragmentDirections.actionNavigationHomeSelf(year,keyWord))
                 }
 
                 mDialogView.dialogCancelBtn.setOnClickListener {
                     //dismiss dialog
                     mAlertDialog.dismiss()
                 }
-
-
             }
         }
     }

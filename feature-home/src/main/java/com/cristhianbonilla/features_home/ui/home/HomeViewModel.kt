@@ -61,10 +61,10 @@ class HomeViewModel(
         }
     }
 
-    fun getMagazineList() {
+    fun getMagazineList(year: String,keyWord: String) {
         data.loading()
         execute {
-            getMagazineListUseCase(GetMagazineListUseCase.Params("", "")).fold(
+            getMagazineListUseCase(GetMagazineListUseCase.Params(year, keyWord)).fold(
                 { handleGetMagazineFailure() },
                 ::handleMagazineListSuccess
             )
