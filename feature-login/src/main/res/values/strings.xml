@@ -2,7 +2,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_title">Iniciar sesión</string>
-    <string name="write_your_name_here">Escribe aquí tu nombre</string>
+    <string name="write_your_name_here"><font size="15">Escribe aquí tu nombre</font></string>
 
     <string-array name="country_code">
         <item></item>
