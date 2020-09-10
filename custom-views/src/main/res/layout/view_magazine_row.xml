@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/margin_4">
+
     <ImageView
         android:id="@+id/ivMagazine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_image_register"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/monthOfMagazine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/month_background"
-        android:includeFontPadding="false"
-        android:text="Year"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:textSize="14sp"
-        android:textColor="@color/withe_color"
         android:fontFamily="@font/poppinsbold"
         android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:includeFontPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="Year"
+        android:textColor="@color/withe_color"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMagazine" />
+
+    <com.cristhianbonilla.custom_views.widget.PRLoader
+        android:id="@+id/progressImageBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

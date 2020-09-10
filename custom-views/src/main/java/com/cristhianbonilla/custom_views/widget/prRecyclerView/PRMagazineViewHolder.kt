@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.cristhianbonilla.domain.model.home.MagazineModelItem
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_magazine_row.view.*
+import java.lang.Exception
 
 class PRMagazineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -18,8 +19,19 @@ class PRMagazineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         position: Int,
         magazineItemListener: (MagazineModelItem) -> Unit
     ) {
-        itemView.monthOfMagazine.text = item.monthName.trim().capitalize()
-        Picasso.get().load(item.image).into(itemView.ivMagazine)
+
+        itemView.progressImageBar.visibility = View.VISIBLE
+        Picasso.get().load(item.image).into(itemView.ivMagazine, object :com.squareup.picasso.Callback{
+            override fun onSuccess() {
+               itemView.progressImageBar.visibility = View.GONE
+                itemView.monthOfMagazine.text = item.monthName.trim().capitalize()
+            }
+
+            override fun onError(e: Exception?) {
+                itemView.monthOfMagazine.visibility = View.GONE
+            }
+
+        })
 
         itemView.ivMagazine.setOnClickListener {
             magazineItemListener.invoke(item)

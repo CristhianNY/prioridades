@@ -50,7 +50,6 @@ class HomeViewModel(
     }
 
     fun getKeyWord() {
-        data.loading()
         execute {
             getKeyWordsUseCase(UseCase.None).fold(
                 {
