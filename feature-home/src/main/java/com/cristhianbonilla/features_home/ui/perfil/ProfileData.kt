@@ -39,7 +39,7 @@ class ProfileData(
     }
 
     fun setFragmentContent(user: UserModel) {
-        fullName update user.user?.nombres.orEmpty()
+        fullName update user.user?.nombres.orEmpty() + user.user?.apellidos.orEmpty()
         email update user.user?.email.orEmpty()
         phone update user.user?.telefono.orEmpty()
         country update user.user?.pais.orEmpty()
