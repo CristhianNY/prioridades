@@ -7,4 +7,5 @@ sealed class ProfileState : HomeState() {
     object Loading : ProfileState()
     object Success : ProfileState()
     object LoginRequired : ProfileState()
+    object RenewSubscription : ProfileState()
 }

@@ -38,10 +38,12 @@ class ProfileViewModel(
         }
     }
 
+    fun goToRenew(){
+        data.updateStateToRenewSubscription()
+    }
 
     fun doLogout(){
         execute {
-
             doLogoutUseCase(UseCase.None).fold(
                 ::handleErrorLogout,
                 ::handleSuccesLogout

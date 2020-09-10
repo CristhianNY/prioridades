@@ -181,17 +181,29 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvUserCity" />
 
             <TextView
-                android:id="@+id/tvUserLastSubscription"
+            android:id="@+id/tvUserLastSubscription"
+            custom_visibility="@{data.showContent}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/librarygothic"
+            android:text="@{data.subscription}"
+            android:textColor="@color/color_red_divider"
+            android:textSize="@dimen/title_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleLastSubscription" />
+            <TextView
                 custom_visibility="@{data.showContent}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_16"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/librarygothic"
-                android:text="@{data.subscription}"
                 android:textColor="@color/color_red_divider"
-                android:textSize="@dimen/title_profile"
+                android:fontFamily="@font/librarygothicbold"
+                android:text="@string/renew_subscription"
+                android:onClick="@{() -> viewModel.goToRenew()}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitleLastSubscription" />
+                app:layout_constraintTop_toBottomOf="@+id/tvUserLastSubscription" />
 
             <Button
                 style="@style/newbuttonstyle"

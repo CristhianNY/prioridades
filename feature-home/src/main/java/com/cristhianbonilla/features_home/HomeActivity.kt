@@ -111,8 +111,20 @@ class HomeActivity : BaseActivity<HomeState>(
                 startActivity(intent)
             }
 
+            is ProfileState.RenewSubscription -> {
+                val url = "https://tuiadpa.com/producto/prioridades-suscripcion-anual/"
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(url)
+                startActivity(i)
+            }
+
             is PreviewMagazineState.GoBack -> {
-                innerNavigate(MagazineDetailsFragmentDirections.actionPreviewMagazineFragmentToNavigationHome("",""))
+                innerNavigate(
+                    MagazineDetailsFragmentDirections.actionPreviewMagazineFragmentToNavigationHome(
+                        "",
+                        ""
+                    )
+                )
             }
 
             is HomeMagazineState.Search -> {
@@ -128,13 +140,13 @@ class HomeActivity : BaseActivity<HomeState>(
                 mDialogView.yearsSpinner.setElements(state.years)
                 mDialogView.dialogLoginBtn.setOnClickListener {
                     var keyWord: String = mDialogView.keyWordSpinner.selectedItem.toString()
-                    if(keyWord=="Palabra clave"){
+                    if (keyWord == "Palabra clave") {
                         keyWord = ""
                     }
 
-                    val year: String =  mDialogView.yearsSpinner.selectedItem.toString()
+                    val year: String = mDialogView.yearsSpinner.selectedItem.toString()
                     mAlertDialog.dismiss()
-                    innerNavigate(HomeFragmentDirections.actionNavigationHomeSelf(year,keyWord))
+                    innerNavigate(HomeFragmentDirections.actionNavigationHomeSelf(year, keyWord))
                 }
 
                 mDialogView.dialogCancelBtn.setOnClickListener {

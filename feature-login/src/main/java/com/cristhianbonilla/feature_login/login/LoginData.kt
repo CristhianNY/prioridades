@@ -26,7 +26,9 @@ data class LoginData(
     fun userAlreadyLogged(){
         this updateState LoginState.UserAlreadyLogged
     }
-
+    fun updateStateToForgotPassword(){
+       this updateState LoginState.ForgotPassWord
+    }
     fun registerState(){
         this updateState LoginState.RegisterUser
     }

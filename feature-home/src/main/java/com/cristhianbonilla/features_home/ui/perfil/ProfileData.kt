@@ -46,8 +46,12 @@ class ProfileData(
         subscription update user.user?.fechaFin.orEmpty()
     }
 
-    fun updateStateToLoginRequired(){
+    fun updateStateToLoginRequired() {
         this updateState ProfileState.LoginRequired
+    }
+
+    fun updateStateToRenewSubscription() {
+        this updateState ProfileState.RenewSubscription
     }
 
     fun updateErrorMessage(@StringRes errorMessage: Int) {

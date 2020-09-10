@@ -71,6 +71,12 @@ class AuthenticationActivity : BaseActivity<AuthenticationState>(R.layout.activi
                 )
             }
 
+            is LoginState.ForgotPassWord ->{
+                val browserIntent =
+                    Intent(Intent.ACTION_VIEW, Uri.parse("https://revistaprioridades.com/recordar-clave.php"))
+                startActivity(browserIntent)
+            }
+
             is RegisterUserState.NavigateToTermsAndConditions->{
                 val browserIntent =
                     Intent(Intent.ACTION_VIEW, Uri.parse("https://tuiadpa.com/proteccion-de-datos-personales/"))

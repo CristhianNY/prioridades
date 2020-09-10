@@ -15,6 +15,7 @@
     <string name="login_btb_title">Iniciar Sesión</string>
     <string name="forgot_password_title"><u>¿Olvidaste la contraseña?</u></string>
     <string name="terms_and_conditions"><u>Terminos y condiciones</u></string>
+    <string name="renew_subscription"><u>Renovar subscripción</u></string>
     <string name="last_name_title">Apellidos</string>
     <string name="write_here_lastname"><font size="15">Escribe aquí tus apellidos</font></string>
     <string name="write_here_your_password"><font size="15">Escribe aquí tu contraseña</font></string>
@@ -80,4 +81,5 @@ Prioridades en una publicación mensual publicada por la Iglesia Adventista del 
     <string name="enviar_correo">Enviar correo</string>
     <string name="buscar">Buscar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="renovar">renovar</string>
 </resources>

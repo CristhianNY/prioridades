@@ -29,6 +29,10 @@ class LoginViewModel(
         }
     }
 
+    fun goToForgotPassword(){
+        data.updateStateToForgotPassword()
+    }
+
     private fun handleLoginSuccess(none: UseCase.None) {
         tracker.viewDisplayed()
         data.userAlreadyLogged()

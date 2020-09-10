@@ -8,4 +8,5 @@ sealed class LoginState : AuthenticationState() {
     object SuccessLogin : LoginState()
     object UserAlreadyLogged : LoginState()
     object RegisterUser : LoginState()
+    object ForgotPassWord : LoginState()
 }
