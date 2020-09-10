@@ -10,5 +10,6 @@ data class MagazineModelItem(
     val image: String,
     val month: String,
     val title: String,
-    val monthName:String
+    val monthName:String,
+    val year:String
 ):Parcelable

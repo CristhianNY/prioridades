@@ -18,7 +18,7 @@ class PRMagazineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         position: Int,
         magazineItemListener: (MagazineModelItem) -> Unit
     ) {
-        itemView.monthOfMagazine.text = item.month.trim()
+        itemView.monthOfMagazine.text = item.monthName.trim().capitalize()
         Picasso.get().load(item.image).into(itemView.ivMagazine)
 
         itemView.ivMagazine.setOnClickListener {

@@ -10,6 +10,7 @@
             <enum name="LOGO" value="0" />
             <enum name="TITLE" value="1" />
             <enum name="TITLE_BACK" value="2" />
+            <enum name="LOGO_ONLY" value="3" />
         </attr>
     </declare-styleable>
 

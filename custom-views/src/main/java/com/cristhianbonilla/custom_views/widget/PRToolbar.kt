@@ -30,6 +30,10 @@ class PRToolbar(context: Context, attrs: AttributeSet?) :
                 this.ivGoBack.visibility = View.INVISIBLE
 
             }
+            3 -> {
+                this.ivGoBack.visibility = View.GONE
+                this.ivSearch.visibility = View.GONE
+            }
         }
     }
 

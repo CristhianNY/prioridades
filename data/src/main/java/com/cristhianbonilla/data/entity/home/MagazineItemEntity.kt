@@ -18,7 +18,9 @@ data class MagazineItemEntity(
     @Json(name = "title")
     val title: String?,
     @Json(name = "monthname")
-    val mothName: String?
+    val mothName: String?,
+    @Json(name = "year")
+    val year: String?
 )
 
 fun MagazineItemEntity.toModel() =
@@ -28,5 +30,6 @@ fun MagazineItemEntity.toModel() =
         image.orEmpty(),
         month.orEmpty(),
         title.orEmpty(),
-        mothName.orEmpty()
+        mothName.orEmpty(),
+        year.orEmpty()
     )

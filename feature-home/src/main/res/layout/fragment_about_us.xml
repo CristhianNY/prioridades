@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:toolbar_type="TITLE" />
+            app:toolbar_type="LOGO_ONLY" />
 
         <ImageView
             android:id="@+id/tvUserName"

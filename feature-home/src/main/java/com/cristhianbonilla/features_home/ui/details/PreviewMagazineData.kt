@@ -29,7 +29,7 @@ data class PreviewMagazineData(
     fun setFragmentContent(item: MagazineModelItem) {
         magazineDescription update item.description
         magazineImage update item.image
-        magazineDate update item.month + " " + item.monthName
+        magazineDate update item.monthName + " " + item.year
         magazineId update item.id
     }
 
