@@ -22,7 +22,7 @@
     <string name="password">Contraseña</string>
     <string name="confirm_password"><font size="15">Confirmar Contraseña</font></string>
     <string name="btn_next_register">Siguiente</string>
-    <string name="write_here_your_phone_number"><font size="10">Celular</font></string>
+    <string name="write_here_your_phone_number"><font size="15">Celular</font></string>
     <string name="phone_number">Celular</string>
     <string name="country">País</string>
     <string name="city">Ciudad</string>
