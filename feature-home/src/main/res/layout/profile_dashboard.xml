@@ -220,7 +220,6 @@
                 app:emptystate_errorHeader="@string/session_title"
                 app:emptystate_icon="@drawable/ic_error_state"
                 app:emptystate_link="@string/enter"
-                app:emptystate_message="@{data.errorMessage}"
                 app:emptystate_onClickLink="@{viewModel.retry}" />
 
             <com.cristhianbonilla.custom_views.widget.PRLoader
