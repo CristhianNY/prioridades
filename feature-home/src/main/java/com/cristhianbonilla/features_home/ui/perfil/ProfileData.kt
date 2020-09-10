@@ -34,6 +34,7 @@ class ProfileData(
 
     override fun error() {
         super.error()
+        showContent update (false)
         this updateState ProfileState.Error
     }
 

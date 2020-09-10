@@ -18,4 +18,10 @@ class ProfileFragment : BaseFragment<
         viewModel.getUserInformation()
         super.onViewCreated(view, savedInstanceState)
     }
+
+    override fun onResume() {
+        viewModel.getUserInformation()
+        super.onResume()
+
+    }
 }

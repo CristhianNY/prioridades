@@ -14,7 +14,7 @@
     <string name="write_here_yout_email"><font size="15">Escribe aquí tu correo electronico</font></string>
     <string name="login_btb_title">Iniciar Sesión</string>
     <string name="forgot_password_title"><u>¿Olvidaste la contraseña?</u></string>
-    <string name="terms_and_conditions"><u>Terminos y condiciones</u></string>
+    <string name="terms_and_conditions"><u>Acepto Términos y condiciones</u></string>
     <string name="renew_subscription"><u>Renovar subscripción</u></string>
     <string name="last_name_title">Apellidos</string>
     <string name="write_here_lastname"><font size="15">Escribe aquí tus apellidos</font></string>
