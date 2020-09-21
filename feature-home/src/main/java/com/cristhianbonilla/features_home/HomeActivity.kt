@@ -21,7 +21,6 @@ import com.cristhianbonilla.features_home.ui.perfil.ProfileState
 import com.cristhianbonilla.foundations.base.BaseActivity
 import com.cristhianbonilla.foundations.base.BaseState
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.view_search_dialog.*
 import kotlinx.android.synthetic.main.view_search_dialog.view.*
 
 
@@ -63,41 +62,40 @@ class HomeActivity : BaseActivity<HomeState>(
 
             is PreviewMagazineState.NavigateToMagazineReader -> {
                 val intent = Intent(baseContext, ReaderMagazineActivity::class.java)
-                intent.putExtra("URL_MAGAZINE", state.pdfMagazineUrl)
+                intent.putExtra(TAG_MAGAZINE, state.pdfMagazineUrl)
                 startActivity(intent)
             }
 
             is PreviewMagazineState.SessionExpired -> {
                 AlertDialog.Builder(this)
-                    .setTitle("Registro requerido")
-                    .setMessage("Debes iniciar sesión o registrarte para leer la revista”") // Specifying a listener allows you to take an action before dismissing the dialog.
+                    .setTitle(getString(R.string.register_required))
+                    .setMessage(R.string.should_be_log_in) // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton("“Ingresar”",
+                    .setPositiveButton(R.string.enter_login,
                         DialogInterface.OnClickListener { dialog, which ->
                             val intent = Intent()
                             intent.setClassName(
                                 this,
-                                "com.cristhianbonilla.feature_login.AuthenticationActivity"
+                                ACTIVITY_AUTHENTICATION
                             )
                             startActivity(intent)
                         }) // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton("Cancelar", null)
+                    .setNegativeButton(getString(R.string.cancel), null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show()
             }
             is PreviewMagazineState.SubscriptionNotActivated -> {
                 AlertDialog.Builder(this)
-                    .setTitle("Subscripción")
-                    .setMessage("Subscripción no activa") // Specifying a listener allows you to take an action before dismissing the dialog.
+                    .setTitle(R.string.subcription)
+                    .setMessage(R.string.subscription_not_active) // Specifying a listener allows you to take an action before dismissing the dialog.
                     // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton("Renovar",
+                    .setPositiveButton(R.string.renew,
                         DialogInterface.OnClickListener { dialog, which ->
-                            val url = "https://tuiadpa.com/producto/prioridades-suscripcion-anual/"
                             val i = Intent(Intent.ACTION_VIEW)
-                            i.data = Uri.parse(url)
+                            i.data = Uri.parse(WEB_SUBSCRIPTION)
                             startActivity(i)
                         }) // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton("Cancelar", null)
+                    .setNegativeButton(R.string.cancel, null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show()
             }
@@ -106,15 +104,14 @@ class HomeActivity : BaseActivity<HomeState>(
                 val intent = Intent()
                 intent.setClassName(
                     this,
-                    "com.cristhianbonilla.feature_login.AuthenticationActivity"
+                    ACTIVITY_AUTHENTICATION
                 )
                 startActivity(intent)
             }
 
             is ProfileState.RenewSubscription -> {
-                val url = "https://tuiadpa.com/producto/prioridades-suscripcion-anual/"
                 val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(url)
+                i.data = Uri.parse(WEB_SUBSCRIPTION)
                 startActivity(i)
             }
 
@@ -133,7 +130,7 @@ class HomeActivity : BaseActivity<HomeState>(
 
                 val mBuilder = AlertDialog.Builder(this)
                     .setView(mDialogView)
-                    .setTitle("Buscar Revistas")
+                    .setTitle(R.string.search_magazine)
 
                 val mAlertDialog = mBuilder.show()
                 mDialogView.keyWordSpinner.setElements(state.keyWords)
@@ -180,6 +177,13 @@ class HomeActivity : BaseActivity<HomeState>(
                 else -> R.id.navigation_home
             }
         )
+    }
+
+    companion object {
+        const val ACTIVITY_AUTHENTICATION =
+            "com.cristhianbonilla.feature_login.AuthenticationActivity"
+        const val WEB_SUBSCRIPTION = "https://tuiadpa.com/producto/prioridades-suscripcion-anual/"
+        const val TAG_MAGAZINE = "URL_MAGAZINE"
     }
 }
 

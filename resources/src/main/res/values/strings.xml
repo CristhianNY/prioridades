@@ -83,4 +83,22 @@ Prioridades en una publicación mensual publicada por la Iglesia Adventista del 
     <string name="cancelar">Cancelar</string>
     <string name="renovar">renovar</string>
     <string name="nombres">Nombres</string>
+
+
+    <!-- Exceptions -->
+    <string name="register_required">Registro requerido</string>
+    <string name="should_be_log_in">Debes iniciar sesión o registrarte para leer la revista</string>
+    <string name="enter_login">Ingresar</string>
+
+
+    <!-- Subcription-->
+    <string name="search_magazine">Buscar Revistas</string>
+    <string name="cancel">Cancelar</string>
+    <string name="subcription">Subscripción</string>
+    <string name="renew">Renovar</string>
+    <string name="subscription_not_active">Subscripción no activa"</string>
+
+    <string name="key_word">Palabras claves</string>
+
+
 </resources>
