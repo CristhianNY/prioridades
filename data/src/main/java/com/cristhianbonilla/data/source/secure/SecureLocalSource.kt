@@ -2,7 +2,7 @@ package com.cristhianbonilla.data.source.secure
 
 import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.usecase.UseCase.None
-import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.functional.CustomResult
 import kotlin.reflect.KClass
 
 interface SecureLocalSource {
@@ -10,12 +10,12 @@ interface SecureLocalSource {
     fun <T> setValue(
         key: SecureKeyPreferences,
         value: T
-    ): Result<Failure, None>
+    ): CustomResult<Failure, None>
 
     fun <T : Any> getValue(
         key: SecureKeyPreferences,
         klass: KClass<T>
-    ): Result<Failure, T>
+    ): CustomResult<Failure, T>
 }
 
 enum class SecureKeyPreferences(val value: String) {

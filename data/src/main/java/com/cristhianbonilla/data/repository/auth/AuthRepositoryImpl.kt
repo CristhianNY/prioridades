@@ -4,9 +4,9 @@ import com.cristhianbonilla.data.source.local.authentication.AuthLocalSource
 import com.cristhianbonilla.data.source.platform.DevicePlatformSource
 import com.cristhianbonilla.data.source.remote.authenication.AuthRemoteSource
 import com.cristhianbonilla.domain.exception.Failure
-import com.cristhianbonilla.domain.functional.Result
-import com.cristhianbonilla.domain.functional.Result.Error
-import com.cristhianbonilla.domain.functional.Result.Success
+import com.cristhianbonilla.domain.functional.CustomResult
+import com.cristhianbonilla.domain.functional.CustomResult.Error
+import com.cristhianbonilla.domain.functional.CustomResult.Success
 import com.cristhianbonilla.domain.functional.getOrNull
 import com.cristhianbonilla.domain.model.profile.UserModel
 import com.cristhianbonilla.domain.repository.auth.AuthRepository
@@ -22,7 +22,7 @@ class AuthRepositoryImpl(
     override suspend fun doLogin(
         userName: String,
         password: String
-    ): Result<Failure, UseCase.None> =
+    ): CustomResult<Failure, UseCase.None> =
         try {
             authRemoteSource.postLogin(
                 userName,
@@ -51,7 +51,7 @@ class AuthRepositoryImpl(
         city: String,
         phone: String,
         password: String
-    ): Result<Failure, UserModel> {
+    ): CustomResult<Failure, UserModel> {
         return authRemoteSource.postRegister(
             names,
             lastNames,

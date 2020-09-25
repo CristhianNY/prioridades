@@ -5,9 +5,9 @@ import com.cristhianbonilla.data.main.security.Encryptar
 import com.cristhianbonilla.data.main.security.HashSecurity
 import com.cristhianbonilla.data.reporter.reporter
 import com.cristhianbonilla.domain.exception.Failure
-import com.cristhianbonilla.domain.functional.Result
-import com.cristhianbonilla.domain.functional.Result.Error
-import com.cristhianbonilla.domain.functional.Result.Success
+import com.cristhianbonilla.domain.functional.CustomResult
+import com.cristhianbonilla.domain.functional.CustomResult.Error
+import com.cristhianbonilla.domain.functional.CustomResult.Success
 import com.cristhianbonilla.domain.usecase.UseCase
 import kotlin.reflect.KClass
 
@@ -19,7 +19,7 @@ class PreferenceSecure(
     override fun <T> setValue(
         key: SecureKeyPreferences,
         value: T
-    ): Result<Failure, UseCase.None> =
+    ): CustomResult<Failure, UseCase.None> =
         try {
             val hastText = hash.getHash(key.value)
             val textEncrypt = when (value) {
@@ -41,7 +41,7 @@ class PreferenceSecure(
     override fun <T : Any> getValue(
         key: SecureKeyPreferences,
         klass: KClass<T>
-    ): Result<Failure, T> =
+    ): CustomResult<Failure, T> =
         try {
             val hastText = hash.getHash(key.value)
             val textDecrypt = encryption.decrypt(prefs.getValue(hastText, String::class))

@@ -2,7 +2,7 @@ package com.cristhianbonilla.data.source.remote.source
 
 import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.exception.Failure.RemoteError
-import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.functional.CustomResult
 import retrofit2.Response
 
 interface RemoteSource {
@@ -11,30 +11,30 @@ interface RemoteSource {
         call: suspend () -> Response<E>,
         handleSuccess: (E, Int) -> M,
         handleError: (Int) -> Failure = { RemoteError() }
-    ): Result<Failure, M> =
+    ): CustomResult<Failure, M> =
         try {
             val response = call()
 
             when(response.code()){
                 SESSION_EXPIRED ->{
-                    Result.Error(Failure.SessionExpired)
+                    CustomResult.Error(Failure.SessionExpired)
                 }
 
                 SESSION_EXPIRED2 ->{
-                    Result.Error(Failure.SessionExpired)
+                    CustomResult.Error(Failure.SessionExpired)
                 }
                 SUBSCRIPTION_NOT_ACTIVATED ->{
-                    Result.Error(Failure.SubscriptionNotActivated)
+                    CustomResult.Error(Failure.SubscriptionNotActivated)
                 }
 
                 USER_EXIST ->{
-                    Result.Error(Failure.UserAlreadyExist)
+                    CustomResult.Error(Failure.UserAlreadyExist)
                 }
 
                 else ->{
                     val responseBody: E = response.body()!!
 
-                    Result.Success(handleSuccess(responseBody, response.code()))
+                    CustomResult.Success(handleSuccess(responseBody, response.code()))
                 }
             }
         } catch (exception: Exception) {
@@ -45,10 +45,10 @@ interface RemoteSource {
         call: () -> E,
         handleSuccess: (E) -> M,
         handleError: (Int) -> Failure = { RemoteError() }
-    ): Result<Failure, M> =
+    ): CustomResult<Failure, M> =
         try {
             val response = call()
-            Result.Success(handleSuccess(response))
+            CustomResult.Success(handleSuccess(response))
         } catch (exception: Exception) {
             exception.toRemoteError(handleError)
         }

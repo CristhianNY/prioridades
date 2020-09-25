@@ -2,7 +2,7 @@ package com.cristhianbonilla.domain.security
 
 import com.cristhianbonilla.domain.exception.Failure
 import java.security.Signature
-import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.functional.CustomResult
 
 interface ProviderSecurity {
 
@@ -10,7 +10,7 @@ interface ProviderSecurity {
 
     fun getPublicKeyBase64(): String?
 
-    fun getSignature(): Result<Failure.SecurityError, Signature>
+    fun getSignature(): CustomResult<Failure.SecurityError, Signature>
 
     fun signData(signature: Signature, data: String): String?
 

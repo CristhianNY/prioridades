@@ -1,16 +1,16 @@
 package com.cristhianbonilla.data.source.local.authentication
 
 import com.cristhianbonilla.domain.exception.Failure
-import com.cristhianbonilla.domain.functional.Result
-import com.cristhianbonilla.domain.functional.Result.Error
+import com.cristhianbonilla.domain.functional.CustomResult
+import com.cristhianbonilla.domain.functional.CustomResult.Error
 
 interface LocalSource {
     fun invalidate()
     suspend fun <M> doAction(
         call: suspend () -> M
-    ): Result<Failure, M> =
+    ): CustomResult<Failure, M> =
         try {
-            Result.Success(call())
+            CustomResult.Success(call())
         } catch (exception: Exception) {
             Error(Failure.LocalError)
         }

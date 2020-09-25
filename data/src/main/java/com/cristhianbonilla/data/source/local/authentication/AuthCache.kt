@@ -1,7 +1,7 @@
 package com.cristhianbonilla.data.source.local.authentication
 
 import com.cristhianbonilla.domain.exception.Failure
-import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.functional.CustomResult
 
 class AuthCache : AuthLocalSource {
 
@@ -17,7 +17,7 @@ class AuthCache : AuthLocalSource {
         this.mUsername = username
     }
 
-    override suspend fun getUser(): Result<Failure, Pair<String, String>> =
+    override suspend fun getUser(): CustomResult<Failure, Pair<String, String>> =
         doAction {
             if (mDocumentType != null && mUsername != null) {
                 Pair(mDocumentType!!, mUsername!!)

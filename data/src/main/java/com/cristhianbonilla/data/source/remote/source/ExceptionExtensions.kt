@@ -1,18 +1,17 @@
 package com.cristhianbonilla.data.source.remote.source
 
 import com.cristhianbonilla.data.main.NetworkException
-import com.cristhianbonilla.data.reporter.reporter
 import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.exception.RemoteTypeError
-import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.functional.CustomResult
 import com.squareup.moshi.JsonDataException
 import retrofit2.HttpException
 import java.net.HttpURLConnection
 import java.security.InvalidParameterException
 
-internal fun Exception.toRemoteError(handleError: (Int) -> Failure): Result.Error<Failure> {
+internal fun Exception.toRemoteError(handleError: (Int) -> Failure): CustomResult.Error<Failure> {
    // reporter.exception(this)
-    return Result.Error(
+    return CustomResult.Error(
         when (this) {
             is NetworkException -> Failure.NetworkConnection
             is InvalidParameterException -> Failure.RemoteError(

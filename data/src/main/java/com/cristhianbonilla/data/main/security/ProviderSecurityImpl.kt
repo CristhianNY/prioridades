@@ -10,8 +10,8 @@ import com.cristhianbonilla.data.source.secure.SecureKeyPreferences
 import com.cristhianbonilla.data.source.secure.SecureLocalSource
 import com.cristhianbonilla.domain.exception.Failure
 import com.cristhianbonilla.domain.security.ProviderSecurity
-import com.cristhianbonilla.domain.functional.Result
-import com.cristhianbonilla.domain.functional.Result.Error
+import com.cristhianbonilla.domain.functional.CustomResult
+import com.cristhianbonilla.domain.functional.CustomResult.Error
 import com.cristhianbonilla.domain.functional.getOrNull
 import java.security.*
 import java.security.spec.ECGenParameterSpec
@@ -48,7 +48,7 @@ class SecurityProviderImpl(
         }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    override fun getSignature(): Result<Failure.SecurityError, Signature> {
+    override fun getSignature(): CustomResult<Failure.SecurityError, Signature> {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return Error(Failure.SecurityError.NotSupportedError)
 
@@ -56,7 +56,7 @@ class SecurityProviderImpl(
         return try {
             val signature = Signature.getInstance(ALGORITHM)
             signature.initSign(getPrivateKey())
-            Result.Success(signature)
+            CustomResult.Success(signature)
         } catch (key: KeyPermanentlyInvalidatedException) {
             Error(Failure.SecurityError.KeyPermanentlyInvalidatedError)
         } catch (e: Exception) {

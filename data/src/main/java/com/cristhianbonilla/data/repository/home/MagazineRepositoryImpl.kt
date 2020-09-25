@@ -2,7 +2,7 @@ package com.cristhianbonilla.data.repository.home
 
 import com.cristhianbonilla.data.source.remote.home.MagazineRemoteSource
 import com.cristhianbonilla.domain.exception.Failure
-import com.cristhianbonilla.domain.functional.Result
+import com.cristhianbonilla.domain.functional.CustomResult
 import com.cristhianbonilla.domain.model.home.MagazineModel
 import com.cristhianbonilla.domain.model.keywords.KeyWordModel
 import com.cristhianbonilla.domain.model.magazinepdf.MagazinePdfModel
@@ -14,16 +14,16 @@ class MagazineRepositoryImpl(private val magazineRemoteSource: MagazineRemoteSou
     override suspend fun getMagazineList(
         year: String,
         search: String
-    ): Result<Failure, MagazineModel> {
+    ): CustomResult<Failure, MagazineModel> {
 
         return magazineRemoteSource.getMagazineList(year, search)
     }
 
-    override suspend fun getMagazinePdf(magazineId: String): Result<Failure, MagazinePdfModel> {
+    override suspend fun getMagazinePdf(magazineId: String): CustomResult<Failure, MagazinePdfModel> {
         return magazineRemoteSource.getMagazinePdf(magazineId)
     }
 
-    override suspend fun getKeyWords(): Result<Failure, KeyWordModel> {
+    override suspend fun getKeyWords(): CustomResult<Failure, KeyWordModel> {
        return magazineRemoteSource.getKeyWordsList()
     }
 }
