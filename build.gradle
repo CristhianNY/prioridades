@@ -15,6 +15,9 @@ buildscript {
         // in the individual module build.gradle files
     }
     ext.server_url = 'BASE_URL'
+    ext.payu_url = 'PAYU_URL'
+    ext.payu_api_key = 'PAYU_API_KEY'
+    ext.payu_api_login = 'PAYU_API_LOGIN'
 }
 
 allprojects {

@@ -18,7 +18,9 @@ class App : Application() , LifecycleObserver {
                 BASE_URL,
                 VERSION_CODE,
                 VERSION_NAME,
-                getModules()
+                getModules(),
+                PAYU_URL,
+                PAYU_API_KEY
             )
         )
     }

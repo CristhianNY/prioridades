@@ -9,7 +9,7 @@ import org.koin.core.module.Module
 fun Application.initCore(data: AppConfigurationModel) {
     val modules: MutableList<Module> = getModules()
     with(data) {
-        modules.add(configModule(data.mode, baseUrl))
+        modules.add(configModule(data.mode, baseUrl, payuUrl , apiKey))
         if (moduleList.isNotEmpty()) {
             modules.addAll(moduleList)
         }

@@ -1,6 +1,5 @@
 package com.cristhianbonilla.data.source.remote.home.api
 
-import com.cristhianbonilla.data.entity.countries.CountryEntity
 import com.cristhianbonilla.data.entity.home.MagazineEntity
 import com.cristhianbonilla.data.entity.keywords.KeyWordEntity
 import com.cristhianbonilla.data.entity.magazinepdf.MagazinePdfEntity

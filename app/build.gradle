@@ -5,12 +5,15 @@ apply from: "../base.gradle"
 
 android{
     defaultConfig {
-        applicationId "com.example.prioridades"
+        applicationId "com.cristhianbonilla.prioridades"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         buildConfigField("String", rootProject.ext.server_url, ' "https://revistaprioridades.com/"')
+        buildConfigField("String", rootProject.ext.payu_url, ' " https://sandbox.api.payulatam.com/payments-api/4.0/"')
+        buildConfigField("String", rootProject.ext.payu_api_key, ' "4Vj8eK4rloUd272L48hsrarnUA"')
+        buildConfigField("String", rootProject.ext.payu_api_login, ' "pRRXKOl8ikMmt9u"')
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
