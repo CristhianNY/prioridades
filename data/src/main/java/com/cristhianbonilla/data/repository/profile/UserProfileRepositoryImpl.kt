@@ -10,4 +10,8 @@ class UserProfileRepositoryImpl(private val userProfileSource: UserProfileRemote
     override suspend fun getUserProfile(): CustomResult<Failure, UserModel> {
         return userProfileSource.getUserInformation()
     }
+
+    override suspend fun activateUser(): CustomResult<Failure, UserModel> {
+        TODO("Not yet implemented")
+    }
 }

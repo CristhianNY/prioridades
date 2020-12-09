@@ -7,4 +7,5 @@ import com.cristhianbonilla.domain.model.profile.UserModel
 
 interface UserProfileRemoteSource : RemoteSource {
     suspend fun getUserInformation(): CustomResult<Failure, UserModel>
+    suspend fun activateUser(): CustomResult<Failure, UserModel>
 }

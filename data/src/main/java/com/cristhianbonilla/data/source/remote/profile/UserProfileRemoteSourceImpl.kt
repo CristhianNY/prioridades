@@ -13,4 +13,10 @@ class UserProfileRemoteSourceImpl(private val userInformationApi: UserInformatio
             userInformationApi.getUserInformation()
         }, { entity, _ -> entity.toModel() })
     }
+
+    override suspend fun activateUser(): CustomResult<Failure, UserModel> {
+        return request({
+            userInformationApi.activateUser()
+        }, { entity, _ -> entity.toModel() })
+    }
 }

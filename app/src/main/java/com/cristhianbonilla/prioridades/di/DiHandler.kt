@@ -19,6 +19,7 @@ import com.cristhianbonilla.prioridades.di.domain.profile.profileDomainModule
 import com.cristhianbonilla.prioridades.di.presentation.authentication.loginPresentationModule
 import com.cristhianbonilla.prioridades.di.presentation.details.magazineDetailsModule
 import com.cristhianbonilla.prioridades.di.presentation.home.homeModule
+import com.cristhianbonilla.prioridades.di.presentation.payment.paymentPresentationModule
 import com.cristhianbonilla.prioridades.di.presentation.profile.profilePresentationModule
 import com.cristhianbonilla.prioridades.di.presentation.register.registerUserModule
 import com.cristhianbonilla.prioridades.di.presentation.search.searchModule
@@ -38,7 +39,8 @@ private fun getPresentationModules() =
         homeModule,
         magazineDetailsModule,
         loginPresentationModule,
-        profilePresentationModule
+        profilePresentationModule,
+        paymentPresentationModule
     )
 
 private fun getDomainModules() =

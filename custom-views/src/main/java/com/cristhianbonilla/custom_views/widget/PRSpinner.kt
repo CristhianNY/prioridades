@@ -5,6 +5,8 @@ import android.util.AttributeSet
 import android.widget.ArrayAdapter
 import androidx.databinding.BindingAdapter
 import com.cristhianbonilla.custom_views.R
+import com.cristhianbonilla.domain.model.countries.CountryItemModel
+import com.cristhianbonilla.domain.model.countries.CountryModel
 
 class PRSpinner( context: Context, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatSpinner(context, attrs) {
 
@@ -23,6 +25,11 @@ class PRSpinner( context: Context, attrs: AttributeSet?) : androidx.appcompat.wi
     }
 
     fun setElements( listOfElements: List<String>){
+        val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, listOfElements)
+        this.adapter = adapter
+    }
+
+    fun setCountries(listOfElements: List<CountryItemModel>){
         val adapter = ArrayAdapter(context, android.R.layout.simple_list_item_1, listOfElements)
         this.adapter = adapter
     }

@@ -6,4 +6,5 @@ import com.cristhianbonilla.domain.model.profile.UserModel
 
 interface UserProfileRepository {
     suspend fun getUserProfile(): CustomResult<Failure, UserModel>
+    suspend fun activateUser(): CustomResult<Failure, UserModel>
 }

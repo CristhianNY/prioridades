@@ -17,6 +17,10 @@ import com.cristhianbonilla.features_home.ui.details.MagazineDetailsFragmentDire
 import com.cristhianbonilla.features_home.ui.details.PreviewMagazineState
 import com.cristhianbonilla.features_home.ui.home.HomeFragmentDirections
 import com.cristhianbonilla.features_home.ui.home.HomeMagazineState
+import com.cristhianbonilla.features_home.ui.payment.PaymentFragmentDirections
+import com.cristhianbonilla.features_home.ui.payment.PaymentState
+import com.cristhianbonilla.features_home.ui.payment.pse.PaymentPSEState
+import com.cristhianbonilla.features_home.ui.perfil.ProfileFragmentDirections
 import com.cristhianbonilla.features_home.ui.perfil.ProfileState
 import com.cristhianbonilla.foundations.base.BaseActivity
 import com.cristhianbonilla.foundations.base.BaseState
@@ -36,6 +40,8 @@ class HomeActivity : BaseActivity<HomeState>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val uri = intent.data
+
         navController = findNavController(R.id.nav_host_fragment)
 
         val topLevelDestination = setOf(
@@ -44,7 +50,34 @@ class HomeActivity : BaseActivity<HomeState>(
             R.id.navigation_notifications
         )
         appBarConfiguration = AppBarConfiguration(topLevelDestination, parentDrawer)
+
         setupBottomNavigation()
+
+        uri?.let {
+
+            AlertDialog.Builder(this)
+                .setTitle(R.string.gracias_por_activar)
+                .setMessage(R.string.gracias_por_activar_description) // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(R.string.gracias_enviar_email,
+                    DialogInterface.OnClickListener { dialog, which ->
+                        val emailIntent = Intent(
+                            Intent.ACTION_SENDTO, Uri.fromParts(
+                                "mailto", "soporte@revistaprioridades.com", null
+                            )
+                        )
+                        emailIntent.apply {
+                            putExtra(Intent.EXTRA_SUBJECT, "Activar suscripción")
+                            putExtra(Intent.EXTRA_TEXT, "Activar suscripción")
+                        }
+
+                        this.startActivity(Intent.createChooser(emailIntent, "Deseo Activar mi suscripción"))
+                    }) // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(R.string.cancel, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+
+        }
 
     }
 
@@ -110,9 +143,7 @@ class HomeActivity : BaseActivity<HomeState>(
             }
 
             is ProfileState.RenewSubscription -> {
-                val i = Intent(Intent.ACTION_VIEW)
-                i.data = Uri.parse(WEB_SUBSCRIPTION)
-                startActivity(i)
+                innerNavigate(ProfileFragmentDirections.actionNavigationDashboardToPaymentFragment())
             }
 
             is PreviewMagazineState.GoBack -> {
@@ -151,7 +182,50 @@ class HomeActivity : BaseActivity<HomeState>(
                     mAlertDialog.dismiss()
                 }
             }
+
+            is PaymentState.PayWIthPSE -> {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(URL_PSE))
+                startActivity(browserIntent)
+            }
+
+            is PaymentState.UserActivated -> {
+                AlertDialog.Builder(this)
+                    .setTitle(R.string.subscription_activated_title)
+                    .setMessage(R.string.subscription_activated_description) // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton(R.string.subscription_activated_btn,
+                        DialogInterface.OnClickListener { dialog, which ->
+                            innerNavigate(
+                                PaymentFragmentDirections.goToHomeAgain(
+                                    "",
+                                    ""
+                                )
+                            )
+                        }) // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setIcon(android.R.drawable.ic_notification_overlay)
+                    .show()
+            }
+
+            is PaymentPSEState.ShowConfirmationPaymentDialog -> {
+                AlertDialog.Builder(this)
+                    .setTitle(R.string.subscription_activated_title)
+                    .setMessage(R.string.subscription_activated_description) // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton(R.string.subscription_activated_btn,
+                        DialogInterface.OnClickListener { dialog, which ->
+                            innerNavigate(
+                                PaymentFragmentDirections.goToHomeAgain(
+                                    "",
+                                    ""
+                                )
+                            )
+                        }) // A null listener allows the button to dismiss the dialog and take no further action.
+                    .setIcon(android.R.drawable.ic_notification_overlay)
+                    .show()
+            }
         }
+
+
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -184,6 +258,7 @@ class HomeActivity : BaseActivity<HomeState>(
             "com.cristhianbonilla.feature_login.AuthenticationActivity"
         const val WEB_SUBSCRIPTION = "https://tuiadpa.com/producto/prioridades-suscripcion-anual/"
         const val TAG_MAGAZINE = "URL_MAGAZINE"
+        const val URL_PSE = "https://biz.payulatam.com/L08ee4103D645BA"
     }
 }
 

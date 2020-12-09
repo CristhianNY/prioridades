@@ -7,8 +7,7 @@ import okhttp3.Response
 import java.net.HttpURLConnection.*
 
 class PayUPrivateInterceptor(
-    private val networkStatus: NetworkStatus,
-    private val apiKey:String
+    private val networkStatus: NetworkStatus
 ) : Interceptor {
 
     @Throws(NetworkException::class)
@@ -18,8 +17,9 @@ class PayUPrivateInterceptor(
         }
         val request = chain.request()
 
-        val newUrl = request.url.newBuilder().addQueryParameter("api_key", apiKey).build()
+        val newUrl = request.url.newBuilder().build()
         val requestBuilder = request.newBuilder().url(newUrl).method(request.method, request.body)
+            .header("Content-Type", "application/json").header("Accept","application/json")
             .build()
         var response = chain.proceed(requestBuilder)
 

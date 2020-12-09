@@ -1,5 +1,6 @@
 package com.cristhianbonilla.prioridades.di.data
 
+import android.R
 import com.cristhianbonilla.data.main.NetworkStatus
 import com.cristhianbonilla.data.session.SessionHandler
 import com.cristhianbonilla.data.source.interceptor.PayUPrivateInterceptor
@@ -15,8 +16,13 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.io.InputStream
+import java.security.cert.CertificateException
+import java.security.cert.CertificateFactory
 import java.util.*
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLSocketFactory
+
 
 const val HTTPS_PREFIX = "https://"
 const val BASE_PATH_URL = "baseUrl"
@@ -46,8 +52,7 @@ val networkModule = module {
 
     single<Interceptor>(named(PAYU_INTERCEPTOR_PRIVATE)) {
         PayUPrivateInterceptor(
-            networkStatus = get(),
-            apiKey = get<String>(named(PAYU_API_KEY))
+            networkStatus = get()
         )
     }
 
@@ -83,7 +88,7 @@ val networkModule = module {
                 readTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 writeTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 connectTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
-                protocols(listOf(Protocol.HTTP_2,Protocol.HTTP_1_1, Protocol.SPDY_3))
+                protocols(listOf(Protocol.HTTP_2, Protocol.HTTP_1_1, Protocol.SPDY_3))
                 interceptors().add(logging)
             }
 
@@ -106,7 +111,14 @@ val networkModule = module {
                 readTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 writeTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 connectTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
-                protocols(listOf(Protocol.HTTP_2,Protocol.HTTP_1_1, Protocol.SPDY_3))
+                protocols(
+                    listOf(
+                        Protocol.HTTP_2,
+                        Protocol.HTTP_1_1,
+                        Protocol.HTTP_2,
+                        Protocol.SPDY_3
+                    )
+                )
                 authenticator(authenticator = get())
                 addInterceptor(interceptor = get(named(INTERCEPTOR_PRIVATE)))
                 interceptors().add(logging)
@@ -131,14 +143,21 @@ val networkModule = module {
                 writeTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 connectTimeout(HTTP_CLIENT_TIME_OUT_SECONDS, TimeUnit.SECONDS)
                 addInterceptor(interceptor = get(named(PAYU_INTERCEPTOR_PRIVATE)))
+                    .connectionSpecs(
+                        Arrays.asList(
+                            ConnectionSpec.MODERN_TLS,
+                            ConnectionSpec.COMPATIBLE_TLS
+                        )
+                    )
                 interceptors().add(logging)
             }
 
         Retrofit.Builder()
-            .baseUrl(get<String>(named(BASE_PATH_URL)))
+            .baseUrl(get<String>(named(PAYU_PATH_URL)))
             .client(httpClient.build())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
     }
+
 
 }

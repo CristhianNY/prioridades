@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cristhianbonilla.features_home.ui.payment.PaymentViewModel" />
+
+        <variable
+            name="data"
+            type="com.cristhianbonilla.features_home.ui.payment.PaymentData" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{data.showContent? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:id="@+id/tvPriceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@color/azul_claro"
+                android:fontFamily="@font/poppinsbold"
+                android:gravity="center"
+                android:padding="@dimen/margin_16"
+                android:text="@string/title_precio"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title_credit_card"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/librarygothic"
+                android:text="Paga con tu tarjeta de credito"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvPriceTitle" />
+
+            <com.cristhianbonilla.custom_views.widget.PRFrontCreditCard
+                android:id="@+id/PRFrontCreditCard"
+                payment_listener="@{viewModel.paymentListener}"
+                setCountries="@{data.countryList}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="@{data.showContent? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_credit_card">
+
+
+            </com.cristhianbonilla.custom_views.widget.PRFrontCreditCard>
+
+            <TextView
+                android:id="@+id/pay_with_debit_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/paga_con_tu_tarjeta_debito_usando_pse"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/PRFrontCreditCard" />
+
+            <ImageView
+                android:id="@+id/button"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:onClick="@{() -> viewModel.payWithPSE()}"
+                android:src="@drawable/ic_pse"
+                android:visibility="@{data.showContent? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pay_with_debit_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.cristhianbonilla.custom_views.widget.PRLoader
+        android:id="@+id/progressBarBottom"
+        loader_visibility="@{data.showLoading}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateDrawable="@drawable/progress_loader"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.cristhianbonilla.custom_views.widget.PREmptyState
+        android:id="@+id/pr_empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:visibility="@{data.isEmpty? View.VISIBLE : View.GONE}"
+        app:empty_state_type="witout_buttom"
+        app:emptystate_icon="@drawable/ic_sad"
+        app:emptystate_link="@string/enter"
+        app:emptystate_message="@{data.errorMessage}"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

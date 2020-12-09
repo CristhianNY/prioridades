@@ -8,8 +8,6 @@ import com.squareup.moshi.JsonClass
 data class CreditCardToken(
     @Json(name = "expirationDate")
     val expirationDate: String?,
-    @Json(name = "identificationNumber")
-    val identificationNumber: String?,
     @Json(name = "name")
     val name: String?,
     @Json(name = "number")

@@ -6,7 +6,15 @@
         <activity
             android:name="com.cristhianbonilla.features_home.HomeActivity"
             android:label="@string/title_activity_home">
-
+            <intent-filter android:label="DeepLink"
+                android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"></action>
+                <category android:name="android.intent.category.BROWSABLE"></category>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <data android:scheme="https"
+                    android:host="www.revistaprioridades.com"
+                    android:pathPrefix="/activar-usuario"></data>
+            </intent-filter>
         </activity>
     </application>
 

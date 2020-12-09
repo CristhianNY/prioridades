@@ -99,6 +99,26 @@ Prioridades en una publicación mensual publicada por la Iglesia Adventista del 
     <string name="subscription_not_active">Subscripción no activa"</string>
 
     <string name="key_word">Palabras claves</string>
+    <string name="nombre_en_tarjeta">Nombre en tarjeta</string>
+    <string name="expirationdate">"fecha de vencimiento "</string>
+    <string name="numero_de_tarjeta_de_credito">Numero de tarjeta de credito</string>
+    <string name="year">Año</string>
+    <string name="slash">-</string>
+    <string name="month">Mes</string>
+    <string name="country_card">Pais de la tarjeta</string>
+    <string name="title_precio">Vas a renovar tu suscripción por tan solo <b>18.000</b> pesos anuales</string>
+    <string name="paga_con_tu_tarjeta_debito_usando_pse">O p
+        aga con tu tarjeta debito usando PSE</string>
 
+    <string name="subscription_activated_title">Suscripción Activa</string>
+    <string name="subscription_activated_description">Gracias por activar tu suscripción ahora disfruta por 1 año de todas las revistas prioridades</string>
+    <string name="subscription_activated_btn">Cerrar</string>
 
+    <!-- Payment error-->
+    <string name="payment_error">Tenemos un problema al procesar tu pago por favor revisa que los datos ingresados son correctos o comunicate con tu banco.</string>
+    <string name="email_to_activate_subscription">Hola Acabo de hacer el pago de mi suscripcion a revista prioridades , por favor deseo activar mi usuario , mi usuario es :</string>
+    <string name="gracias_por_activar">Gracias por activar tu suscripción</string>
+    <string name="gracias_por_activar_description">Debes enviar un email a soporte@revistaprioridades.com con tu usuario para que podemos verificar tu cuenta y empieces a disfrutar</string>
+    <string name="gracias_enviar_email">Enviar Correo</string>
+    <string name="gracias_mas_tarde">Ahora no</string>
 </resources>
