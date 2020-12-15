@@ -5,7 +5,7 @@ apply from: "../base.gradle"
 
 android{
     defaultConfig {
-        applicationId "com.cristhianbonilla.prioridades"
+        applicationId "com.cristhianbonilla.revistaprioridades"
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
